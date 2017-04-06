@@ -1,0 +1,2344 @@
+{
+  "package": "QuickBooksAccounting",
+  "tagline": "QuickBooksAccounting API",
+  "description": "QuickBooksAccounting",
+  "image": "http:\/\/logo.clearbit.com\/developer.intuit.com",
+  "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-QuickBooksAccounting-Package",
+  "keywords": [
+  ],
+  "accounts": {
+    "domain": "https://developer.intuit.com",
+    "credentials": [
+      "apiKey",
+      "apiSecret"
+    ]
+  },
+  "blocks": [
+    {
+      "name": "queryBill",
+      "description": "Returns the results of the query.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Your query to process",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createBill",
+      "description": "Creates new bill",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "billLines",
+          "type": "Array",
+          "info": "Individual line items of a transaction.",
+          "required": true
+        },
+        {
+          "name": "vendorRefType",
+          "type": "String",
+          "info": "Value of vendor type: name or value",
+          "required": true
+        },
+        {
+          "name": "vendorRefValue",
+          "type": "String",
+          "info": "Value of vendor ref",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getBill",
+      "description": "Retrieves the details of a bill that has been previously created.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "billId",
+          "type": "Number",
+          "info": "Id of your bill",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateBill",
+      "description": "Updates a bill that has been previously created.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "billId",
+          "type": "Number",
+          "info": "Id of your bill",
+          "required": true
+        },
+        {
+          "name": "syncToken",
+          "type": "Number",
+          "info": "Version number of the object.",
+          "required": true
+        },
+        {
+          "name": "billLines",
+          "type": "Array",
+          "info": "Individual line items of a transaction.",
+          "required": true
+        },
+        {
+          "name": "metadataCreateTime",
+          "type": "String",
+          "info": "Time the entity was created in the source domain.",
+          "required": false
+        },
+        {
+          "name": "metadataUpdateTime",
+          "type": "String",
+          "info": "Time the entity was last updated in the source domain.",
+          "required": false
+        },
+        {
+          "name": "docNumber",
+          "type": "String",
+          "info": "Reference number for the transaction.",
+          "required": false
+        },
+        {
+          "name": "txnDate",
+          "type": "String",
+          "info": "The date entered by the user when this transaction occurred. ",
+          "required": false
+        },
+        {
+          "name": "departmentRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": false
+        },
+        {
+          "name": "departmentRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by departmentRefId",
+          "required": false
+        },
+        {
+          "name": "currencyRefId",
+          "type": "String",
+          "info": "A three letter string representing the ISO 4217 code for the currency. ",
+          "required": false
+        },
+        {
+          "name": "currencyRefName",
+          "type": "String",
+          "info": "An identifying name for the currency being referenced by currencyRefId",
+          "required": false
+        },
+        {
+          "name": "exchangeRate",
+          "type": "String",
+          "info": "The number of home currency units it takes to equal one unit of currency specified by currencyRef",
+          "required": false
+        },
+        {
+          "name": "privateNote",
+          "type": "String",
+          "info": "User entered, organization-private note about the transaction.",
+          "required": false
+        },
+        {
+          "name": "txnTaxDetail",
+          "type": "JSON",
+          "info": "This data type provides information for taxes charged on the transaction as a whole. ",
+          "required": false
+        },
+        {
+          "name": "vendorRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": true
+        },
+        {
+          "name": "vendorRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by vendorRefId",
+          "required": true
+        },
+        {
+          "name": "apAccountRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": false
+        },
+        {
+          "name": "apAccountRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by apAccountRefId",
+          "required": false
+        },
+        {
+          "name": "globalTaxCalculation",
+          "type": "String",
+          "info": "Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.",
+          "required": false
+        },
+        {
+          "name": "salesTermRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": false
+        },
+        {
+          "name": "salesTermRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by salesTermRefId",
+          "required": false
+        },
+        {
+          "name": "dueDate",
+          "type": "String",
+          "info": "Date when the payment of the transaction is due.",
+          "required": false
+        },
+        {
+          "name": "balance",
+          "type": "String",
+          "info": "The balance reflecting any payments made against the transaction.",
+          "required": false
+        },
+        {
+          "name": "balance",
+          "type": "String",
+          "info": "The balance reflecting any payments made against the transaction.",
+          "required": false
+        },
+        {
+          "name": "transactionLocationType",
+          "type": "String",
+          "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteBill",
+      "description": "Deletes existing bill. You must unlink any linked transactions associated with the bill object before deleting it.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "billId",
+          "type": "String",
+          "info": "Id of the bill",
+          "required": true
+        },
+        {
+          "name": "syncToken",
+          "type": "String",
+          "info": "syncToken of the bill",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "queryBillpayment",
+      "description": "Returns the results of the query.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Your query to process",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createBillCheckPayment",
+      "description": "Creates new bill payment by check",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "billpaymentLines",
+          "type": "Array",
+          "info": "Individual line items of a transaction.",
+          "required": true
+        },
+        {
+          "name": "totalAmt",
+          "type": "String",
+          "info": "Indicates the total amount of the associated with this payment.",
+          "required": true
+        },
+        {
+          "name": "vendorRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload.",
+          "required": true
+        },
+        {
+          "name": "vendorRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by vendorRefId",
+          "required": false
+        },
+        {
+          "name": "bankAccountRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload.",
+          "required": true
+        },
+        {
+          "name": "bankAccountRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by bankAccountRefId",
+          "required": false
+        },
+        {
+          "name": "printStatus",
+          "type": "String",
+          "info": "Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createBillCreditCardPayment",
+      "description": "Creates new bill payment by credit card",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "billpaymentLines",
+          "type": "Array",
+          "info": "Individual line items of a transaction.",
+          "required": true
+        },
+        {
+          "name": "totalAmt",
+          "type": "String",
+          "info": "Indicates the total amount of the associated with this payment.",
+          "required": true
+        },
+        {
+          "name": "vendorRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload.",
+          "required": true
+        },
+        {
+          "name": "vendorRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by vendorRefId",
+          "required": false
+        },
+        {
+          "name": "ccAccountRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload.",
+          "required": true
+        },
+        {
+          "name": "ccAccountRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by ccAccountRefId",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getBillpayment",
+      "description": "Retrieves the details of a billpayment that has been previously created.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "billpaymentId",
+          "type": "Number",
+          "info": "Id of your billpayment",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateCheckBillpayment",
+      "description": "Updates existing bill payment by check",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "billpaymentId",
+          "type": "Number",
+          "info": "Id of the billpayment",
+          "required": true
+        },
+        {
+          "name": "billpaymentLines",
+          "type": "Array",
+          "info": "Individual line items of a transaction.",
+          "required": true
+        },
+        {
+          "name": "totalAmt",
+          "type": "String",
+          "info": "Indicates the total amount of the associated with this payment.",
+          "required": true
+        },
+        {
+          "name": "vendorRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload.",
+          "required": true
+        },
+        {
+          "name": "vendorRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by vendorRefId",
+          "required": false
+        },
+        {
+          "name": "bankAccountRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload.",
+          "required": true
+        },
+        {
+          "name": "bankAccountRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by bankAccountRefId",
+          "required": false
+        },
+        {
+          "name": "printStatus",
+          "type": "String",
+          "info": "Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.",
+          "required": false
+        },
+        {
+          "name": "metadataCreateTime",
+          "type": "String",
+          "info": "Time the entity was created in the source domain.",
+          "required": false
+        },
+        {
+          "name": "metadataUpdateTime",
+          "type": "String",
+          "info": "Time the entity was last updated in the source domain.",
+          "required": false
+        },
+        {
+          "name": "docNumber",
+          "type": "String",
+          "info": "Reference number for the transaction.",
+          "required": false
+        },
+        {
+          "name": "txnDate",
+          "type": "String",
+          "info": "The date entered by the user when this transaction occurred. ",
+          "required": false
+        },
+        {
+          "name": "departmentRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": false
+        },
+        {
+          "name": "departmentRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by departmentRefId",
+          "required": false
+        },
+        {
+          "name": "currencyRefId",
+          "type": "String",
+          "info": "A three letter string representing the ISO 4217 code for the currency. ",
+          "required": false
+        },
+        {
+          "name": "currencyRefName",
+          "type": "String",
+          "info": "An identifying name for the currency being referenced by currencyRefId",
+          "required": false
+        },
+        {
+          "name": "exchangeRate",
+          "type": "String",
+          "info": "The number of home currency units it takes to equal one unit of currency specified by currencyRef",
+          "required": false
+        },
+        {
+          "name": "privateNote",
+          "type": "String",
+          "info": "User entered, organization-private note about the transaction.",
+          "required": false
+        },
+        {
+          "name": "apAccountRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": false
+        },
+        {
+          "name": "apAccountRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by apAccountRefId",
+          "required": false
+        },
+        {
+          "name": "processBillPayment",
+          "type": "Boolean",
+          "info": "Indicates that the payment should be processed by merchant account service.",
+          "required": false
+        },
+        {
+          "name": "transactionLocationType",
+          "type": "String",
+          "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateCreditCardBillpayment",
+      "description": "Updates existing bill payment by credit card",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "billpaymentId",
+          "type": "Number",
+          "info": "Id of the billpayment",
+          "required": true
+        },
+        {
+          "name": "billpaymentLines",
+          "type": "Array",
+          "info": "Individual line items of a transaction.",
+          "required": true
+        },
+        {
+          "name": "totalAmt",
+          "type": "String",
+          "info": "Indicates the total amount of the associated with this payment.",
+          "required": true
+        },
+        {
+          "name": "vendorRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload.",
+          "required": true
+        },
+        {
+          "name": "vendorRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by vendorRefId",
+          "required": false
+        },
+        {
+          "name": "ccAccountRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload.",
+          "required": true
+        },
+        {
+          "name": "ccAccountRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by bankAccountRefId",
+          "required": false
+        },
+        {
+          "name": "metadataCreateTime",
+          "type": "String",
+          "info": "Time the entity was created in the source domain.",
+          "required": false
+        },
+        {
+          "name": "metadataUpdateTime",
+          "type": "String",
+          "info": "Time the entity was last updated in the source domain.",
+          "required": false
+        },
+        {
+          "name": "docNumber",
+          "type": "String",
+          "info": "Reference number for the transaction.",
+          "required": false
+        },
+        {
+          "name": "txnDate",
+          "type": "String",
+          "info": "The date entered by the user when this transaction occurred. ",
+          "required": false
+        },
+        {
+          "name": "departmentRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": false
+        },
+        {
+          "name": "departmentRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by departmentRefId",
+          "required": false
+        },
+        {
+          "name": "currencyRefId",
+          "type": "String",
+          "info": "A three letter string representing the ISO 4217 code for the currency. ",
+          "required": false
+        },
+        {
+          "name": "currencyRefName",
+          "type": "String",
+          "info": "An identifying name for the currency being referenced by currencyRefId",
+          "required": false
+        },
+        {
+          "name": "exchangeRate",
+          "type": "String",
+          "info": "The number of home currency units it takes to equal one unit of currency specified by currencyRef",
+          "required": false
+        },
+        {
+          "name": "privateNote",
+          "type": "String",
+          "info": "User entered, organization-private note about the transaction.",
+          "required": false
+        },
+        {
+          "name": "apAccountRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": false
+        },
+        {
+          "name": "apAccountRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by apAccountRefId",
+          "required": false
+        },
+        {
+          "name": "processBillPayment",
+          "type": "Boolean",
+          "info": "Indicates that the payment should be processed by merchant account service.",
+          "required": false
+        },
+        {
+          "name": "transactionLocationType",
+          "type": "String",
+          "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteBillpayment",
+      "description": "This operation deletes the billpayment object specified in the request body. ",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "billpaymentId",
+          "type": "String",
+          "info": "Id of the billpayment",
+          "required": true
+        },
+        {
+          "name": "syncToken",
+          "type": "String",
+          "info": "syncToken of the bill",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createCreditmemo",
+      "description": "Create new credit memo",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "creditMemoLines",
+          "type": "Array",
+          "info": "Individual line items of a transaction.",
+          "required": true
+        },
+        {
+          "name": "customerRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": false
+        },
+        {
+          "name": "customerRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by customerRefId",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCreditmemo",
+      "description": "Retrieves the details of a creditmemo that has been previously created.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "creditMemoId",
+          "type": "Number",
+          "info": "Id of your creditmemo",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "queryCreditmemo",
+      "description": "Returns the results of the query.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Your query to process",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteCreditmemo",
+      "description": "Deletes existing creditmemo. ",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "creditMemoId",
+          "type": "String",
+          "info": "Id of the creditmemo",
+          "required": true
+        },
+        {
+          "name": "syncToken",
+          "type": "String",
+          "info": "syncToken of the bill",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createDeposit",
+      "description": "Creates new deposit",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "depositLines",
+          "type": "Array",
+          "info": "Individual line items of a transaction.",
+          "required": true
+        },
+        {
+          "name": "depositToAccountRefId",
+          "type": "Number",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": true
+        },
+        {
+          "name": "depositToAccountRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by depositToAccountRefId",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "queryDeposit",
+      "description": "Returns the results of the query.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Your query to process",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getDeposit",
+      "description": "Retrieves the details of a deposit that has been previously created.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "depositId",
+          "type": "Number",
+          "info": "Id of your deposit",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateDeposit",
+      "description": "Updates a deposit that has been previously created.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "depositId",
+          "type": "Number",
+          "info": "Id of your deposit",
+          "required": true
+        },
+        {
+          "name": "syncToken",
+          "type": "Number",
+          "info": "Version number of the object.",
+          "required": true
+        },
+        {
+          "name": "depositLines",
+          "type": "Array",
+          "info": "Individual line items of a transaction.",
+          "required": true
+        },
+        {
+          "name": "metadataCreateTime",
+          "type": "String",
+          "info": "Time the entity was created in the source domain.",
+          "required": false
+        },
+        {
+          "name": "metadataUpdateTime",
+          "type": "String",
+          "info": "Time the entity was last updated in the source domain.",
+          "required": false
+        },
+        {
+          "name": "txnDate",
+          "type": "String",
+          "info": "The date entered by the user when this transaction occurred. ",
+          "required": false
+        },
+        {
+          "name": "departmentRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": false
+        },
+        {
+          "name": "departmentRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by departmentRefId",
+          "required": false
+        },
+        {
+          "name": "privateNote",
+          "type": "String",
+          "info": "User entered, organization-private note about the transaction.",
+          "required": false
+        },
+        {
+          "name": "globalTaxCalculation",
+          "type": "String",
+          "info": "Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.",
+          "required": false
+        },
+        {
+          "name": "txnStatus",
+          "type": "String",
+          "info": "Status of the transaction. Valid values include: Draft, Overdue, Pending, Payable, Paid, Trash, and Unpaid.",
+          "required": false
+        },
+        {
+          "name": "txnTaxDetail",
+          "type": "JSON",
+          "info": "This data type provides information for taxes charged on the transaction as a whole. ",
+          "required": false
+        },
+        {
+          "name": "depositToAccountRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": true
+        },
+        {
+          "name": "depositToAccountRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by vendorRefId",
+          "required": true
+        },
+        {
+          "name": "txnSource",
+          "type": "String",
+          "info": "Used internally to specify originating source of a credit card transaction.",
+          "required": false
+        },
+        {
+          "name": "cashBack",
+          "type": "JSON",
+          "info": "Cash back info",
+          "required": false
+        },
+        {
+          "name": "totalAmt",
+          "type": "String",
+          "info": "Indicates the total amount of the transaction. This includes the total of all the charges, allowances, and taxes. ",
+          "required": false
+        },
+        {
+          "name": "transactionLocationType",
+          "type": "String",
+          "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteDeposit",
+      "description": "Deletes existing deposit.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "depositId",
+          "type": "String",
+          "info": "Id of the deposit",
+          "required": true
+        },
+        {
+          "name": "syncToken",
+          "type": "String",
+          "info": "syncToken of the bill",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createEstimate",
+      "description": "Create new estimate",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "estimateLines",
+          "type": "Array",
+          "info": "Individual line items of a transaction.",
+          "required": true
+        },
+        {
+          "name": "customerRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": false
+        },
+        {
+          "name": "customerRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by customerRefId",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "queryEstimate",
+      "description": "Returns the results of the query.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Your query to process",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getEstimate",
+      "description": "Retrieves the details of a estimate that has been previously created.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "estimateId",
+          "type": "Number",
+          "info": "Id of your estimate",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getEstimateAsPDF",
+      "description": "Retrieves the details of a estimate that has been previously created as link to PDf file.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "estimateId",
+          "type": "Number",
+          "info": "Id of your estimate",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "sendEstimate",
+      "description": "Send the specified estimate object via email.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "estimateId",
+          "type": "Number",
+          "info": "Id of your estimate",
+          "required": true
+        },
+        {
+          "name": "email",
+          "type": "String",
+          "info": "Email address",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateEstimate",
+      "description": "Updates a estimate that has been previously created.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "estimateId",
+          "type": "Number",
+          "info": "Id of your estimate",
+          "required": true
+        },
+        {
+          "name": "syncToken",
+          "type": "Number",
+          "info": "Version number of the object.",
+          "required": true
+        },
+        {
+          "name": "estimateLines",
+          "type": "Array",
+          "info": "Individual line items of a transaction.",
+          "required": true
+        },
+        {
+          "name": "metadataCreateTime",
+          "type": "String",
+          "info": "Time the entity was created in the source domain.",
+          "required": false
+        },
+        {
+          "name": "metadataUpdateTime",
+          "type": "String",
+          "info": "Time the entity was last updated in the source domain.",
+          "required": false
+        },
+        {
+          "name": "customField",
+          "type": "Array",
+          "info": "Custom field or data extension.",
+          "required": false
+        },
+        {
+          "name": "docNumber",
+          "type": "String",
+          "info": "Reference number for the transaction.",
+          "required": false
+        },
+        {
+          "name": "txnDate",
+          "type": "String",
+          "info": "The date entered by the user when this transaction occurred. ",
+          "required": false
+        },
+        {
+          "name": "departmentRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": false
+        },
+        {
+          "name": "departmentRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by departmentRefId",
+          "required": false
+        },
+        {
+          "name": "currencyRefId",
+          "type": "String",
+          "info": "A three letter string representing the ISO 4217 code for the currency. ",
+          "required": false
+        },
+        {
+          "name": "currencyRefName",
+          "type": "String",
+          "info": "An identifying name for the currency being referenced by currencyRefId",
+          "required": false
+        },
+        {
+          "name": "exchangeRate",
+          "type": "String",
+          "info": "The number of home currency units it takes to equal one unit of currency specified by currencyRef",
+          "required": false
+        },
+        {
+          "name": "privateNote",
+          "type": "String",
+          "info": "User entered, organization-private note about the transaction.",
+          "required": false
+        },
+        {
+          "name": "txnStatus",
+          "type": "String",
+          "info": "Status of the transaction. Valid values include: Accepted, Closed, Pending, Rejected",
+          "required": false
+        },
+        {
+          "name": "linkedTxn",
+          "type": "Array",
+          "info": "Zero or more Invoice objects related to this transaction.",
+          "required": false
+        },
+        {
+          "name": "txnTaxDetail",
+          "type": "JSON",
+          "info": "This data type provides information for taxes charged on the transaction as a whole. ",
+          "required": false
+        },
+        {
+          "name": "customerRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": false
+        },
+        {
+          "name": "customerRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by customerRefId",
+          "required": false
+        },
+        {
+          "name": "billAddr",
+          "type": "JSON",
+          "info": "Bill-to address of the Invoice. ",
+          "required": false
+        },
+        {
+          "name": "shipAddr",
+          "type": "JSON",
+          "info": "Identifies the address where the goods must be shipped. ",
+          "required": false
+        },
+        {
+          "name": "classRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": true
+        },
+        {
+          "name": "classRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by classRefId",
+          "required": true
+        },
+        {
+          "name": "salesTermRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": true
+        },
+        {
+          "name": "salesTermRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by salesTermRefId",
+          "required": false
+        },
+        {
+          "name": "shipMethodRefId",
+          "type": "String",
+          "info": "The ID for the referenced object as found in the Id field of the object payload. ",
+          "required": true
+        },
+        {
+          "name": "shipMethodRefName",
+          "type": "String",
+          "info": "An identifying name for the object being referenced by shipMethodRefId",
+          "required": false
+        },
+        {
+          "name": "dueDate",
+          "type": "String",
+          "info": "Date when the payment of the transaction is due.",
+          "required": false
+        },
+        {
+          "name": "shipDate",
+          "type": "String",
+          "info": "Date for delivery of goods or services.",
+          "required": false
+        },
+        {
+          "name": "globalTaxCalculation",
+          "type": "String",
+          "info": "Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.",
+          "required": false
+        },
+        {
+          "name": "totalAmt",
+          "type": "String",
+          "info": "Indicates the total amount of the transaction. This includes the total of all the charges, allowances, and taxes. ",
+          "required": false
+        },
+        {
+          "name": "applyTaxAfterDiscount",
+          "type": "Boolean",
+          "info": "If false or null, calculate the sales tax first, and then apply the discount. If true, subtract the discount first and then calculate the sales tax.",
+          "required": false
+        },
+        {
+          "name": "printStatus",
+          "type": "String",
+          "info": "Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete .",
+          "required": true
+        },
+        {
+          "name": "emailStatus",
+          "type": "String",
+          "info": "Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent",
+          "required": true
+        },
+        {
+          "name": "billEmail",
+          "type": "String",
+          "info": "Identifies the e-mail address where the invoice is sent.",
+          "required": true
+        },
+        {
+          "name": "expirationDate",
+          "type": "String",
+          "info": "Date by which estimate must be accepted before invalidation.",
+          "required": false
+        },
+        {
+          "name": "acceptedBy",
+          "type": "String",
+          "info": "Name of customer who accepted the estimate.",
+          "required": false
+        },
+        {
+          "name": "acceptedDate",
+          "type": "String",
+          "info": "Date estimate was accepted.",
+          "required": false
+        },
+        {
+          "name": "transactionLocationType",
+          "type": "String",
+          "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteEstimate",
+      "description": "Deletes existing estimate.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "estimateID",
+          "type": "String",
+          "info": "Id of the estimate",
+          "required": true
+        },
+        {
+          "name": "syncToken",
+          "type": "String",
+          "info": "syncToken of the bill",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    }
+  ]
+}
