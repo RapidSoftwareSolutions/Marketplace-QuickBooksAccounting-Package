@@ -2,22 +2,31 @@
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 
-$app->post('/api/QuickBooksAccounting/updateCreditmemo', function ($request, $response, $args) {
+$app->post('/api/QuickBooksAccounting/updateRefundreceipt', function ($request, $response, $args) {
     $settings = $this->settings;
 
     //checking properly formed json
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['apiKey', 'apiSecret', 'accessToken', 'tokenSecret', 'creditMemoId', 'companyId', 'syncToken', 'creditMemoLines']);
+    $validateRes = $checkRequest->validate($request, ['apiKey', 'apiSecret', 'accessToken', 'tokenSecret', 'refundId', 'companyId', 'syncToken']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $body['Id'] = $post_data['args']['creditMemoId'];
+    $body['Id'] = $post_data['args']['refundId'];
     $body['SyncToken'] = $post_data['args']['syncToken'];
-    $body['Line'] = $post_data['args']['creditMemoLines'];
+    $body['sparse'] = true;
 
+    if (isset($post_data['args']['refundLines']) && strlen($post_data['args']['refundLines']) > 0) {
+        $body['Line'] = $post_data['args']['refundLines'];
+    }
+    if (isset($post_data['args']['depositToAccountId']) && strlen($post_data['args']['depositToAccountId']) > 0) {
+        $body['DepositToAccountRef']['value'] = $post_data['args']['depositToAccountId'];
+    }
+    if (isset($post_data['args']['depositToAccountName']) && strlen($post_data['args']['depositToAccountName']) > 0) {
+        $body['DepositToAccountRef']['name'] = $post_data['args']['depositToAccountName'];
+    }
     if (isset($post_data['args']['metadataCreateTime']) && strlen($post_data['args']['metadataCreateTime']) > 0) {
         $body['Metadata']['CreateTime']['dateTime'] = $post_data['args']['metadataCreateTime'];
     }
@@ -28,7 +37,7 @@ $app->post('/api/QuickBooksAccounting/updateCreditmemo', function ($request, $re
         $body['CustomField'] = $post_data['args']['customField'];
     }
     if (isset($post_data['args']['docNumber']) && strlen($post_data['args']['docNumber']) > 0) {
-        $body['docNumber'] = $post_data['args']['docNumber'];
+        $body['DocNumber'] = $post_data['args']['docNumber'];
     }
     if (isset($post_data['args']['txnDate']) && strlen($post_data['args']['txnDate']) > 0) {
         $body['TxnDate'] = $post_data['args']['txnDate'];
@@ -75,30 +84,17 @@ $app->post('/api/QuickBooksAccounting/updateCreditmemo', function ($request, $re
     if (isset($post_data['args']['classRefName']) && strlen($post_data['args']['classRefName']) > 0) {
         $body['ClassRef']['name'] = $post_data['args']['classRefName'];
     }
-    if (isset($post_data['args']['salesTermRefId']) && strlen($post_data['args']['salesTermRefId']) > 0) {
-        $body['SalesTermRef']['value'] = $post_data['args']['salesTermRefId'];
-    }
-    if (isset($post_data['args']['salesTermRefName']) && strlen($post_data['args']['salesTermRefName']) > 0) {
-        $body['SalesTermRef']['name'] = $post_data['args']['salesTermRefName'];
-    }
-    if (isset($post_data['args']['globalTaxCalculation']) && strlen($post_data['args']['globalTaxCalculation']) > 0) {
-        $body['GlobalTaxCalculation'] = $post_data['args']['globalTaxCalculation'];
-    }
     if (isset($post_data['args']['totalAmt']) && strlen($post_data['args']['totalAmt']) > 0) {
         $body['TotalAmt'] = $post_data['args']['totalAmt'];
     }
-
     if (isset($post_data['args']['applyTaxAfterDiscount']) && strlen($post_data['args']['applyTaxAfterDiscount']) > 0) {
         $body['ApplyTaxAfterDiscount'] = $post_data['args']['applyTaxAfterDiscount'];
     }
     if (isset($post_data['args']['printStatus']) && strlen($post_data['args']['printStatus']) > 0) {
         $body['PrintStatus'] = $post_data['args']['printStatus'];
     }
-    if (isset($post_data['args']['emailStatus']) && strlen($post_data['args']['emailStatus']) > 0) {
-        $body['EmailStatus'] = $post_data['args']['emailStatus'];
-    }
     if (isset($post_data['args']['billEmail']) && strlen($post_data['args']['billEmail']) > 0) {
-        $body['BillEmail'] = $post_data['args']['billEmail'];
+        $body['BillEmail']['Address'] = $post_data['args']['billEmail'];
     }
     if (isset($post_data['args']['balance']) && strlen($post_data['args']['balance']) > 0) {
         $body['Balance'] = $post_data['args']['balance'];
@@ -109,12 +105,34 @@ $app->post('/api/QuickBooksAccounting/updateCreditmemo', function ($request, $re
     if (isset($post_data['args']['paymentMethodRefName']) && strlen($post_data['args']['paymentMethodRefName']) > 0) {
         $body['PaymentMethodRef']['name'] = $post_data['args']['paymentMethodRefName'];
     }
-    if (isset($post_data['args']['remainingCredit']) && strlen($post_data['args']['remainingCredit']) > 0) {
-        $body['RemainingCredit'] = $post_data['args']['remainingCredit'];
+    if (isset($post_data['args']['paymentRefNum']) && strlen($post_data['args']['paymentRefNum']) > 0) {
+        $body['PaymentRefNum'] = $post_data['args']['paymentRefNum'];
+    }
+    if (isset($post_data['args']['paymentType']) && strlen($post_data['args']['paymentType']) > 0) {
+        $body['PaymentType'] = $post_data['args']['paymentType'];
+    }
+    if (isset($post_data['args']['checkPayment']) && strlen($post_data['args']['checkPayment']) > 0) {
+        $body['CheckPayment'] = $post_data['args']['checkPayment'];
+    }
+    if (isset($post_data['args']['creditCardPayment']) && strlen($post_data['args']['creditCardPayment']) > 0) {
+        $body['CreditCardPayment'] = $post_data['args']['creditCardPayment'];
+    }
+    if (isset($post_data['args']['txnSource']) && strlen($post_data['args']['txnSource']) > 0) {
+        $body['TxnSource'] = $post_data['args']['txnSource'];
+    }
+    if (isset($post_data['args']['depositToAccountRefId']) && strlen($post_data['args']['depositToAccountRefId']) > 0) {
+        $body['DepositToAccountRef']['value'] = $post_data['args']['depositToAccountRefId'];
+    }
+    if (isset($post_data['args']['depositToAccountRefName']) && strlen($post_data['args']['depositToAccountRefName']) > 0) {
+        $body['DepositToAccountRef']['name'] = $post_data['args']['depositToAccountRefName'];
+    }
+    if (isset($post_data['args']['globalTaxCalculation']) && strlen($post_data['args']['globalTaxCalculation']) > 0) {
+        $body['GlobalTaxCalculation'] = $post_data['args']['globalTaxCalculation'];
     }
     if (isset($post_data['args']['transactionLocationType']) && strlen($post_data['args']['transactionLocationType']) > 0) {
         $body['TransactionLocationType'] = $post_data['args']['transactionLocationType'];
     }
+
 
     $stack = HandlerStack::create();
 
@@ -135,7 +153,7 @@ $app->post('/api/QuickBooksAccounting/updateCreditmemo', function ($request, $re
     ]);
 
     try {
-        $resp = $client->request('POST', 'company/' . $post_data['args']['companyId'] . '/creditmemo', ['auth' => 'oauth', 'json' => $body]);
+        $resp = $client->request('POST', 'company/' . $post_data['args']['companyId'] . '/refundreceipt', ['auth' => 'oauth', 'json' => $body]);
         $responseBody = $resp->getBody()->getContents();
         $rawBody = json_decode($resp->getBody());
         $all_data[] = $rawBody;

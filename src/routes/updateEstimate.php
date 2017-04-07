@@ -23,10 +23,10 @@ $app->post('/api/QuickBooksAccounting/updateEstimate', function ($request, $resp
     }
 
     if (isset($post_data['args']['metadataCreateTime']) && strlen($post_data['args']['metadataCreateTime']) > 0) {
-        $body['Metadata']['CreateTime'] = $post_data['args']['metadataCreateTime'];
+        $body['Metadata']['CreateTime']['dateTime'] = $post_data['args']['metadataCreateTime'];
     }
     if (isset($post_data['args']['metadataUpdateTime']) && strlen($post_data['args']['metadataUpdateTime']) > 0) {
-        $body['Metadata']['LastUpdatedTime'] = $post_data['args']['metadataUpdateTime'];
+        $body['Metadata']['LastUpdatedTime']['dateTime'] = $post_data['args']['metadataUpdateTime'];
     }
     if (isset($post_data['args']['customField']) && strlen($post_data['args']['customField']) > 0) {
         $body['CustomField'] = $post_data['args']['customField'];
@@ -119,7 +119,7 @@ $app->post('/api/QuickBooksAccounting/updateEstimate', function ($request, $resp
         $body['EmailStatus'] = $post_data['args']['emailStatus'];
     }
     if (isset($post_data['args']['billEmail']) && strlen($post_data['args']['billEmail']) > 0) {
-        $body['BillEmail'] = $post_data['args']['billEmail'];
+        $body['BillEmail']['Address'] = $post_data['args']['billEmail'];
     }
     if (isset($post_data['args']['expirationDate']) && strlen($post_data['args']['expirationDate']) > 0) {
         $body['ExpirationDate']['date'] = $post_data['args']['expirationDate'];

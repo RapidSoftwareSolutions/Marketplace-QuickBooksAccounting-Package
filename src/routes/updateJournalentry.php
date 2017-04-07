@@ -2,22 +2,25 @@
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 
-$app->post('/api/QuickBooksAccounting/updateDeposit', function ($request, $response, $args) {
+$app->post('/api/QuickBooksAccounting/updateJournalentry', function ($request, $response, $args) {
     $settings = $this->settings;
 
     //checking properly formed json
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['apiKey', 'apiSecret', 'accessToken', 'tokenSecret', 'depositId', 'companyId', 'syncToken', 'depositLines']);
+    $validateRes = $checkRequest->validate($request, ['apiKey', 'apiSecret', 'accessToken', 'tokenSecret', 'journalentryId', 'companyId', 'syncToken']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $body['Id'] = $post_data['args']['depositId'];
+    $body['Id'] = $post_data['args']['journalentryId'];
     $body['sparse'] = true;
     $body['SyncToken'] = $post_data['args']['syncToken'];
-    $body['Line'] = $post_data['args']['depositLines'];
+
+    if (isset($post_data['args']['journalentryLines']) && strlen($post_data['args']['journalentryLines']) > 0) {
+        $body['Line'] = $post_data['args']['journalentryLines'];
+    }
 
     if (isset($post_data['args']['metadataCreateTime']) && strlen($post_data['args']['metadataCreateTime']) > 0) {
         $body['Metadata']['CreateTime']['dateTime'] = $post_data['args']['metadataCreateTime'];
@@ -25,43 +28,41 @@ $app->post('/api/QuickBooksAccounting/updateDeposit', function ($request, $respo
     if (isset($post_data['args']['metadataUpdateTime']) && strlen($post_data['args']['metadataUpdateTime']) > 0) {
         $body['Metadata']['LastUpdatedTime']['dateTime'] = $post_data['args']['metadataUpdateTime'];
     }
+
+    if (isset($post_data['args']['docNumber']) && strlen($post_data['args']['docNumber']) > 0) {
+        $body['DocNumber'] = $post_data['args']['docNumber'];
+    }
     if (isset($post_data['args']['txnDate']) && strlen($post_data['args']['txnDate']) > 0) {
         $body['TxnDate'] = $post_data['args']['txnDate'];
     }
-    if (isset($post_data['args']['departmentRefId']) && strlen($post_data['args']['departmentRefId']) > 0) {
-        $body['DepartmentRef']['value'] = $post_data['args']['departmentRefId'];
+
+    if (isset($post_data['args']['currencyRefId']) && strlen($post_data['args']['currencyRefId']) > 0) {
+        $body['CurrencyRef']['value'] = $post_data['args']['currencyRefId'];
     }
-    if (isset($post_data['args']['departmentRefName']) && strlen($post_data['args']['departmentRefName']) > 0) {
-        $body['DepartmentRef']['name'] = $post_data['args']['departmentRefName'];
+    if (isset($post_data['args']['currencyRefName']) && strlen($post_data['args']['currencyRefName']) > 0) {
+        $body['CurrencyRef']['name'] = $post_data['args']['currencyRefName'];
     }
-    if (isset($post_data['args']['globalTaxCalculation']) && strlen($post_data['args']['globalTaxCalculation']) > 0) {
-        $body['GlobalTaxCalculation'] = $post_data['args']['globalTaxCalculation'];
+    if (isset($post_data['args']['exchangeRate']) && strlen($post_data['args']['exchangeRate']) > 0) {
+        $body['ExchangeRate'] = $post_data['args']['exchangeRate'];
     }
     if (isset($post_data['args']['privateNote']) && strlen($post_data['args']['privateNote']) > 0) {
         $body['PrivateNote'] = $post_data['args']['privateNote'];
     }
-    if (isset($post_data['args']['txnStatus']) && strlen($post_data['args']['txnStatus']) > 0) {
-        $body['TxnStatus'] = $post_data['args']['txnStatus'];
-    }
+
     if (isset($post_data['args']['txnTaxDetail']) && strlen($post_data['args']['txnTaxDetail']) > 0) {
         $body['TxnTaxDetail'] = $post_data['args']['txnTaxDetail'];
-    }
-    if (isset($post_data['args']['depositToAccountRefId']) && strlen($post_data['args']['depositToAccountRefId']) > 0) {
-        $body['DepositToAccountRef']['value'] = $post_data['args']['depositToAccountRefId'];
-    }
-    if (isset($post_data['args']['depositToAccountRefName']) && strlen($post_data['args']['depositToAccountRefName']) > 0) {
-        $body['DepositToAccountRef']['name'] = $post_data['args']['depositToAccountRefName'];
-    }
-    if (isset($post_data['args']['txnSource']) && strlen($post_data['args']['txnSource']) > 0) {
-        $body['TxnSource'] = $post_data['args']['txnSource'];
-    }
-    if (isset($post_data['args']['cashBack']) && strlen($post_data['args']['cashBack']) > 0) {
-        $body['CashBack'] = $post_data['args']['cashBack'];
     }
     if (isset($post_data['args']['totalAmt']) && strlen($post_data['args']['totalAmt']) > 0) {
         $body['TotalAmt'] = $post_data['args']['totalAmt'];
     }
-      if (isset($post_data['args']['transactionLocationType']) && strlen($post_data['args']['transactionLocationType']) > 0) {
+
+    if (isset($post_data['args']['txnSource']) && strlen($post_data['args']['txnSource']) > 0) {
+        $body['TxnSource'] = $post_data['args']['txnSource'];
+    }
+    if (isset($post_data['args']['adjustment']) && strlen($post_data['args']['adjustment']) > 0) {
+        $body['Adjustment'] = $post_data['args']['adjustment'];
+    }
+    if (isset($post_data['args']['transactionLocationType']) && strlen($post_data['args']['transactionLocationType']) > 0) {
         $body['TransactionLocationType'] = $post_data['args']['transactionLocationType'];
     }
 
@@ -85,7 +86,7 @@ $app->post('/api/QuickBooksAccounting/updateDeposit', function ($request, $respo
     ]);
 
     try {
-        $resp = $client->request('POST', 'company/' . $post_data['args']['companyId'] . '/deposit', ['auth' => 'oauth', 'json' => $body]);
+        $resp = $client->request('POST', 'company/' . $post_data['args']['companyId'] . '/journalentry', ['auth' => 'oauth', 'json' => $body]);
         $responseBody = $resp->getBody()->getContents();
         $rawBody = json_decode($resp->getBody());
         $all_data[] = $rawBody;

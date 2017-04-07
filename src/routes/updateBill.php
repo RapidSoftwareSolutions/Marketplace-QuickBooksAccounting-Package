@@ -20,10 +20,10 @@ $app->post('/api/QuickBooksAccounting/updateBill', function ($request, $response
     $body['VendorRef']['value'] = $post_data['args']['vendorRefId'];
     $body['VendorRef']['name'] = $post_data['args']['vendorRefName'];
     if (isset($post_data['args']['metadataCreateTime']) && strlen($post_data['args']['metadataCreateTime']) > 0) {
-        $body['Metadata']['CreateTime'] = $post_data['args']['metadataCreateTime'];
+        $body['Metadata']['CreateTime']['dateTime'] = $post_data['args']['metadataCreateTime'];
     }
     if (isset($post_data['args']['metadataUpdateTime']) && strlen($post_data['args']['metadataUpdateTime']) > 0) {
-        $body['Metadata']['LastUpdatedTime'] = $post_data['args']['metadataUpdateTime'];
+        $body['Metadata']['LastUpdatedTime']['dateTime'] = $post_data['args']['metadataUpdateTime'];
     }
     if (isset($post_data['args']['docNumber']) && strlen($post_data['args']['docNumber']) > 0) {
         $body['docNumber'] = $post_data['args']['docNumber'];

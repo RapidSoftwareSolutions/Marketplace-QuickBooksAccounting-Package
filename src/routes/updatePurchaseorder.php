@@ -2,22 +2,33 @@
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 
-$app->post('/api/QuickBooksAccounting/updateCreditmemo', function ($request, $response, $args) {
+$app->post('/api/QuickBooksAccounting/updatePurchaseorder', function ($request, $response, $args) {
     $settings = $this->settings;
 
     //checking properly formed json
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['apiKey', 'apiSecret', 'accessToken', 'tokenSecret', 'creditMemoId', 'companyId', 'syncToken', 'creditMemoLines']);
+    $validateRes = $checkRequest->validate($request, ['apiKey', 'apiSecret', 'accessToken', 'tokenSecret', 'purchaseorderId', 'companyId', 'syncToken', 'purchaseorderLines', 'vendorRefId', 'aPAccountRefID']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $body['Id'] = $post_data['args']['creditMemoId'];
+    $body['Id'] = $post_data['args']['purchaseorderId'];
     $body['SyncToken'] = $post_data['args']['syncToken'];
-    $body['Line'] = $post_data['args']['creditMemoLines'];
 
+    $body['Line'] = $post_data['args']['purchaseorderLines'];
+
+    $body['VendorRef']['value'] = $post_data['args']['vendorRefId'];
+
+    if (isset($post_data['args']['vendorRefName']) && strlen($post_data['args']['vendorRefName']) > 0) {
+        $body['VendorRef']['name'] = $post_data['args']['vendorRefName'];
+    }
+    $body['APAccountRef']['value'] = $post_data['args']['aPAccountRefID'];
+
+    if (isset($post_data['args']['aPAccountRefName']) && strlen($post_data['args']['aPAccountRefName']) > 0) {
+        $body['APAccountRef']['name'] = $post_data['args']['aPAccountRefName'];
+    }
     if (isset($post_data['args']['metadataCreateTime']) && strlen($post_data['args']['metadataCreateTime']) > 0) {
         $body['Metadata']['CreateTime']['dateTime'] = $post_data['args']['metadataCreateTime'];
     }
@@ -28,46 +39,22 @@ $app->post('/api/QuickBooksAccounting/updateCreditmemo', function ($request, $re
         $body['CustomField'] = $post_data['args']['customField'];
     }
     if (isset($post_data['args']['docNumber']) && strlen($post_data['args']['docNumber']) > 0) {
-        $body['docNumber'] = $post_data['args']['docNumber'];
+        $body['DocNumber'] = $post_data['args']['docNumber'];
     }
     if (isset($post_data['args']['txnDate']) && strlen($post_data['args']['txnDate']) > 0) {
         $body['TxnDate'] = $post_data['args']['txnDate'];
     }
-    if (isset($post_data['args']['departmentRefId']) && strlen($post_data['args']['departmentRefId']) > 0) {
-        $body['DepartmentRef']['value'] = $post_data['args']['departmentRefId'];
-    }
-    if (isset($post_data['args']['departmentRefName']) && strlen($post_data['args']['departmentRefName']) > 0) {
-        $body['DepartmentRef']['name'] = $post_data['args']['departmentRefName'];
-    }
-    if (isset($post_data['args']['currencyRefId']) && strlen($post_data['args']['currencyRefId']) > 0) {
-        $body['CurrencyRef']['value'] = $post_data['args']['currencyRefId'];
-    }
-    if (isset($post_data['args']['currencyRefName']) && strlen($post_data['args']['currencyRefName']) > 0) {
-        $body['CurrencyRef']['name'] = $post_data['args']['currencyRefName'];
-    }
-    if (isset($post_data['args']['exchangeRate']) && strlen($post_data['args']['exchangeRate']) > 0) {
-        $body['ExchangeRate'] = $post_data['args']['exchangeRate'];
-    }
     if (isset($post_data['args']['privateNote']) && strlen($post_data['args']['privateNote']) > 0) {
         $body['PrivateNote'] = $post_data['args']['privateNote'];
     }
-    if (isset($post_data['args']['txnTaxDetail']) && strlen($post_data['args']['txnTaxDetail']) > 0) {
-        $body['TxnTaxDetail'] = $post_data['args']['txnTaxDetail'];
+    if (isset($post_data['args']['linkedTxn']) && strlen($post_data['args']['linkedTxn']) > 0) {
+        $body['LinkedTxn'] = $post_data['args']['linkedTxn'];
     }
-    if (isset($post_data['args']['customerRefId']) && strlen($post_data['args']['customerRefId']) > 0) {
-        $body['CustomerRef']['value'] = $post_data['args']['customerRefId'];
+    if (isset($post_data['args']['totalAmt']) && strlen($post_data['args']['totalAmt']) > 0) {
+        $body['TotalAmt'] = $post_data['args']['totalAmt'];
     }
-    if (isset($post_data['args']['customerRefName']) && strlen($post_data['args']['customerRefName']) > 0) {
-        $body['CustomerRef']['name'] = $post_data['args']['customerRefName'];
-    }
-    if (isset($post_data['args']['customerMemo']) && strlen($post_data['args']['customerMemo']) > 0) {
-        $body['CustomerMemo']['value'] = $post_data['args']['customerMemo'];
-    }
-    if (isset($post_data['args']['billAddr']) && strlen($post_data['args']['billAddr']) > 0) {
-        $body['BillAddr'] = $post_data['args']['billAddr'];
-    }
-    if (isset($post_data['args']['shipAddr']) && strlen($post_data['args']['shipAddr']) > 0) {
-        $body['ShipAddr'] = $post_data['args']['shipAddr'];
+    if (isset($post_data['args']['memo']) && strlen($post_data['args']['memo']) > 0) {
+        $body['Memo'] = $post_data['args']['memo'];
     }
     if (isset($post_data['args']['classRefId']) && strlen($post_data['args']['classRefId']) > 0) {
         $body['ClassRef']['value'] = $post_data['args']['classRefId'];
@@ -81,40 +68,44 @@ $app->post('/api/QuickBooksAccounting/updateCreditmemo', function ($request, $re
     if (isset($post_data['args']['salesTermRefName']) && strlen($post_data['args']['salesTermRefName']) > 0) {
         $body['SalesTermRef']['name'] = $post_data['args']['salesTermRefName'];
     }
+    if (isset($post_data['args']['dueDate']) && strlen($post_data['args']['dueDate']) > 0) {
+        $body['DueDate']['date'] = $post_data['args']['dueDate'];
+    }
+    if (isset($post_data['args']['vendorAddr']) && strlen($post_data['args']['vendorAddr']) > 0) {
+        $body['VendorAddr'] = $post_data['args']['vendorAddr'];
+    }
+    if (isset($post_data['args']['shipAddr']) && strlen($post_data['args']['shipAddr']) > 0) {
+        $body['ShipAddr'] = $post_data['args']['shipAddr'];
+    }
+    if (isset($post_data['args']['shipMethodRefId']) && strlen($post_data['args']['shipMethodRefId']) > 0) {
+        $body['ShipMethodRef']['value'] = $post_data['args']['shipMethodRefId'];
+    }
+    if (isset($post_data['args']['shipMethodRefName']) && strlen($post_data['args']['shipMethodRefName']) > 0) {
+        $body['ShipMethodRef']['name'] = $post_data['args']['shipMethodRefName'];
+    }
+    if (isset($post_data['args']['poStatus']) && strlen($post_data['args']['poStatus']) > 0) {
+        $body['POStatus'] = $post_data['args']['poStatus'];
+    }
+    if (isset($post_data['args']['txnTaxDetail']) && strlen($post_data['args']['txnTaxDetail']) > 0) {
+        $body['TxnTaxDetail'] = $post_data['args']['txnTaxDetail'];
+    }
+    if (isset($post_data['args']['currencyRefId']) && strlen($post_data['args']['currencyRefId']) > 0) {
+        $body['CurrencyRef']['value'] = $post_data['args']['currencyRefId'];
+    }
+    if (isset($post_data['args']['currencyRefName']) && strlen($post_data['args']['currencyRefName']) > 0) {
+        $body['CurrencyRef']['name'] = $post_data['args']['currencyRefName'];
+    }
+    if (isset($post_data['args']['exchangeRate']) && strlen($post_data['args']['exchangeRate']) > 0) {
+        $body['ExchangeRate'] = $post_data['args']['exchangeRate'];
+    }
     if (isset($post_data['args']['globalTaxCalculation']) && strlen($post_data['args']['globalTaxCalculation']) > 0) {
         $body['GlobalTaxCalculation'] = $post_data['args']['globalTaxCalculation'];
-    }
-    if (isset($post_data['args']['totalAmt']) && strlen($post_data['args']['totalAmt']) > 0) {
-        $body['TotalAmt'] = $post_data['args']['totalAmt'];
-    }
-
-    if (isset($post_data['args']['applyTaxAfterDiscount']) && strlen($post_data['args']['applyTaxAfterDiscount']) > 0) {
-        $body['ApplyTaxAfterDiscount'] = $post_data['args']['applyTaxAfterDiscount'];
-    }
-    if (isset($post_data['args']['printStatus']) && strlen($post_data['args']['printStatus']) > 0) {
-        $body['PrintStatus'] = $post_data['args']['printStatus'];
-    }
-    if (isset($post_data['args']['emailStatus']) && strlen($post_data['args']['emailStatus']) > 0) {
-        $body['EmailStatus'] = $post_data['args']['emailStatus'];
-    }
-    if (isset($post_data['args']['billEmail']) && strlen($post_data['args']['billEmail']) > 0) {
-        $body['BillEmail'] = $post_data['args']['billEmail'];
-    }
-    if (isset($post_data['args']['balance']) && strlen($post_data['args']['balance']) > 0) {
-        $body['Balance'] = $post_data['args']['balance'];
-    }
-    if (isset($post_data['args']['paymentMethodRefId']) && strlen($post_data['args']['paymentMethodRefId']) > 0) {
-        $body['PaymentMethodRef']['value'] = $post_data['args']['paymentMethodRefId'];
-    }
-    if (isset($post_data['args']['paymentMethodRefName']) && strlen($post_data['args']['paymentMethodRefName']) > 0) {
-        $body['PaymentMethodRef']['name'] = $post_data['args']['paymentMethodRefName'];
-    }
-    if (isset($post_data['args']['remainingCredit']) && strlen($post_data['args']['remainingCredit']) > 0) {
-        $body['RemainingCredit'] = $post_data['args']['remainingCredit'];
     }
     if (isset($post_data['args']['transactionLocationType']) && strlen($post_data['args']['transactionLocationType']) > 0) {
         $body['TransactionLocationType'] = $post_data['args']['transactionLocationType'];
     }
+
+
 
     $stack = HandlerStack::create();
 
@@ -135,7 +126,7 @@ $app->post('/api/QuickBooksAccounting/updateCreditmemo', function ($request, $re
     ]);
 
     try {
-        $resp = $client->request('POST', 'company/' . $post_data['args']['companyId'] . '/creditmemo', ['auth' => 'oauth', 'json' => $body]);
+        $resp = $client->request('POST', 'company/' . $post_data['args']['companyId'] . '/purchaseorder', ['auth' => 'oauth', 'json' => $body]);
         $responseBody = $resp->getBody()->getContents();
         $rawBody = json_decode($resp->getBody());
         $all_data[] = $rawBody;
