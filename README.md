@@ -109,7 +109,7 @@ Returns the results of the query.
 | companyId  | Number     | Id of the company
 | query      | String     | Your query to process
 
-## QuickBooksAccounting.createBillCheckPayment
+## QuickBooksAccounting.createCheckBillpayment
 Creates new bill payment by check
 
 | Field             | Type       | Description
@@ -127,7 +127,7 @@ Creates new bill payment by check
 | bankAccountRefName| String     | An identifying name for the object being referenced by bankAccountRefId
 | printStatus       | String     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.
 
-## QuickBooksAccounting.createBillCreditCardPayment
+## QuickBooksAccounting.createCreditCardBillpayment
 Creates new bill payment by credit card
 
 | Field           | Type       | Description
