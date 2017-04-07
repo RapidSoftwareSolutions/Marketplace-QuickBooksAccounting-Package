@@ -166,6 +166,7 @@ Updates existing bill payment by check. Writable fields omitted from the request
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| syncToken              | Number     | Version number of the object.
 | billpaymentId          | Number     | Id of the billpayment
 | billpaymentLines       | Array      | Individual line items of a transaction.
 | totalAmt               | String     | Indicates the total amount of the associated with this payment.
@@ -199,6 +200,7 @@ Updates existing bill payment by credit card. Writable fields omitted from the r
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| syncToken              | Number     | Version number of the object.
 | billpaymentId          | Number     | Id of the billpayment
 | billpaymentLines       | Array      | Individual line items of a transaction.
 | totalAmt               | String     | Indicates the total amount of the associated with this payment.

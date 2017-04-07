@@ -757,6 +757,12 @@
           "required": true
         },
         {
+          "name": "syncToken",
+          "type": "Number",
+          "info": "Version number of the object.",
+          "required": true
+        },
+        {
           "name": "vendorRefId",
           "type": "String",
           "info": "The ID for the referenced object as found in the Id field of the object payload.",
@@ -914,6 +920,12 @@
           "name": "companyId",
           "type": "Number",
           "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "syncToken",
+          "type": "Number",
+          "info": "Version number of the object.",
           "required": true
         },
         {
@@ -1644,7 +1656,7 @@
           "name": "depositToAccountRefName",
           "type": "String",
           "info": "An identifying name for the object being referenced by depositToAccountRefId",
-          "required": true
+          "required": false
         }
       ],
       "callbacks": [
@@ -2573,7 +2585,7 @@
           "required": true
         },
         {
-          "name": "estimateID",
+          "name": "estimateId",
           "type": "String",
           "info": "Id of the estimate",
           "required": true
@@ -4872,7 +4884,7 @@
           "name": "memo",
           "type": "String",
           "info": "A message for the vendor. This text appears on the Purchase Order object sent to the vendor.",
-          "required": true
+          "required": false
         },
         {
           "name": "classRefId",
