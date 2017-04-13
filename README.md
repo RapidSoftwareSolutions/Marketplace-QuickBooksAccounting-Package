@@ -62,8 +62,6 @@ Updates a bill that has been previously created. Writable fields omitted from th
 | billId                 | Number     | Id of your bill
 | syncToken              | Number     | Version number of the object.
 | billLines              | Array      | Individual line items of a transaction.
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | docNumber              | String     | Reference number for the transaction.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
@@ -166,17 +164,15 @@ Updates existing bill payment by check. Writable fields omitted from the request
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
-| syncToken              | Number     | Version number of the object.
 | billpaymentId          | Number     | Id of the billpayment
 | billpaymentLines       | Array      | Individual line items of a transaction.
 | totalAmt               | String     | Indicates the total amount of the associated with this payment.
+| syncToken              | Number     | Version number of the object.
 | vendorRefId            | String     | The ID for the referenced object as found in the Id field of the object payload.
 | vendorRefName          | String     | An identifying name for the object being referenced by vendorRefId
 | bankAccountRefId       | String     | The ID for the referenced object as found in the Id field of the object payload.
 | bankAccountRefName     | String     | An identifying name for the object being referenced by bankAccountRefId
 | printStatus            | String     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | docNumber              | String     | Reference number for the transaction.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
@@ -208,8 +204,6 @@ Updates existing bill payment by credit card. Writable fields omitted from the r
 | vendorRefName          | String     | An identifying name for the object being referenced by vendorRefId
 | ccAccountRefId         | String     | The ID for the referenced object as found in the Id field of the object payload.
 | ccAccountRefName       | String     | An identifying name for the object being referenced by bankAccountRefId
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | docNumber              | String     | Reference number for the transaction.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
@@ -275,8 +269,6 @@ Updates a credit memo that has been previously created. Writable fields omitted 
 | creditMemoId           | Number     | Id of your credit memo
 | syncToken              | Number     | Version number of the object.
 | creditMemoLines        | Array      | Individual line items of a transaction.
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | customField            | Array      | Custom field or data extension.
 | docNumber              | String     | Reference number for the transaction.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
@@ -292,8 +284,6 @@ Updates a credit memo that has been previously created. Writable fields omitted 
 | customerMemo           | String     | User-entered message to the customer; this message is visible to end user on their transactions.
 | billAddr               | JSON       | Bill-to address of the Invoice. 
 | shipAddr               | JSON       | Identifies the address where the goods must be shipped. 
-| classRefId             | String     | The ID for the referenced object as found in the Id field of the object payload. 
-| classRefName           | String     | An identifying name for the object being referenced by classRefId
 | salesTermRefId         | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | salesTermRefName       | String     | An identifying name for the object being referenced by salesTermRefId
 | globalTaxCalculation   | String     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
@@ -384,8 +374,6 @@ Updates a deposit that has been previously created.
 | depositId              | Number     | Id of your deposit
 | syncToken              | Number     | Version number of the object.
 | depositLines           | Array      | Individual line items of a transaction.
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
@@ -489,8 +477,6 @@ Updates a estimate that has been previously created.
 | estimateId             | Number     | Id of your estimate
 | syncToken              | Number     | Version number of the object.
 | estimateLines          | Array      | Individual line items of a transaction.
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | customField            | Array      | Custom field or data extension.
 | docNumber              | String     | Reference number for the transaction.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
@@ -537,7 +523,7 @@ Deletes existing estimate.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
-| estimateID | String     | Id of the estimate
+| estimateId | String     | Id of the estimate
 | syncToken  | String     | Version number of the object.
 
 ## QuickBooksAccounting.createInvoice
@@ -629,8 +615,6 @@ Updates an invoice that has been previously created.
 | invoiceId              | Number     | Id of your estimate
 | syncToken              | Number     | Version number of the object.
 | invoiceLines           | Array      | Individual line items of a transaction.
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | customField            | Array      | Custom field or data extension.
 | docNumber              | String     | Reference number for the transaction.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
@@ -721,8 +705,6 @@ Updates an journal entry that has been previously created.
 | journalentryId         | Number     | Id of your journal entry
 | syncToken              | Number     | Version number of the object.
 | journalentryLines      | Array      | Individual line items of a transaction.
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | docNumber              | String     | Reference number for the transaction.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
@@ -811,8 +793,6 @@ Updates a payment that has been previously created. Writable fields omitted from
 | paymentId              | Number     | Id of your payment
 | syncToken              | Number     | Version number of the object.
 | paymentLines           | Array      | Individual line items of a transaction.
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
 | txnStatus              | String     | The status of the transaction. For Payment objects, this status is always set to PAID.
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
@@ -902,8 +882,6 @@ Updates a purchase that has been previously created. Writable fields omitted fro
 | purchaseLines          | Array      | Individual line items of a transaction.
 | accountRefId           | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | accountRefName         | String     | An identifying name for the object being referenced by accountRefId
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | docNumber              | String     | Reference number for the transaction.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
@@ -1005,8 +983,6 @@ Updates a purchase order that has been previously created. Writable fields omitt
 | vendorRefName          | String     | An identifying name for the object being referenced by vendorRefId
 | aPAccountRefID         | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | aPAccountRefName       | String     | An identifying name for the object being referenced by aPAccountRefID
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | customField            | Array      | Custom field or data extension.
 | docNumber              | String     | Reference number for the transaction.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
@@ -1097,8 +1073,6 @@ Updates an refund receipt that has been previously created.
 | refundLines            | Array      | Individual line items of a transaction.
 | depositToAccountRefId  | Number     | The ID for the referenced object as found in the Id field of the object payload. 
 | depositToAccountRefName| String     | An identifying name for the object being referenced by depositToAccountRefId
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | customField            | Array      | Custom field or data extension.
 | docNumber              | String     | Reference number for the transaction.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
@@ -1231,8 +1205,6 @@ Updates an sales receipt that has been previously created.
 | salesreceiptId         | Number     | Id of your sales receipt
 | syncToken              | Number     | Version number of the object.
 | salesreceiptLines      | Array      | Individual line items of a transaction.
-| metadataCreateTime     | String     | Time the entity was created in the source domain.
-| metadataUpdateTime     | String     | Time the entity was last updated in the source domain.
 | customField            | Array      | Custom field or data extension.
 | docNumber              | String     | Reference number for the transaction.
 | txnDate                | String     | The date entered by the user when this transaction occurred. 
@@ -1281,4 +1253,1075 @@ Deletes existing sales receipt.
 | companyId     | Number     | Id of the company
 | salesreceiptId| String     | Id of the sales receipt
 | syncToken     | String     | Version number of the object.
+
+## QuickBooksAccounting.createTransfer
+Create new transfer
+
+| Field             | Type       | Description
+|-------------------|------------|----------
+| apiKey            | credentials| Api key obtained from Intuit
+| apiSecret         | credentials| Api secret obtained from Intuit
+| accessToken       | String     | Access token provided by user
+| tokenSecret       | String     | Token secret provided by user
+| companyId         | Number     | Id of the company
+| amount            | String     | Amount to transfer
+| fromAccountRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| fromAccountRefName| String     | An identifying name for the object being referenced by fromAccountRefId
+| toAccountRefId    | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| toAccountRefName  | String     | An identifying name for the object being referenced by toAccountRefId
+
+## QuickBooksAccounting.getTransfer
+Retrieves the details of a transfer that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| transferId | Number     | Id of your transfer
+
+## QuickBooksAccounting.updateTransfer
+Update existing transfer
+
+| Field                  | Type       | Description
+|------------------------|------------|----------
+| apiKey                 | credentials| Api key obtained from Intuit
+| apiSecret              | credentials| Api secret obtained from Intuit
+| accessToken            | String     | Access token provided by user
+| tokenSecret            | String     | Token secret provided by user
+| companyId              | Number     | Id of the company
+| transferId             | Number     | Id of the transfer
+| amount                 | String     | Amount to transfer
+| fromAccountRefId       | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| fromAccountRefName     | String     | An identifying name for the object being referenced by fromAccountRefId
+| toAccountRefId         | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| toAccountRefName       | String     | An identifying name for the object being referenced by toAccountRefId
+| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| privateNote            | String     | User entered, organization-private note about the transaction.
+| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+
+## QuickBooksAccounting.queryTransfer
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.deleteTransfer
+Deletes existing transfer. 
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| transferId | String     | Id of the transfer
+| syncToken  | String     | Version number of the object.
+
+## QuickBooksAccounting.queryTimeactivity
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.createEmployeeTimeactivity
+Create new timactivity for employee
+
+| Field          | Type       | Description
+|----------------|------------|----------
+| apiKey         | credentials| Api key obtained from Intuit
+| apiSecret      | credentials| Api secret obtained from Intuit
+| accessToken    | String     | Access token provided by user
+| tokenSecret    | String     | Token secret provided by user
+| startTime      | String     | Start of time activity
+| endTime        | String     | End of time activity
+| companyId      | Number     | Id of the company
+| employeeRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| employeeRefName| String     | An identifying name for the object being referenced by employeeRefId
+| customerRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| customerRefName| String     | An identifying name for the object being referenced by customerRefId
+| hourlyRate     | String     | Hourly bill rate of the employee for this time activity.
+
+## QuickBooksAccounting.createVendorTimeactivity
+Create new timactivity for vendor
+
+| Field          | Type       | Description
+|----------------|------------|----------
+| apiKey         | credentials| Api key obtained from Intuit
+| apiSecret      | credentials| Api secret obtained from Intuit
+| accessToken    | String     | Access token provided by user
+| tokenSecret    | String     | Token secret provided by user
+| startTime      | String     | Start of time activity
+| endTime        | String     | End of time activity
+| companyId      | Number     | Id of the company
+| vendorRefId    | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| vendorRefName  | String     | An identifying name for the object being referenced by vendorRefId
+| customerRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| customerRefName| String     | An identifying name for the object being referenced by customerRefId
+| hourlyRate     | String     | Hourly bill rate of the vendor for this time activity.
+
+## QuickBooksAccounting.getTimeactivity
+Retrieves the details of a time activity that has been previously created.
+
+| Field         | Type       | Description
+|---------------|------------|----------
+| apiKey        | credentials| Api key obtained from Intuit
+| apiSecret     | credentials| Api secret obtained from Intuit
+| accessToken   | String     | Access token provided by user
+| tokenSecret   | String     | Token secret provided by user
+| companyId     | Number     | Id of the company
+| timeactivityId| Number     | Id of your time activity
+
+## QuickBooksAccounting.updateEmployeeTimeactivity
+Update existing timactivity for employee. Writable fields omitted from the request body are set to NULL.
+
+| Field                  | Type       | Description
+|------------------------|------------|----------
+| apiKey                 | credentials| Api key obtained from Intuit
+| apiSecret              | credentials| Api secret obtained from Intuit
+| accessToken            | String     | Access token provided by user
+| tokenSecret            | String     | Token secret provided by user
+| timeactivityId         | String     | Id of time activity
+| syncToken              | String     | Version number of the object.
+| startTime              | String     | Start of time activity
+| endTime                | String     | End of time activity
+| companyId              | Number     | Id of the company
+| employeeRefId          | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| employeeRefName        | String     | An identifying name for the object being referenced by employeeRefId
+| customerRefId          | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| customerRefName        | String     | An identifying name for the object being referenced by customerRefId
+| hourlyRate             | String     | Hourly bill rate of the employee for this time activity.
+| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| billableStatus         | String     | Billable status of the time recorded. Valid values: Billable, NotBillable, HasBeenBilled. 
+| departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
+| itemRefId              | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| itemRefName            | String     | An identifying name for the object being referenced by itemRefId
+| classRefId             | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| classRefName           | String     | An identifying name for the object being referenced by classRefId
+| taxable                | Boolean    | True if the time recorded is both billable and taxable.
+| breakHours             | String     | Hours of break taken between StartTime and EndTime.
+| breakMinutes           | String     | Minutes of break taken between StartTime and EndTime.
+| description            | String     | Description of work completed during time activity.
+| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+
+## QuickBooksAccounting.updateVendorTimeactivity
+Update existing timeactivity for vendor. Writable fields omitted from the request body are set to NULL.
+
+| Field                  | Type       | Description
+|------------------------|------------|----------
+| apiKey                 | credentials| Api key obtained from Intuit
+| apiSecret              | credentials| Api secret obtained from Intuit
+| accessToken            | String     | Access token provided by user
+| tokenSecret            | String     | Token secret provided by user
+| timeactivityId         | String     | Id of time activity
+| syncToken              | String     | Version number of the object.
+| startTime              | String     | Start of time activity
+| endTime                | String     | End of time activity
+| companyId              | Number     | Id of the company
+| vendorRefId            | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| vendorRefName          | String     | An identifying name for the object being referenced by vendorRefId
+| customerRefId          | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| customerRefName        | String     | An identifying name for the object being referenced by customerRefId
+| hourlyRate             | String     | Hourly bill rate of the employee for this time activity.
+| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| billableStatus         | String     | Billable status of the time recorded. Valid values: Billable, NotBillable, HasBeenBilled. 
+| departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
+| itemRefId              | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| itemRefName            | String     | An identifying name for the object being referenced by itemRefId
+| classRefId             | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| classRefName           | String     | An identifying name for the object being referenced by classRefId
+| taxable                | Boolean    | True if the time recorded is both billable and taxable.
+| breakHours             | String     | Hours of break taken between StartTime and EndTime.
+| breakMinutes           | String     | Minutes of break taken between StartTime and EndTime.
+| description            | String     | Description of work completed during time activity.
+| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+
+## QuickBooksAccounting.deleteTimeactivity
+Deletes existing time activity. 
+
+| Field         | Type       | Description
+|---------------|------------|----------
+| apiKey        | credentials| Api key obtained from Intuit
+| apiSecret     | credentials| Api secret obtained from Intuit
+| accessToken   | String     | Access token provided by user
+| tokenSecret   | String     | Token secret provided by user
+| companyId     | Number     | Id of the company
+| timeactivityId| String     | Id of the time activity
+| syncToken     | String     | Version number of the object.
+
+## QuickBooksAccounting.createVendorcredit
+Creates new vendor credit
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| vendorcreditLines| Array      | Individual line items of a transaction.
+| vendorRefId      | String     | The ID for the referenced object as found in the Id field of the object payload.
+| vendorRefName    | String     | An identifying name for the object being referenced by vendorRefId
+
+## QuickBooksAccounting.getVendorcredit
+Retrieves the details of a vendor credit that has been previously created.
+
+| Field         | Type       | Description
+|---------------|------------|----------
+| apiKey        | credentials| Api key obtained from Intuit
+| apiSecret     | credentials| Api secret obtained from Intuit
+| accessToken   | String     | Access token provided by user
+| tokenSecret   | String     | Token secret provided by user
+| companyId     | Number     | Id of the company
+| vendorcreditId| Number     | Id of your vendor credit
+
+## QuickBooksAccounting.updateVendorcredit
+Update existing vendor credit
+
+| Field                  | Type       | Description
+|------------------------|------------|----------
+| apiKey                 | credentials| Api key obtained from Intuit
+| apiSecret              | credentials| Api secret obtained from Intuit
+| accessToken            | String     | Access token provided by user
+| tokenSecret            | String     | Token secret provided by user
+| companyId              | Number     | Id of the company
+| vendorcreditId         | Number     | Id of the vendor credit
+| syncToken              | Number     | Version number of the object.
+| vendorcreditLines      | Array      | Individual line items of a transaction.
+| vendorRefId            | String     | The ID for the referenced object as found in the Id field of the object payload.
+| vendorRefName          | String     | An identifying name for the object being referenced by vendorRefId
+| docNumber              | String     | Reference number for the transaction.
+| departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
+| apAccountRefId         | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| apAccountRefName       | String     | An identifying name for the object being referenced by apAccountRefId
+| currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
+| currencyRefName        | String     | An identifying name for the currency being referenced by currencyRefId
+| exchangeRate           | String     | The number of home currency units it takes to equal one unit of currency specified by currencyRef
+| globalTaxCalculation   | String     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
+| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| privateNote            | String     | User entered, organization-private note about the transaction.
+
+## QuickBooksAccounting.queryVendorcredit
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.deleteVendorcredit
+This operation deletes the vendor credit object specified in the request body. 
+
+| Field         | Type       | Description
+|---------------|------------|----------
+| apiKey        | credentials| Api key obtained from Intuit
+| apiSecret     | credentials| Api secret obtained from Intuit
+| accessToken   | String     | Access token provided by user
+| tokenSecret   | String     | Token secret provided by user
+| companyId     | Number     | Id of the company
+| vendorcreditId| String     | Id of the vendor credit
+| syncToken     | String     | Version number of the object.
+
+## QuickBooksAccounting.createAccount
+Create new account
+
+| Field         | Type       | Description
+|---------------|------------|----------
+| apiKey        | credentials| Api key obtained from Intuit
+| apiSecret     | credentials| Api secret obtained from Intuit
+| accessToken   | String     | Access token provided by user
+| tokenSecret   | String     | Token secret provided by user
+| companyId     | Number     | Id of the company
+| name          | String     | User recognizable name for the Account. attribute must not contain double quotes (") or colon (:).
+| accountType   | String     | A detailed account classification that specifies the use of this account. The type is based on the Classification. 
+| accountSubType| String     | The account sub-type classification and is based on the AccountType value. 
+| acctNum       | String     | User-defined account number to help the user in identifying the account within the chart-of-accounts and in deciding what should be posted to the account
+| taxCodeRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| taxCodeRefName| String     | An identifying name for the object being referenced by taxCodeRefId
+
+## QuickBooksAccounting.getAccount
+Retrieves the details of a account that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| accountId  | Number     | Id of your account
+
+## QuickBooksAccounting.updateAccount
+Update existing account. he request body must include all writable fields of the existing object as returned in a read response. Writable fields omitted from the request body are set to NULL.
+
+| Field          | Type       | Description
+|----------------|------------|----------
+| apiKey         | credentials| Api key obtained from Intuit
+| apiSecret      | credentials| Api secret obtained from Intuit
+| accessToken    | String     | Access token provided by user
+| tokenSecret    | String     | Token secret provided by user
+| companyId      | Number     | Id of the company
+| accountId      | Number     | Id of the account
+| syncToken      | Number     | Version number of the object.
+| name           | String     | User recognizable name for the Account. attribute must not contain double quotes (") or colon (:).
+| accountType    | String     | A detailed account classification that specifies the use of this account. The type is based on the Classification. 
+| accountSubType | String     | The account sub-type classification and is based on the AccountType value. 
+| accountAlias   | String     | A user friendly name for the account. It must be unique across all account categories.
+| txnLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| active         | Boolean    | Whether or not active inactive accounts may be hidden from most display purposes and may not be posted to.
+| classification | Boolean    | The classification of an account. Not supported for non-posting accounts. Valid values include: Asset, Equity, Expense, Liability, Revenue
+| acctNum        | String     | User-defined account number to help the user in identifying the account within the chart-of-accounts and in deciding what should be posted to the account
+| description    | String     | User entered description for the account, which may include user entered information to guide bookkeepers/accountants in deciding what journal entries to post to the account.
+| taxCodeRefId   | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| taxCodeRefName | String     | An identifying name for the object being referenced by taxCodeRefId
+| parentRefId    | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| parentRefName  | String     | An identifying name for the object being referenced by parentRefId
+| currencyRefId  | String     | A three letter string representing the ISO 4217 code for the currency. 
+| currencyRefName| String     | An identifying name for the currency being referenced by currencyRefId
+
+## QuickBooksAccounting.queryAccount
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.queryBudget
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.createClass
+Create new class
+
+| Field        | Type       | Description
+|--------------|------------|----------
+| apiKey       | credentials| Api key obtained from Intuit
+| apiSecret    | credentials| Api secret obtained from Intuit
+| accessToken  | String     | Access token provided by user
+| tokenSecret  | String     | Token secret provided by user
+| companyId    | Number     | Id of the company
+| name         | String     | User recognizable name for the class.
+| parentRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| parentRefName| String     | An identifying name for the object being referenced by parentRefId
+
+## QuickBooksAccounting.getClass
+Retrieves the details of a class that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| classId    | Number     | Id of your class
+
+## QuickBooksAccounting.updateClass
+Update existing class. he request body must include all writable fields of the existing object as returned in a read response. Writable fields omitted from the request body are set to NULL.
+
+| Field             | Type       | Description
+|-------------------|------------|----------
+| apiKey            | credentials| Api key obtained from Intuit
+| apiSecret         | credentials| Api secret obtained from Intuit
+| accessToken       | String     | Access token provided by user
+| tokenSecret       | String     | Token secret provided by user
+| companyId         | Number     | Id of the company
+| classId           | Number     | Id of the class
+| syncToken         | Number     | Version number of the object.
+| name              | String     | User recognizable name for the class.
+| parentRefId       | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| parentRefName     | String     | An identifying name for the object being referenced by parentRefId
+| fullyQualifiedName| String     | Fully qualified name of the entity. The fully qualified name prepends the topmost parent, followed by each sub class separated by colons. 
+| active            | Boolean    | If true, this entity is currently enabled for use by QuickBooks.
+
+## QuickBooksAccounting.queryClass
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.createCompanyCurrency
+Create new company currency
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| code       | String     | A three letter string representing the ISO 4217 code for the currency. For example, USD, AUD, EUR, and so on.
+
+## QuickBooksAccounting.queryCompanyCurrency
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.getCompanyCurrency
+Retrieves the details of a company currency that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| currencyId | Number     | Id of your company currency
+
+## QuickBooksAccounting.updateCompanyCurrency
+Update existing company currency
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| currencyId | Number     | Id of the currency
+| syncToken  | Number     | Version number of the object.
+| code       | String     | A three letter string representing the ISO 4217 code for the currency. For example, USD, AUD, EUR, and so on.
+| active     | Boolean    | If true, this entity is currently enabled for use by QuickBooks.
+
+## QuickBooksAccounting.deleteCompanyCurrency
+This operation deletes the company currency object specified in the request body. 
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| currencyId | String     | Id of the company currency
+| syncToken  | String     | Version number of the object.
+
+## QuickBooksAccounting.createCustomer
+Create new customer
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| displayName| String     | The name of the person or organization as displayed. Must be unique across all Customer, Vendor, and Employee objects. Cannot be removed with sparse update. 
+| title      | String     | Title of the person.
+| givenName  | String     | Given name or first name of a person.
+| middleName | String     | Middle name of the person.
+| familyName | String     | Family name or the last name of the person.
+| suffix     | String     | Suffix of the name. For example, Jr.
+
+## QuickBooksAccounting.getCustomer
+Retrieves the details of a customer that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| customerId | Number     | Id of your customer
+
+## QuickBooksAccounting.updateCustomer
+Update existing customer
+
+| Field                  | Type       | Description
+|------------------------|------------|----------
+| apiKey                 | credentials| Api key obtained from Intuit
+| apiSecret              | credentials| Api secret obtained from Intuit
+| accessToken            | String     | Access token provided by user
+| tokenSecret            | String     | Token secret provided by user
+| companyId              | Number     | Id of the company
+| customerId             | Number     | Id of the customer
+| syncToken              | String     | Version number of the object.
+| displayName            | String     | The name of the person or organization as displayed. Must be unique across all Customer, Vendor, and Employee objects. Cannot be removed with sparse update. 
+| title                  | String     | Title of the person.
+| givenName              | String     | Given name or first name of a person.
+| middleName             | String     | Middle name of the person.
+| familyName             | String     | Family name or the last name of the person.
+| suffix                 | String     | Suffix of the name. For example, Jr.
+| companyName            | String     | The name of the company associated with the person or organization.
+| printOnCheckName       | String     | Name of the person or organization as printed on a check. If not provided, this is populated from DisplayName. 
+| active                 | String     | If true, this entity is currently enabled for use by QuickBooks.
+| primaryPhone           | String     | Primary phone number.
+| alternatePhone         | String     | Alternate phone number.
+| mobile                 | String     | Mobile phone number.
+| fax                    | String     | Fax phone number.
+| primaryEmailAddr       | String     | Primary email address.
+| webAddr                | String     | Website address.
+| defaultTaxCodeRefId    | String     | The ID for the referenced object as found in the Id field of the object payload.
+| defaultTaxCodeRefName  | String     | An identifying name for the object being referenced by defaultTaxCodeRefId
+| taxable                | Boolean    | If true, transactions for this customer are taxable.
+| billAddr               | JSON       | Bill-to address of the Invoice. 
+| shipAddr               | JSON       | Identifies the address where the goods must be shipped. 
+| notes                  | String     | Free form text describing the Customer.
+| job                    | Boolean    | If true, this is a Job or sub-customer. If false or null, this is a top level customer, not a Job or sub-customer.
+| billWithParent         | Boolean    | If true, this Customer object is billed with its parent.
+| parentRefId            | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| parentRefName          | String     | An identifying name for the object being referenced by parentRefId
+| level                  | Number     | Specifies the level of the hierarchy in which the entity is located. Zero specifies the top level of the hierarchy; anything above will be level with respect to the parent.          Constraints:up to 5 levels
+| salesTermRefId         | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| salesTermRefName       | String     | An identifying name for the object being referenced by salesTermRefId
+| paymentMethodRefId     | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| paymentMethodRefName   | String     | An identifying name for the object being referenced by paymentMethodRefId
+| currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
+| currencyRefName        | String     | An identifying name for the currency being referenced by currencyRefId
+| preferredDeliveryMethod| String     | Preferred delivery method. Values are Print, Email, or None.
+| resaleNum              | String     | Resale number or some additional info about the customer.
+| aRAccountRefId         | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| aRAccountRefName       | String     | An identifying name for the object being referenced by aRAccountRefId
+
+## QuickBooksAccounting.queryCustomer
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.createDepartment
+Create new department
+
+| Field        | Type       | Description
+|--------------|------------|----------
+| apiKey       | credentials| Api key obtained from Intuit
+| apiSecret    | credentials| Api secret obtained from Intuit
+| accessToken  | String     | Access token provided by user
+| tokenSecret  | String     | Token secret provided by user
+| companyId    | Number     | Id of the company
+| name         | String     | User recognizable name for the department.
+| parentRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| parentRefName| String     | An identifying name for the object being referenced by parentRefId
+
+## QuickBooksAccounting.getDepartment
+Retrieves the details of a department that has been previously created.
+
+| Field       | Type       | Description
+|-------------|------------|----------
+| apiKey      | credentials| Api key obtained from Intuit
+| apiSecret   | credentials| Api secret obtained from Intuit
+| accessToken | String     | Access token provided by user
+| tokenSecret | String     | Token secret provided by user
+| companyId   | Number     | Id of the company
+| departmentId| Number     | Id of your department
+
+## QuickBooksAccounting.updateDepartment
+Update existing department. The request body must include all writable fields of the existing object as returned in a read response. Writable fields omitted from the request body are set to NULL.
+
+| Field             | Type       | Description
+|-------------------|------------|----------
+| apiKey            | credentials| Api key obtained from Intuit
+| apiSecret         | credentials| Api secret obtained from Intuit
+| accessToken       | String     | Access token provided by user
+| tokenSecret       | String     | Token secret provided by user
+| companyId         | Number     | Id of the company
+| departmentId      | Number     | Id of the department
+| syncToken         | Number     | Version number of the object.
+| name              | String     | User recognizable name for the class.
+| parentRefId       | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| parentRefName     | String     | An identifying name for the object being referenced by parentRefId
+| fullyQualifiedName| String     | Fully qualified name of the entity. The fully qualified name prepends the topmost parent, followed by each sub class separated by colons. 
+| active            | Boolean    | If true, this entity is currently enabled for use by QuickBooks.
+| subDepartment     | Boolean    | Specifies whether this Department object is a SubDepartment.
+
+## QuickBooksAccounting.queryDepartment
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.createEmployee
+Create new employee
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| givenName  | String     | Given name or first name of a person.
+| familyName | String     | Family name or the last name of the person.
+| primaryAddr| JSON       | Represents the physical street address for this employee.
+
+## QuickBooksAccounting.getEmployee
+Retrieves the details of a employee that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| employeeId | Number     | Id of your employee
+
+## QuickBooksAccounting.updateEmployee
+Update existing employee
+
+| Field           | Type       | Description
+|-----------------|------------|----------
+| apiKey          | credentials| Api key obtained from Intuit
+| apiSecret       | credentials| Api secret obtained from Intuit
+| accessToken     | String     | Access token provided by user
+| tokenSecret     | String     | Token secret provided by user
+| companyId       | Number     | Id of the company
+| employeeId      | Number     | Id of the employee
+| givenName       | String     | Given name or first name of a person.
+| familyName      | String     | Family name or the last name of the person.
+| primaryAddr     | JSON       | Represents the physical street address for this employee.
+| title           | String     | Title of the person.
+| middleName      | String     | Middle name of the person.
+| suffix          | String     | Suffix of the name. For example, Jr.
+| organization    | Boolean    | true--the object represents an organization. false--the object represents a person.
+| displayName     | String     | The name of the person or organization as displayed. Must be unique across all Customer, Vendor, and Employee objects. Cannot be removed with sparse update. 
+| printOnCheckName| String     | Name of the person or organization as printed on a check. If not provided, this is populated from DisplayName. 
+| active          | Boolean    | If true, this entity is currently enabled for use by QuickBooks.
+| primaryPhone    | String     | Primary phone number.
+| mobile          | String     | Mobile phone number.
+| primaryEmailAddr| String     | Primary email address.
+| employeeNumber  | String     | Specifies the ID number of the employee in the employer's directory.
+| ssn             | String     | Social security number (SSN) of the employee. 
+| primaryAddr     | String     | Represents the physical street address for this employee.
+| billableTime    | Boolean    | If true, this entity is currently enabled for use by QuickBooks.
+| billRate        | String     | This attribute can only be set if BillableTime is true. Not supported when QuickBooks Payroll is enabled.
+| birthDate       | String     | Birth date of the employee.
+| gender          | String     | Gender of the employee. To clear the gender value, set to Null in a full update request. Supported values include: Male or Female.
+| hiredDate       | String     | Hire date of the employee.
+| releasedDate    | String     | Release date of the employee.
+
+## QuickBooksAccounting.queryEmployee
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.queryItem
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.createItem
+Create new item
+
+| Field                | Type       | Description
+|----------------------|------------|----------
+| apiKey               | credentials| Api key obtained from Intuit
+| apiSecret            | credentials| Api secret obtained from Intuit
+| accessToken          | String     | Access token provided by user
+| tokenSecret          | String     | Token secret provided by user
+| companyId            | Number     | Id of the company
+| name                 | String     | User recognizable name for the item.
+| incomeAccountRefId   | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| incomeAccountRefName | String     | An identifying name for the object being referenced by incomeAccountRefId
+| expenseAccountRefId  | String     | The ID for the referenced object as found in the Id field of the object payload.
+| expenseAccountRefName| String     | An identifying name for the object being referenced by expenseAccountRefId
+| assetAccountRefId    | String     | The ID for the referenced object as found in the Id field of the object payload.
+| assetAccountRefName  | String     | An identifying name for the object being referenced by assetAccountRefId
+| invStartDate         | String     | Date of opening balance for the inventory transaction.
+
+## QuickBooksAccounting.getItem
+Retrieves the details of a item that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| itemId     | Number     | Id of your item
+
+## QuickBooksAccounting.updateItem
+Update existing item
+
+| Field                 | Type       | Description
+|-----------------------|------------|----------
+| apiKey                | credentials| Api key obtained from Intuit
+| apiSecret             | credentials| Api secret obtained from Intuit
+| accessToken           | String     | Access token provided by user
+| tokenSecret           | String     | Token secret provided by user
+| companyId             | Number     | Id of the company
+| itemId                | Number     | Id of the item
+| syncToken             | String     | Version number of the object.
+| name                  | String     | User recognizable name for the item.
+| incomeAccountRefId    | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| incomeAccountRefId    | String     | An identifying name for the object being referenced by incomeAccountRefId
+| expenseAccountRefId   | String     | The ID for the referenced object as found in the Id field of the object payload.
+| expenseAccountRefName | String     | An identifying name for the object being referenced by expenseAccountRefId
+| assetAccountRefId     | String     | The ID for the referenced object as found in the Id field of the object payload.
+| assetAccountRefName   | String     | An identifying name for the object being referenced by assetAccountRefId
+| invStartDate          | String     | Date of opening balance for the inventory transaction.
+| sku                   | String     | The stock keeping unit (SKU) for this Item.
+| description           | String     | Description of the item.
+| active                | Boolean    | If true, the object is currently enabled for use by QuickBooks.
+| subItem               | Boolean    | If true, this is a sub item. If false or null, this is a top-level item.
+| parentRefId           | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| parentRefName         | String     | An identifying name for the object being referenced by parentRefId
+| taxable               | Boolean    | If true, transactions for this item are taxable. Applicable to US companies, only.
+| salesTaxIncluded      | Boolean    | True if the sales tax is included in the item amount, and therefore is not calculated for the transaction.
+| unitPrice             | String     | Price of the unit
+| purchaseDesc          | String     | Purchase description for the item.
+| purchaseTaxIncluded   | Boolean    | True if the purchase tax is included in the item amount, and therefore is not calculated for the transaction.
+| purchaseCost          | String     | Amount paid when buying or ordering the item, as expressed in the home currency.
+| trackQtyOnHand        | Boolean    | True if there is quantity on hand to be tracked.
+| qtyOnHand             | String     | Current quantity of the Inventory items available for sale. Not used for Service or NonInventory type items.
+| salesTaxCodeRefId     | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| salesTaxCodeRefName   | String     | An identifying name for the object being referenced by salesTaxCodeRefId
+| purchaseTaxCodeRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
+| purchaseTaxCodeRefName| String     | An identifying name for the object being referenced by purchaseTaxCodeRefId
+
+## QuickBooksAccounting.createPaymentMethod
+Create new payment method
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| name       | String     | User recognizable name for the payment method.
+
+## QuickBooksAccounting.getPaymentMethod
+Retrieves the details of a payment method that has been previously created.
+
+| Field          | Type       | Description
+|----------------|------------|----------
+| apiKey         | credentials| Api key obtained from Intuit
+| apiSecret      | credentials| Api secret obtained from Intuit
+| accessToken    | String     | Access token provided by user
+| tokenSecret    | String     | Token secret provided by user
+| companyId      | Number     | Id of the company
+| paymentmethodId| Number     | Id of your payment method
+
+## QuickBooksAccounting.updatePaymentMethod
+Update existing payment method. Writable fields omitted from the request body are set to NULL.
+
+| Field          | Type       | Description
+|----------------|------------|----------
+| apiKey         | credentials| Api key obtained from Intuit
+| apiSecret      | credentials| Api secret obtained from Intuit
+| accessToken    | String     | Access token provided by user
+| tokenSecret    | String     | Token secret provided by user
+| companyId      | Number     | Id of the company
+| paymentmethodId| Number     | Id of the payment method
+| syncToken      | Number     | Version number of the object.
+| name           | String     | User recognizable name for the payment method.
+| type           | String     | Defines the type of payment. Valid values include CREDIT_CARD or NON_CREDIT_CARD.
+| active         | Boolean    | If true, this entity is currently enabled for use by QuickBooks.
+
+## QuickBooksAccounting.queryPaymentMethod
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.createTaxAgency
+Create new tax agency
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| displayName| String     | User recognizable name for the tax agency.
+
+## QuickBooksAccounting.getTaxAgency
+Retrieves the details of a tax agency that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| taxAgencyId| Number     | Id of your tax agency
+
+## QuickBooksAccounting.queryTaxAgency
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.queryTaxCode
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.getTaxCode
+Retrieves the details of a tax code that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| taxCodeId  | Number     | Id of your tax code
+
+## QuickBooksAccounting.getTaxRate
+Retrieves the details of a tax rate that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| taxRateId  | Number     | Id of your tax rate
+
+## QuickBooksAccounting.queryTaxCode
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.createTaxService
+Create new tax service
+
+| Field         | Type       | Description
+|---------------|------------|----------
+| apiKey        | credentials| Api key obtained from Intuit
+| apiSecret     | credentials| Api secret obtained from Intuit
+| accessToken   | String     | Access token provided by user
+| tokenSecret   | String     | Token secret provided by user
+| companyId     | Number     | Id of the company
+| taxCode       | String     | Name of new tax code. 
+| taxRateDetails| Array      | One or more tax rate specifications.
+
+## QuickBooksAccounting.createTerm
+Create new term
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| name       | String     | User recognizable name for the term.
+| dueDays    | Number     | Number of days from delivery of goods or services until the payment is due. 0 - 999
+
+## QuickBooksAccounting.getTerm
+Retrieves the details of a term that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| termId     | Number     | Id of your term
+
+## QuickBooksAccounting.updateTerm
+Update a term that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| termId     | Number     | Id of your term
+| syncToken  | Number     | Version number of the object.
+| name       | String     | User recognizable name for the term.
+| dueDays    | Number     | Number of days from delivery of goods or services until the payment is due. 0 - 999
+
+## QuickBooksAccounting.queryTerm
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.createVendor
+Create new vendor
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| displayName| String     | The name of the organization as displayed. Must be unique across all Customer, Vendor, and Employee objects. Cannot be removed with sparse update. 
+| title      | String     | Title of the person.
+| givenName  | String     | Given name or first name of a person.
+| middleName | String     | Middle name of the person.
+| familyName | String     | Family name or the last name of the person.
+| suffix     | String     | Suffix of the name. For example, Jr.
+
+## QuickBooksAccounting.getVendor
+Retrieves the details of a vendor that has been previously created.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| vendorId   | Number     | Id of your vendor
+
+## QuickBooksAccounting.updateVendor
+Update existing vendor
+
+| Field           | Type       | Description
+|-----------------|------------|----------
+| apiKey          | credentials| Api key obtained from Intuit
+| apiSecret       | credentials| Api secret obtained from Intuit
+| accessToken     | String     | Access token provided by user
+| tokenSecret     | String     | Token secret provided by user
+| companyId       | Number     | Id of the company
+| vendorId        | Number     | Id of the vendor
+| syncToken       | String     | Version number of the object.
+| displayName     | String     | The name of the person or organization as displayed. Must be unique across all Customer, Vendor, and Employee objects. Cannot be removed with sparse update. 
+| title           | String     | Title of the person.
+| givenName       | String     | Given name or first name of a person.
+| middleName      | String     | Middle name of the person.
+| familyName      | String     | Family name or the last name of the person.
+| suffix          | String     | Suffix of the name. For example, Jr.
+| companyName     | String     | The name of the company associated with the person or organization.
+| printOnCheckName| String     | Name of the person or organization as printed on a check. If not provided, this is populated from DisplayName. 
+| active          | String     | If true, this entity is currently enabled for use by QuickBooks.
+| primaryPhone    | String     | Primary phone number.
+| alternatePhone  | String     | Alternate phone number.
+| mobile          | String     | Mobile phone number.
+| fax             | String     | Fax phone number.
+| primaryEmailAddr| String     | Primary email address.
+| webAddr         | String     | Website address.
+| termRefId       | String     | The ID for the referenced object as found in the Id field of the object payload.
+| termRefName     | String     | An identifying name for the object being referenced by termRefId
+| taxable         | Boolean    | If true, transactions for this customer are taxable.
+| billAddr        | JSON       | Bill-to address of the Invoice. 
+| otherContactInfo| JSON       | List of ContactInfo entities of any contact info type.
+| acctNum         | String     | Name or number of the account associated with this vendor.
+| vendor1099      | Boolean    | This vendor is an independent contractor; someone who is given a 1099-MISC form at the end of the year. A 1099 vendor is paid with regular checks, and taxes are not withheld on their behalf.
+| currencyRefId   | String     | A three letter string representing the ISO 4217 code for the currency. 
+| currencyRefName | String     | An identifying name for the currency being referenced by currencyRefId
+
+## QuickBooksAccounting.queryVendor
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
 

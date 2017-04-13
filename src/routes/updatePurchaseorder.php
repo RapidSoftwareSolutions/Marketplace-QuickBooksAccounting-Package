@@ -29,12 +29,7 @@ $app->post('/api/QuickBooksAccounting/updatePurchaseorder', function ($request, 
     if (isset($post_data['args']['aPAccountRefName']) && strlen($post_data['args']['aPAccountRefName']) > 0) {
         $body['APAccountRef']['name'] = $post_data['args']['aPAccountRefName'];
     }
-    if (isset($post_data['args']['metadataCreateTime']) && strlen($post_data['args']['metadataCreateTime']) > 0) {
-        $body['Metadata']['CreateTime']['dateTime'] = $post_data['args']['metadataCreateTime'];
-    }
-    if (isset($post_data['args']['metadataUpdateTime']) && strlen($post_data['args']['metadataUpdateTime']) > 0) {
-        $body['Metadata']['LastUpdatedTime']['dateTime'] = $post_data['args']['metadataUpdateTime'];
-    }
+
     if (isset($post_data['args']['customField']) && strlen($post_data['args']['customField']) > 0) {
         $body['CustomField'] = $post_data['args']['customField'];
     }

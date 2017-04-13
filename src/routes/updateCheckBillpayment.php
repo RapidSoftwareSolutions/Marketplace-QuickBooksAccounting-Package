@@ -28,12 +28,7 @@ $app->post('/api/QuickBooksAccounting/updateCheckBillpayment', function ($reques
     if (isset($post_data['args']['printStatus']) && strlen($post_data['args']['printStatus']) > 0) {
         $body['CheckPayment']['PrintStatus'] = $post_data['args']['printStatus'];
     }
-    if (isset($post_data['args']['metadataCreateTime']) && strlen($post_data['args']['metadataCreateTime']) > 0) {
-        $body['Metadata']['CreateTime'] = $post_data['args']['metadataCreateTime'];
-    }
-    if (isset($post_data['args']['metadataUpdateTime']) && strlen($post_data['args']['metadataUpdateTime']) > 0) {
-        $body['Metadata']['LastUpdatedTime'] = $post_data['args']['metadataUpdateTime'];
-    }
+
     if (isset($post_data['args']['docNumber']) && strlen($post_data['args']['docNumber']) > 0) {
         $body['docNumber'] = $post_data['args']['docNumber'];
     }

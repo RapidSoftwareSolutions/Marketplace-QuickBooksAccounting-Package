@@ -24,12 +24,7 @@ $app->post('/api/QuickBooksAccounting/updateCreditCardBillpayment', function ($r
     if (isset($post_data['args']['ccAccountRefName']) && strlen($post_data['args']['ccAccountRefName']) > 0) {
         $body['CreditCardPayment']['CCAccountRef']['name'] = $post_data['args']['ccAccountRefName'];
     }
-    if (isset($post_data['args']['metadataCreateTime']) && strlen($post_data['args']['metadataCreateTime']) > 0) {
-        $body['Metadata']['CreateTime']['dateTime'] = $post_data['args']['metadataCreateTime'];
-    }
-    if (isset($post_data['args']['metadataUpdateTime']) && strlen($post_data['args']['metadataUpdateTime']) > 0) {
-        $body['Metadata']['LastUpdatedTime']['dateTime'] = $post_data['args']['metadataUpdateTime'];
-    }
+
     if (isset($post_data['args']['docNumber']) && strlen($post_data['args']['docNumber']) > 0) {
         $body['docNumber'] = $post_data['args']['docNumber'];
     }
