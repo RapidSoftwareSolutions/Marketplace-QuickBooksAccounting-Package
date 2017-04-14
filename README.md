@@ -5,6 +5,7 @@ QuickBooksAccounting
 * Domain: ['Quickbooks Accounting](https://developer.intuit.com)
 * Credentials: apiKey, apiSecret
 
+
 ## How to get credentials: 
 0. Open [Intuit website](https://developer.intuit.com)
 1. Register or log in
