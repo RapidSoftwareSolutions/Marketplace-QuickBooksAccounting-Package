@@ -7120,7 +7120,7 @@
         },
         {
           "name": "vendorcreditLines",
-          "type": "Array",
+          "type": "String",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -7514,7 +7514,7 @@
           "name": "taxCodeRefId",
           "type": "String",
           "info": "The ID for the referenced object as found in the Id field of the object payload. ",
-          "required": true
+          "required": false
         },
         {
           "name": "taxCodeRefName",
@@ -8562,7 +8562,7 @@
           "name": "displayName",
           "type": "String",
           "info": "The name of the person or organization as displayed. Must be unique across all Customer, Vendor, and Employee objects. Cannot be removed with sparse update. ",
-          "required": true
+          "required": false
         },
         {
           "name": "title",
@@ -8652,7 +8652,7 @@
           "name": "defaultTaxCodeRefId",
           "type": "String",
           "info": "The ID for the referenced object as found in the Id field of the object payload.",
-          "required": true
+          "required": false
         },
         {
           "name": "defaultTaxCodeRefName",
@@ -8700,7 +8700,7 @@
           "name": "parentRefId",
           "type": "String",
           "info": "The ID for the referenced object as found in the Id field of the object payload. ",
-          "required": true
+          "required": false
         },
         {
           "name": "parentRefName",
@@ -9010,7 +9010,7 @@
           "name": "parentRefId",
           "type": "String",
           "info": "The ID for the referenced object as found in the Id field of the object payload. ",
-          "required": true
+          "required": false
         },
         {
           "name": "parentRefName",
@@ -9387,6 +9387,12 @@
           "type": "String",
           "info": "Release date of the employee.",
           "required": false
+        },
+        {
+          "name": "syncToken",
+          "type": "Number",
+          "info": "Version number of the object.",
+          "required": true
         }
       ],
       "callbacks": [
@@ -11024,7 +11030,7 @@
           "name": "termRefId",
           "type": "String",
           "info": "The ID for the referenced object as found in the Id field of the object payload.",
-          "required": true
+          "required": false
         },
         {
           "name": "termRefName",

@@ -14,11 +14,14 @@ $app->post('/api/QuickBooksAccounting/updateCustomer', function ($request, $resp
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $body['DisplayName'] = $post_data['args']['displayName'];
+
     $body['Id'] = $post_data['args']['customerId'];
     $body['SyncToken'] = $post_data['args']['syncToken'];
     $body['sparse'] = true;
 
+    if (isset($post_data['args']['displayName']) && strlen($post_data['args']['displayName']) > 0) {
+        $body['DisplayName'] = $post_data['args']['displayName'];
+    }
     if (isset($post_data['args']['title']) && strlen($post_data['args']['title']) > 0) {
         $body['Title'] = $post_data['args']['title'];
     }
