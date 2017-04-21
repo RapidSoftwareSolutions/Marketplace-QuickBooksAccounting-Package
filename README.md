@@ -5,7 +5,6 @@ QuickBooksAccounting
 * Domain: ['Quickbooks Accounting](https://developer.intuit.com)
 * Credentials: apiKey, apiSecret
 
-
 ## How to get credentials: 
 0. Open [Intuit website](https://developer.intuit.com)
 1. Register or log in
@@ -2315,6 +2314,676 @@ Update existing vendor
 | currencyRefName | String     | An identifying name for the currency being referenced by currencyRefId
 
 ## QuickBooksAccounting.queryVendor
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.getAccountListDetailReport
+Returns the results of the report request.
+
+| Field          | Type       | Description
+|----------------|------------|----------
+| apiKey         | credentials| Api key obtained from Intuit
+| apiSecret      | credentials| Api secret obtained from Intuit
+| accessToken    | String     | Access token provided by user
+| tokenSecret    | String     | Token secret provided by user
+| companyId      | Number     | Id of the company
+| accountStatus  | String     | The account status. Supported values include: Deleted, Not_Deleted
+| accountType    | String     | Account type from which transactions are included in the report. 
+| columns        | String     | Column types to be shown in the report. Supported Values: account_name*, account_type*, detail_acc_type, create_date, create_by, detail_acc_type*, last_ mod_date, last_ mod_by, account_desc*, account_bal*
+| createdateMacro| String     | Predefined report account create date range.
+| moddateMacro   | String     | Predefined report account modification date range.
+| sortBy         | String     | The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.
+| sortOrder      | String     | The sort order. Supported Values: ascend, descend
+| startDate      | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate        | String     | The end date date of the report, in the format YYYY-MM-DD.
+| startModdate   | String     | Specify an explicit account modification report date range, in the format YYYY-MM-DD. 
+| endModdate     | String     | Specify an explicit account modification report date range, in the format YYYY-MM-DD. 
+
+## QuickBooksAccounting.getAPagingDetailReport
+Returns the results of the report request.
+
+| Field           | Type       | Description
+|-----------------|------------|----------
+| apiKey          | credentials| Api key obtained from Intuit
+| apiSecret       | credentials| Api secret obtained from Intuit
+| accessToken     | String     | Access token provided by user
+| tokenSecret     | String     | Token secret provided by user
+| companyId       | Number     | Id of the company
+| accountingMethod| String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| agingPeriod     | Number     | The number of days in the aging period. 
+| columns         | String     | Column types to be shown in the report. Supported Values: create_by create_date doc_num* due_date* last_mod_by last_mod_date memo* past_due* term_name tx_date* txn_type* vend_bill_addr vend_comp_name vend_name* vend_pri_cont vend_pri_email vend_pri_tel  Additional columns with location tracking enabled: dept_name*
+| custom1         | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
+| custom2         | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
+| custom3         | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
+| numPeriods      | Number     | The number of periods to be shown in the report. 
+| pastDue         | Number     | Filters report contents based on minimum days past due. 
+| reportDate      | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| shipvia         | String     | Filter by the shipping method
+| startDuedate    | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| endDuedate      | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| term            | String     | Filters report contents based on term or terms supplied. 
+| vendor          | String     | Filters report contents to include information for specified vendors.
+
+## QuickBooksAccounting.getAPagingSummaryReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| agingMethod      | String     | The date upon which aging is determined. Supported Values:Report_Date, Current
+| customer         | String     | Filters report contents to include information for specified customers. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| reportDate       | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| vendor           | String     | Filters report contents to include information for specified vendors. Supported Values: One or more comma separated vendor IDs as returned in the attribute, Vendor.Id, of the Vendor object response code.
+
+## QuickBooksAccounting.getARagingDetailReport
+Returns the results of the report request.
+
+| Field       | Type       | Description
+|-------------|------------|----------
+| apiKey      | credentials| Api key obtained from Intuit
+| apiSecret   | credentials| Api secret obtained from Intuit
+| accessToken | String     | Access token provided by user
+| tokenSecret | String     | Token secret provided by user
+| companyId   | Number     | Id of the company
+| agingMethod | String     | The date upon which aging is determined. Supported Values:Report_Date, Current
+| agingPeriod | Number     | The number of days in the aging period. 
+| columns     | String     | Column types to be shown in the report. Supported Values: bill_addr create_by create_date cust_bill_email cust_comp_name   cust_msg cust_phone_other cust_tel cust_name deliv_addr doc_num* due_date* last_mod_by last_mod_date memo* past_due sale_sent_state ship_addr term_name tx_date* txn_type* Additional columns with custom fields enabled: sales_cust1 sales_cust2 sales_cust3 Additional columns with location tracking enabled: dept_name*
+| custom1     | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
+| custom2     | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
+| custom3     | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
+| numPeriods  | Number     | The number of periods to be shown in the report. 
+| pastDue     | Number     | Filters report contents based on minimum days past due. 
+| reportDate  | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| shipvia     | String     | Filter by the shipping method
+| startDuedate| String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| endDuedate  | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| term        | String     | Filters report contents based on term or terms supplied. 
+| customer    | String     | Filters report contents to include information for specified customers. 
+
+## QuickBooksAccounting.getARagingSummaryReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| agingMethod      | String     | The date upon which aging is determined. Supported Values:Report_Date, Current
+| customer         | String     | Filters report contents to include information for specified customers. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| reportDate       | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getBalanceSheetReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| customer         | String     | Filters report contents to include information for specified customers. 
+| class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
+| item<            | String     | Filters report contents to include information for specified items. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| vendor           | String     | Filters report contents to include information for specified vendors.
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getCashFlowReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| customer         | String     | Filters report contents to include information for specified customers. 
+| class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
+| item<            | String     | Filters report contents to include information for specified items. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| vendor           | String     | Filters report contents to include information for specified vendors.
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getCustomerBalanceReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| arpaid           | String     | Supported Values:All, Paid, Unpaid
+| customer         | String     | Filters report contents to include information for specified customers. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| reportDate       | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getCustomerBalanceDetailReport
+Returns the results of the report request.
+
+| Field       | Type       | Description
+|-------------|------------|----------
+| apiKey      | credentials| Api key obtained from Intuit
+| apiSecret   | credentials| Api secret obtained from Intuit
+| accessToken | String     | Access token provided by user
+| tokenSecret | String     | Token secret provided by user
+| companyId   | Number     | Id of the company
+| agingMethod | String     | The date upon which aging is determined. Supported Values:Report_Date, Current
+| arpaid      | String     | Supported Values:All, Paid, Unpaid
+| columns     | String     | Column types to be shown in the report. Supported Values: bill_addr create_by create_date cust_bill_email cust_comp_name   cust_msg cust_phone_other cust_tel cust_name deliv_addr doc_num* due_date* last_mod_by last_mod_date memo* past_due sale_sent_state ship_addr term_name tx_date* txn_type* Additional columns with custom fields enabled: sales_cust1 sales_cust2 sales_cust3 Additional columns with location tracking enabled: dept_name*
+| custom1     | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
+| department  | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| sortBy      | String     | The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.
+| sortOrder   | String     | The sort order. Supported Values: ascend, descend
+| reportDate  | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| shipvia     | String     | Filter by the shipping method
+| startDuedate| String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| endDuedate  | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| term        | String     | Filters report contents based on term or terms supplied. 
+| customer    | String     | Filters report contents to include information for specified customers. 
+
+## QuickBooksAccounting.getCustomerIncomeReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| customer         | String     | Filters report contents to include information for specified customers. 
+| class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| term             | String     | Filters report contents based on term or terms supplied. 
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| vendor           | String     | Filters report contents to include information for specified vendors.
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getExpensesByVendorReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| customer         | String     | Filters report contents to include information for specified customers. 
+| class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| vendor           | String     | Filters report contents to include information for specified vendors.
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getGeneralLedgerReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| account          | String     | Filters report contents to include information for specified accounts. 
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| accountType      | String     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
+| sourceAccountType| String     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
+| class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
+| columns          | String     | Supported values:  account_name chk_print_state create_by create_date cust_name    doc_num* emp_name inv_date is_adj* is_ap_paid  is_ar_paid is_cleared item_name last_mod_by last_mod_date   memo* name* quantity rate split_acc*   tx_date* txn_type* vend_name Additional columns when sales tax enabled: net_amount tax_amount tax_code Additional columns when account numbering enabled: account_num Additional columns when class tracking enabled: klass_name* Additional columns when location tracking enabled: dept_name*  
+| customer         | String     | Filters report contents to include information for specified customers. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| sortBy           | String     | The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.
+| sortOrder        | String     | The sort order. Supported Values: ascend, descend
+| vendor           | String     | Filters report contents to include information for specified vendors.
+| sourceAccount    | String     | Filters report contents to include information for specified source accounts. 
+
+## QuickBooksAccounting.getInventoryValuationReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| reportDate       | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| item             | String     | Filters report contents to include information for specified items. 
+
+## QuickBooksAccounting.getProfitAndLossReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| customer         | String     | Filters report contents to include information for specified customers. 
+| class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
+| item             | String     | Filters report contents to include information for specified items. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| vendor           | String     | Filters report contents to include information for specified vendors.
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getProfitAndLossDetailReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| account          | String     | Filters report contents to include information for specified accounts. 
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| accountType      | String     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
+| sourceAccountType| String     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
+| class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
+| columns          | String     | Supported values: create_by create_date doc_num* last_mod_by last_mod_date   memo* name* pmt_mthd split_acc* tx_date*    txn_type*   Additional columns with tax enabled: tax_code  Additional columns with account numbering enabled: account_num Additional columns with class tracking enabled: klass_name* Additional columns with location tracking enabled: dept_name*   
+| customer         | String     | Filters report contents to include information for specified customers. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| employee         | String     | Filters report contents to include information for specified employees. 
+| paymentMethod    | String     | Filters report contents based on payment method. Supported Values: Cash, Check, Dinners Club, American Express, Discover, MasterCard, Visa
+| sortBy           | String     | The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.
+| sortOrder        | String     | The sort order. Supported Values: ascend, descend
+| vendor           | String     | Filters report contents to include information for specified vendors.
+| sourceAccount    | String     | Filters report contents to include information for specified source accounts. 
+
+## QuickBooksAccounting.getSalesByClassReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| customer         | String     | Filters report contents to include information for specified customers. 
+| class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
+| item<            | String     | Filters report contents to include information for specified items. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getSalesByCustomerReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| customer         | String     | Filters report contents to include information for specified customers. 
+| class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
+| item<            | String     | Filters report contents to include information for specified items. 
+| qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report.
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getSalesByDepartmentReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| customer         | String     | Filters report contents to include information for specified customers. 
+| class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
+| item<            | String     | Filters report contents to include information for specified items. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getSalesByProductReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| customer         | String     | Filters report contents to include information for specified customers. 
+| class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
+| item<            | String     | Filters report contents to include information for specified items. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getTransactionListReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| appaid           | String     | Status of the balance. Supported Values: Paid, Unpaid, All
+| arpaid           | String     | Supported Values:All, Paid, Unpaid
+| bothamount       | String     | Filters report contents to include information for specified transaction amount.
+| class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
+| cleared          | String     | Filters report contents to include information for specified check status. Supported Values: Cleared, Uncleared, Reconciled, Deposited
+| columns          | String     | Supported Values: account_name* create_by create_date cust_msg due_date doc_num* inv_date is_ap_paid is_cleared is_no_post* last_mod_by memo* name* other_account* pmt_mthd printed sales_cust1 sales_cust2 sales_cust3 term_name tracking_num tx_date* txn_type* term_name Additional columns when account numbering enabled: account_num Additional columns when location tracking enabled: dept_name*  
+| createdateMacro  | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| customer         | String     | Filters report contents to include information for specified customers. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file.
+| docnum           | String     | Filters report contents to include information for specified transaction number, as found in the docnum parameter of the transaction object.
+| duedateMacro     | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| groupBy          | String     | The field in the transaction by which to group results. Supported Values: Name, Account, Transaction Type, Customer, Vendor, Employee, Location, Payment Method, Day, Week, Month, Quarter, Year, None
+| item             | String     | Filters report contents to include information for specified items. 
+| memo             | String     | Filters report contents to include information for specified memo. Supported Values: One or more comma separated memo IDs.
+| moddateMacro     | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| name             | String     | Filters report contents based on the specified comma separated list of ids for the name list customer, vendor, or employee objects. 
+| paymentMethod    | String     | Filters report contents based on payment method. Supported Values: Cash, Check, Dinners Club, American Express, Discover, MasterCard, Visa
+| printed          | String     | Filters report contents based on whether checks are printed or not. Supported Values: Printed, To_be_printed
+| qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report.
+| sortBy           | String     | The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.
+| sortOrder        | String     | The sort order. Supported Values: ascend, descend
+| sourceAccountType| String     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
+| startCreatedate  | String     | Specify an explicit account create report date range, in the format YYYY-MM-DD
+| subtendCreatedate| String     | Specify an explicit account create report date range, in the format YYYY-MM-DD
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD. 
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD. 
+| startDuedate     | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| subtendDuedate   | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| startModdate     | String     | Specify an explicit account modification report date range, in the format YYYY-MM-DD. 
+| endModdate       | String     | Specify an explicit account modification report date range, in the format YYYY-MM-DD. 
+| term             | String     | Filters report contents based on term or terms supplied.
+| transactionType  | String     | Filters report contents based transaction type. Supported values include: CreditCardCharge, Check, Invoice, ReceivePayment, JournalEntry, Bill, CreditCardCredit, VendorCredit, Credit, BillPaymentCheck, BillPaymentCreditCard, Charge, Transfer, Deposit, Statement, BillableCharge, TimeActivity, CashPurchase, SalesReceipt, CreditMemo, CreditRefund, Estimate, InventoryQuantityAdjustment, PurchaseOrder, GlobalTaxPayment, GlobalTaxAdjustment, Service Tax Refund, Service Tax Gross Adjustment, Service Tax Reversal, Service Tax Defer, Service Tax Partial Utilisation
+| vendor           | String     | Filters report contents to include information for specified vendors. 
+
+## QuickBooksAccounting.getTrialBalanceReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getVendorBalanceReport
+Returns the results of the report request.
+
+| Field            | Type       | Description
+|------------------|------------|----------
+| apiKey           | credentials| Api key obtained from Intuit
+| apiSecret        | credentials| Api secret obtained from Intuit
+| accessToken      | String     | Access token provided by user
+| tokenSecret      | String     | Token secret provided by user
+| companyId        | Number     | Id of the company
+| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| appaid           | String     | Status of the balance. Supported Values: Paid, Unpaid, All
+| qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
+| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| vendor           | String     | Filters report contents to include information for specified vendors. 
+| reportDate       | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+
+## QuickBooksAccounting.getVendorBalanceDetailReport
+Returns the results of the report request.
+
+| Field           | Type       | Description
+|-----------------|------------|----------
+| apiKey          | credentials| Api key obtained from Intuit
+| apiSecret       | credentials| Api secret obtained from Intuit
+| accessToken     | String     | Access token provided by user
+| tokenSecret     | String     | Token secret provided by user
+| companyId       | Number     | Id of the company
+| accountingMethod| String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| appaid          | String     | Status of the balance. Supported Values: Paid, Unpaid, All
+| columns         | String     | Column types to be shown in the report. Supported Values:create_by create_date doc_num* due_date* last_mod_by  last_mod_date memo*   term_name tx_date* txn_type* vend_bill_addr vend_comp_name vend_name* vend_pri_cont vend_pri_email vend_pri_tel Additional columns with location tracking enabled: dept_name*  
+| dateMacro       | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| department      | String     | Filters report contents to include information for specified departments if so configured in the company file. 
+| duedateMacro    | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| reportDate      | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| sortBy          | String     | The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.
+| sortOrder       | String     | The sort order. Supported Values: ascend, descend
+| startDuedate    | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| endDuedate      | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| term            | String     | Filters report contents based on term or terms supplied. 
+| vendor          | String     | Filters report contents to include information for specified vendors.
+
+## QuickBooksAccounting.createNoteAttachment
+Use this endpoint to attach a note to the an object.
+
+| Field        | Type       | Description
+|--------------|------------|----------
+| apiKey       | credentials| Api key obtained from Intuit
+| apiSecret    | credentials| Api secret obtained from Intuit
+| accessToken  | String     | Access token provided by user
+| tokenSecret  | String     | Token secret provided by user
+| companyId    | Number     | Id of the company
+| attachableRef| Array      | Specifies the transaction object to which this attachable file is to be linked.
+| Note         | String     | Max 2000 chars, filterable, sortable 
+
+## QuickBooksAccounting.readAttachable
+Retrieves the details of a attachable that has been previously created.
+
+| Field       | Type       | Description
+|-------------|------------|----------
+| apiKey      | credentials| Api key obtained from Intuit
+| apiSecret   | credentials| Api secret obtained from Intuit
+| accessToken | String     | Access token provided by user
+| tokenSecret | String     | Token secret provided by user
+| companyId   | Number     | Id of the company
+| attachableId| Number     | Id of your attachable
+
+## QuickBooksAccounting.updateNoteAttachable
+Updates attachable that has been previously created.
+
+| Field       | Type       | Description
+|-------------|------------|----------
+| apiKey      | credentials| Api key obtained from Intuit
+| apiSecret   | credentials| Api secret obtained from Intuit
+| accessToken | String     | Access token provided by user
+| tokenSecret | String     | Token secret provided by user
+| companyId   | Number     | Id of the company
+| attachableId| Number     | Id of your attachable
+| note        | String     | Text of the attachable
+| syncToken   | Number     | Version number of the object.
+
+## QuickBooksAccounting.deleteAttachable
+Deletes existing attachable
+
+| Field       | Type       | Description
+|-------------|------------|----------
+| apiKey      | credentials| Api key obtained from Intuit
+| apiSecret   | credentials| Api secret obtained from Intuit
+| accessToken | String     | Access token provided by user
+| tokenSecret | String     | Token secret provided by user
+| companyId   | Number     | Id of the company
+| attachableId| String     | Id of the attachable
+| syncToken   | String     | Version number of the object.
+
+## QuickBooksAccounting.queryAttachable
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.getChangedEntities
+The change data capture (cdc) operation returns a list of objects that have changed since a specified time.
+
+| Field       | Type       | Description
+|-------------|------------|----------
+| apiKey      | credentials| Api key obtained from Intuit
+| apiSecret   | credentials| Api secret obtained from Intuit
+| accessToken | String     | Access token provided by user
+| tokenSecret | String     | Token secret provided by user
+| companyId   | Number     | Id of the company
+| entityList  | String     | List of entities coma separated except JournalCode, TimeActivity, TaxAgency, TaxCode, and TaxRate.
+| changedSince| String     | Date of change
+
+## QuickBooksAccounting.getCompanyInfo
+Retrieves the details of the CompanyInfo object.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+
+## QuickBooksAccounting.queryCompanyInfo
+Returns the results of the query.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+| query      | String     | Your query to process
+
+## QuickBooksAccounting.readEntitlements
+Retrieves the entitlements details.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+
+## QuickBooksAccounting.getPreferences
+Retrieves the Preferences details for the specified company.
+
+| Field      | Type       | Description
+|------------|------------|----------
+| apiKey     | credentials| Api key obtained from Intuit
+| apiSecret  | credentials| Api secret obtained from Intuit
+| accessToken| String     | Access token provided by user
+| tokenSecret| String     | Token secret provided by user
+| companyId  | Number     | Id of the company
+
+## QuickBooksAccounting.updatePreferences
+se this operation to update any of the writable preference fields. The request body must include all writable fields of the existing object as returned in a read response. Writable fields omitted from the request body are set to NULL or reverted to a default value. 
+
+| Field                  | Type       | Description
+|------------------------|------------|----------
+| apiKey                 | credentials| Api key obtained from Intuit
+| apiSecret              | credentials| Api secret obtained from Intuit
+| accessToken            | String     | Access token provided by user
+| tokenSecret            | String     | Token secret provided by user
+| companyId              | Number     | Id of the company
+| preferenceId           | Number     | Id of your attachable
+| accountingInfoPrefs    | JSON       | The following settings are available for QuickBooks Online Plus editions, only.
+| productAndServicesPrefs| JSON       | Product and services preferences
+| salesFormsPrefs        | JSON       | Sales forms preferences
+| emailMessagesPrefs     | JSON       | Email messages preferences
+| vendorAndPurchasesPrefs| JSON       | Vendor and purchase preferences
+| timeTrackingPrefs      | JSON       | Time tracking preferences
+| taxPrefs               | JSON       | Tax preferences
+| currencyPrefs          | JSON       | Currency preferences
+| reportPrefs            | JSON       | Report preferences
+| otherPrefs             | JSON       | Other preferences
+
+## QuickBooksAccounting.queryPreferences
 Returns the results of the query.
 
 | Field      | Type       | Description

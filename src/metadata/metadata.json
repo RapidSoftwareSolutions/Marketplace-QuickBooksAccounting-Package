@@ -11137,6 +11137,3326 @@
           "info": "Success"
         }
       ]
+    },
+    {
+      "name": "getAccountListDetailReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountStatus",
+          "type": "String",
+          "info": "The account status. Supported values include: Deleted, Not_Deleted",
+          "required": false
+        },
+        {
+          "name": "accountType",
+          "type": "String",
+          "info": "Account type from which transactions are included in the report. ",
+          "required": false
+        },
+        {
+          "name": "columns",
+          "type": "String",
+          "info": "Column types to be shown in the report. Supported Values: account_name*, account_type*, detail_acc_type, create_date, create_by, detail_acc_type*, last_ mod_date, last_ mod_by, account_desc*, account_bal*",
+          "required": false
+        },
+        {
+          "name": "createdateMacro",
+          "type": "String",
+          "info": "Predefined report account create date range.",
+          "required": false
+        },
+        {
+          "name": "moddateMacro",
+          "type": "String",
+          "info": "Predefined report account modification date range.",
+          "required": false
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.",
+          "required": false
+        },
+        {
+          "name": "sortOrder",
+          "type": "String",
+          "info": "The sort order. Supported Values: ascend, descend",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "startModdate",
+          "type": "String",
+          "info": "Specify an explicit account modification report date range, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "endModdate",
+          "type": "String",
+          "info": "Specify an explicit account modification report date range, in the format YYYY-MM-DD. ",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAPagingDetailReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "agingPeriod",
+          "type": "Number",
+          "info": "The number of days in the aging period. ",
+          "required": false
+        },
+        {
+          "name": "columns",
+          "type": "String",
+          "info": "Column types to be shown in the report. Supported Values: create_by create_date doc_num* due_date* last_mod_by last_mod_date memo* past_due* term_name tx_date* txn_type* vend_bill_addr vend_comp_name vend_name* vend_pri_cont vend_pri_email vend_pri_tel  Additional columns with location tracking enabled: dept_name*",
+          "required": false
+        },
+        {
+          "name": "custom1",
+          "type": "String",
+          "info": "Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. ",
+          "required": false
+        },
+        {
+          "name": "custom2",
+          "type": "String",
+          "info": "Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. ",
+          "required": false
+        },
+        {
+          "name": "custom3",
+          "type": "String",
+          "info": "Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. ",
+          "required": false
+        },
+        {
+          "name": "numPeriods",
+          "type": "Number",
+          "info": "The number of periods to be shown in the report. ",
+          "required": false
+        },
+        {
+          "name": "pastDue",
+          "type": "Number",
+          "info": "Filters report contents based on minimum days past due. ",
+          "required": false
+        },
+        {
+          "name": "reportDate",
+          "type": "String",
+          "info": "Start date to use for the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "shipvia",
+          "type": "String",
+          "info": "Filter by the shipping method",
+          "required": false
+        },
+        {
+          "name": "startDuedate",
+          "type": "String",
+          "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "endDuedate",
+          "type": "String",
+          "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "term",
+          "type": "String",
+          "info": "Filters report contents based on term or terms supplied. ",
+          "required": false
+        },
+        {
+          "name": "vendor",
+          "type": "String",
+          "info": "Filters report contents to include information for specified vendors.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAPagingSummaryReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "agingMethod",
+          "type": "String",
+          "info": "The date upon which aging is determined. Supported Values:Report_Date, Current",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "qzurl",
+          "type": "String",
+          "info": "Specifies whether Quick Zoom URL information should be generated for rows in the report. ",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "reportDate",
+          "type": "String",
+          "info": "Start date to use for the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        },
+        {
+          "name": "vendor",
+          "type": "String",
+          "info": "Filters report contents to include information for specified vendors. Supported Values: One or more comma separated vendor IDs as returned in the attribute, Vendor.Id, of the Vendor object response code.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getARagingDetailReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "agingMethod",
+          "type": "String",
+          "info": "The date upon which aging is determined. Supported Values:Report_Date, Current",
+          "required": false
+        },
+        {
+          "name": "agingPeriod",
+          "type": "Number",
+          "info": "The number of days in the aging period. ",
+          "required": false
+        },
+        {
+          "name": "columns",
+          "type": "String",
+          "info": "Column types to be shown in the report. Supported Values: bill_addr create_by create_date cust_bill_email cust_comp_name   cust_msg cust_phone_other cust_tel cust_name deliv_addr doc_num* due_date* last_mod_by last_mod_date memo* past_due sale_sent_state ship_addr term_name tx_date* txn_type* Additional columns with custom fields enabled: sales_cust1 sales_cust2 sales_cust3 Additional columns with location tracking enabled: dept_name*",
+          "required": false
+        },
+        {
+          "name": "custom1",
+          "type": "String",
+          "info": "Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. ",
+          "required": false
+        },
+        {
+          "name": "custom2",
+          "type": "String",
+          "info": "Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. ",
+          "required": false
+        },
+        {
+          "name": "custom3",
+          "type": "String",
+          "info": "Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. ",
+          "required": false
+        },
+        {
+          "name": "numPeriods",
+          "type": "Number",
+          "info": "The number of periods to be shown in the report. ",
+          "required": false
+        },
+        {
+          "name": "pastDue",
+          "type": "Number",
+          "info": "Filters report contents based on minimum days past due. ",
+          "required": false
+        },
+        {
+          "name": "reportDate",
+          "type": "String",
+          "info": "Start date to use for the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "shipvia",
+          "type": "String",
+          "info": "Filter by the shipping method",
+          "required": false
+        },
+        {
+          "name": "startDuedate",
+          "type": "String",
+          "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "endDuedate",
+          "type": "String",
+          "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "term",
+          "type": "String",
+          "info": "Filters report contents based on term or terms supplied. ",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getARagingSummaryReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "agingMethod",
+          "type": "String",
+          "info": "The date upon which aging is determined. Supported Values:Report_Date, Current",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "qzurl",
+          "type": "String",
+          "info": "Specifies whether Quick Zoom URL information should be generated for rows in the report. ",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "reportDate",
+          "type": "String",
+          "info": "Start date to use for the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getBalanceSheetReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "class",
+          "type": "String",
+          "info": "Filters report contents to include information for specified classes if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "item<",
+          "type": "String",
+          "info": "Filters report contents to include information for specified items. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "qzurl",
+          "type": "String",
+          "info": "Specifies whether Quick Zoom URL information should be generated for rows in the report. ",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "vendor",
+          "type": "String",
+          "info": "Filters report contents to include information for specified vendors.",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCashFlowReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "class",
+          "type": "String",
+          "info": "Filters report contents to include information for specified classes if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "item<",
+          "type": "String",
+          "info": "Filters report contents to include information for specified items. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "qzurl",
+          "type": "String",
+          "info": "Specifies whether Quick Zoom URL information should be generated for rows in the report. ",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "vendor",
+          "type": "String",
+          "info": "Filters report contents to include information for specified vendors.",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCustomerBalanceReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "arpaid",
+          "type": "String",
+          "info": "Supported Values:All, Paid, Unpaid",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "reportDate",
+          "type": "String",
+          "info": "Start date to use for the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCustomerBalanceDetailReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "agingMethod",
+          "type": "String",
+          "info": "The date upon which aging is determined. Supported Values:Report_Date, Current",
+          "required": false
+        },
+        {
+          "name": "arpaid",
+          "type": "String",
+          "info": "Supported Values:All, Paid, Unpaid",
+          "required": false
+        },
+        {
+          "name": "columns",
+          "type": "String",
+          "info": "Column types to be shown in the report. Supported Values: bill_addr create_by create_date cust_bill_email cust_comp_name   cust_msg cust_phone_other cust_tel cust_name deliv_addr doc_num* due_date* last_mod_by last_mod_date memo* past_due sale_sent_state ship_addr term_name tx_date* txn_type* Additional columns with custom fields enabled: sales_cust1 sales_cust2 sales_cust3 Additional columns with location tracking enabled: dept_name*",
+          "required": false
+        },
+        {
+          "name": "custom1",
+          "type": "String",
+          "info": "Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. ",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.",
+          "required": false
+        },
+        {
+          "name": "sortOrder",
+          "type": "String",
+          "info": "The sort order. Supported Values: ascend, descend",
+          "required": false
+        },
+        {
+          "name": "reportDate",
+          "type": "String",
+          "info": "Start date to use for the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "shipvia",
+          "type": "String",
+          "info": "Filter by the shipping method",
+          "required": false
+        },
+        {
+          "name": "startDuedate",
+          "type": "String",
+          "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "endDuedate",
+          "type": "String",
+          "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "term",
+          "type": "String",
+          "info": "Filters report contents based on term or terms supplied. ",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCustomerIncomeReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "class",
+          "type": "String",
+          "info": "Filters report contents to include information for specified classes if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "term",
+          "type": "String",
+          "info": "Filters report contents based on term or terms supplied. ",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "vendor",
+          "type": "String",
+          "info": "Filters report contents to include information for specified vendors.",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getExpensesByVendorReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "class",
+          "type": "String",
+          "info": "Filters report contents to include information for specified classes if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "vendor",
+          "type": "String",
+          "info": "Filters report contents to include information for specified vendors.",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getGeneralLedgerReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "account",
+          "type": "String",
+          "info": "Filters report contents to include information for specified accounts. ",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "accountType",
+          "type": "String",
+          "info": "Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome",
+          "required": false
+        },
+        {
+          "name": "sourceAccountType",
+          "type": "String",
+          "info": "Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome",
+          "required": false
+        },
+        {
+          "name": "class",
+          "type": "String",
+          "info": "Filters report contents to include information for specified classes if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "columns",
+          "type": "String",
+          "info": "Supported values:  account_name chk_print_state create_by create_date cust_name    doc_num* emp_name inv_date is_adj* is_ap_paid  is_ar_paid is_cleared item_name last_mod_by last_mod_date   memo* name* quantity rate split_acc*   tx_date* txn_type* vend_name Additional columns when sales tax enabled: net_amount tax_amount tax_code Additional columns when account numbering enabled: account_num Additional columns when class tracking enabled: klass_name* Additional columns when location tracking enabled: dept_name*  ",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.",
+          "required": false
+        },
+        {
+          "name": "sortOrder",
+          "type": "String",
+          "info": "The sort order. Supported Values: ascend, descend",
+          "required": false
+        },
+        {
+          "name": "vendor",
+          "type": "String",
+          "info": "Filters report contents to include information for specified vendors.",
+          "required": false
+        },
+        {
+          "name": "sourceAccount",
+          "type": "String",
+          "info": "Filters report contents to include information for specified source accounts. ",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getInventoryValuationReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "qzurl",
+          "type": "String",
+          "info": "Specifies whether Quick Zoom URL information should be generated for rows in the report. ",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "reportDate",
+          "type": "String",
+          "info": "Start date to use for the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        },
+        {
+          "name": "item",
+          "type": "String",
+          "info": "Filters report contents to include information for specified items. ",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getProfitAndLossReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "class",
+          "type": "String",
+          "info": "Filters report contents to include information for specified classes if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "item",
+          "type": "String",
+          "info": "Filters report contents to include information for specified items. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "qzurl",
+          "type": "String",
+          "info": "Specifies whether Quick Zoom URL information should be generated for rows in the report. ",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "vendor",
+          "type": "String",
+          "info": "Filters report contents to include information for specified vendors.",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getProfitAndLossDetailReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "account",
+          "type": "String",
+          "info": "Filters report contents to include information for specified accounts. ",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "accountType",
+          "type": "String",
+          "info": "Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome",
+          "required": false
+        },
+        {
+          "name": "sourceAccountType",
+          "type": "String",
+          "info": "Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome",
+          "required": false
+        },
+        {
+          "name": "class",
+          "type": "String",
+          "info": "Filters report contents to include information for specified classes if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "columns",
+          "type": "String",
+          "info": "Supported values: create_by create_date doc_num* last_mod_by last_mod_date   memo* name* pmt_mthd split_acc* tx_date*    txn_type*   Additional columns with tax enabled: tax_code  Additional columns with account numbering enabled: account_num Additional columns with class tracking enabled: klass_name* Additional columns with location tracking enabled: dept_name*   ",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "employee",
+          "type": "String",
+          "info": "Filters report contents to include information for specified employees. ",
+          "required": false
+        },
+        {
+          "name": "paymentMethod",
+          "type": "String",
+          "info": "Filters report contents based on payment method. Supported Values: Cash, Check, Dinners Club, American Express, Discover, MasterCard, Visa",
+          "required": false
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.",
+          "required": false
+        },
+        {
+          "name": "sortOrder",
+          "type": "String",
+          "info": "The sort order. Supported Values: ascend, descend",
+          "required": false
+        },
+        {
+          "name": "vendor",
+          "type": "String",
+          "info": "Filters report contents to include information for specified vendors.",
+          "required": false
+        },
+        {
+          "name": "sourceAccount",
+          "type": "String",
+          "info": "Filters report contents to include information for specified source accounts. ",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSalesByClassReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "class",
+          "type": "String",
+          "info": "Filters report contents to include information for specified classes if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "item<",
+          "type": "String",
+          "info": "Filters report contents to include information for specified items. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSalesByCustomerReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "class",
+          "type": "String",
+          "info": "Filters report contents to include information for specified classes if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "item<",
+          "type": "String",
+          "info": "Filters report contents to include information for specified items. ",
+          "required": false
+        },
+        {
+          "name": "qzurl",
+          "type": "String",
+          "info": "Specifies whether Quick Zoom URL information should be generated for rows in the report.",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSalesByDepartmentReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "class",
+          "type": "String",
+          "info": "Filters report contents to include information for specified classes if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "item<",
+          "type": "String",
+          "info": "Filters report contents to include information for specified items. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSalesByProductReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "class",
+          "type": "String",
+          "info": "Filters report contents to include information for specified classes if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "item<",
+          "type": "String",
+          "info": "Filters report contents to include information for specified items. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTransactionListReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "appaid",
+          "type": "String",
+          "info": "Status of the balance. Supported Values: Paid, Unpaid, All",
+          "required": false
+        },
+        {
+          "name": "arpaid",
+          "type": "String",
+          "info": "Supported Values:All, Paid, Unpaid",
+          "required": false
+        },
+        {
+          "name": "bothamount",
+          "type": "String",
+          "info": "Filters report contents to include information for specified transaction amount.",
+          "required": false
+        },
+        {
+          "name": "class",
+          "type": "String",
+          "info": "Filters report contents to include information for specified classes if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "cleared",
+          "type": "String",
+          "info": "Filters report contents to include information for specified check status. Supported Values: Cleared, Uncleared, Reconciled, Deposited",
+          "required": false
+        },
+        {
+          "name": "columns",
+          "type": "String",
+          "info": "Supported Values: account_name* create_by create_date cust_msg due_date doc_num* inv_date is_ap_paid is_cleared is_no_post* last_mod_by memo* name* other_account* pmt_mthd printed sales_cust1 sales_cust2 sales_cust3 term_name tracking_num tx_date* txn_type* term_name Additional columns when account numbering enabled: account_num Additional columns when location tracking enabled: dept_name*  ",
+          "required": false
+        },
+        {
+          "name": "createdateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "info": "Filters report contents to include information for specified customers. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file.",
+          "required": false
+        },
+        {
+          "name": "docnum",
+          "type": "String",
+          "info": "Filters report contents to include information for specified transaction number, as found in the docnum parameter of the transaction object.",
+          "required": false
+        },
+        {
+          "name": "duedateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "groupBy",
+          "type": "String",
+          "info": "The field in the transaction by which to group results. Supported Values: Name, Account, Transaction Type, Customer, Vendor, Employee, Location, Payment Method, Day, Week, Month, Quarter, Year, None",
+          "required": false
+        },
+        {
+          "name": "item",
+          "type": "String",
+          "info": "Filters report contents to include information for specified items. ",
+          "required": false
+        },
+        {
+          "name": "memo",
+          "type": "String",
+          "info": "Filters report contents to include information for specified memo. Supported Values: One or more comma separated memo IDs.",
+          "required": false
+        },
+        {
+          "name": "moddateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Filters report contents based on the specified comma separated list of ids for the name list customer, vendor, or employee objects. ",
+          "required": false
+        },
+        {
+          "name": "paymentMethod",
+          "type": "String",
+          "info": "Filters report contents based on payment method. Supported Values: Cash, Check, Dinners Club, American Express, Discover, MasterCard, Visa",
+          "required": false
+        },
+        {
+          "name": "printed",
+          "type": "String",
+          "info": "Filters report contents based on whether checks are printed or not. Supported Values: Printed, To_be_printed",
+          "required": false
+        },
+        {
+          "name": "qzurl",
+          "type": "String",
+          "info": "Specifies whether Quick Zoom URL information should be generated for rows in the report.",
+          "required": false
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.",
+          "required": false
+        },
+        {
+          "name": "sortOrder",
+          "type": "String",
+          "info": "The sort order. Supported Values: ascend, descend",
+          "required": false
+        },
+        {
+          "name": "sourceAccountType",
+          "type": "String",
+          "info": "Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome",
+          "required": false
+        },
+        {
+          "name": "startCreatedate",
+          "type": "String",
+          "info": "Specify an explicit account create report date range, in the format YYYY-MM-DD",
+          "required": false
+        },
+        {
+          "name": "subtendCreatedate",
+          "type": "String",
+          "info": "Specify an explicit account create report date range, in the format YYYY-MM-DD",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "startDuedate",
+          "type": "String",
+          "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "subtendDuedate",
+          "type": "String",
+          "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "startModdate",
+          "type": "String",
+          "info": "Specify an explicit account modification report date range, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "endModdate",
+          "type": "String",
+          "info": "Specify an explicit account modification report date range, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "term",
+          "type": "String",
+          "info": "Filters report contents based on term or terms supplied.",
+          "required": false
+        },
+        {
+          "name": "transactionType",
+          "type": "String",
+          "info": "Filters report contents based transaction type. Supported values include: CreditCardCharge, Check, Invoice, ReceivePayment, JournalEntry, Bill, CreditCardCredit, VendorCredit, Credit, BillPaymentCheck, BillPaymentCreditCard, Charge, Transfer, Deposit, Statement, BillableCharge, TimeActivity, CashPurchase, SalesReceipt, CreditMemo, CreditRefund, Estimate, InventoryQuantityAdjustment, PurchaseOrder, GlobalTaxPayment, GlobalTaxAdjustment, Service Tax Refund, Service Tax Gross Adjustment, Service Tax Reversal, Service Tax Defer, Service Tax Partial Utilisation",
+          "required": false
+        },
+        {
+          "name": "vendor",
+          "type": "String",
+          "info": "Filters report contents to include information for specified vendors. ",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTrialBalanceReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "The start date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "The end date date of the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVendorBalanceReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "appaid",
+          "type": "String",
+          "info": "Status of the balance. Supported Values: Paid, Unpaid, All",
+          "required": false
+        },
+        {
+          "name": "qzurl",
+          "type": "String",
+          "info": "Specifies whether Quick Zoom URL information should be generated for rows in the report. ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "vendor",
+          "type": "String",
+          "info": "Filters report contents to include information for specified vendors. ",
+          "required": false
+        },
+        {
+          "name": "reportDate",
+          "type": "String",
+          "info": "Start date to use for the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "summarizeColumnBy",
+          "type": "String",
+          "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVendorBalanceDetailReport",
+      "description": "Returns the results of the report request.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "accountingMethod",
+          "type": "String",
+          "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
+          "required": false
+        },
+        {
+          "name": "appaid",
+          "type": "String",
+          "info": "Status of the balance. Supported Values: Paid, Unpaid, All",
+          "required": false
+        },
+        {
+          "name": "columns",
+          "type": "String",
+          "info": "Column types to be shown in the report. Supported Values:create_by create_date doc_num* due_date* last_mod_by  last_mod_date memo*   term_name tx_date* txn_type* vend_bill_addr vend_comp_name vend_name* vend_pri_cont vend_pri_email vend_pri_tel Additional columns with location tracking enabled: dept_name*  ",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "department",
+          "type": "String",
+          "info": "Filters report contents to include information for specified departments if so configured in the company file. ",
+          "required": false
+        },
+        {
+          "name": "duedateMacro",
+          "type": "String",
+          "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
+          "required": false
+        },
+        {
+          "name": "reportDate",
+          "type": "String",
+          "info": "Start date to use for the report, in the format YYYY-MM-DD.",
+          "required": false
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.",
+          "required": false
+        },
+        {
+          "name": "sortOrder",
+          "type": "String",
+          "info": "The sort order. Supported Values: ascend, descend",
+          "required": false
+        },
+        {
+          "name": "startDuedate",
+          "type": "String",
+          "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "endDuedate",
+          "type": "String",
+          "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
+          "required": false
+        },
+        {
+          "name": "term",
+          "type": "String",
+          "info": "Filters report contents based on term or terms supplied. ",
+          "required": false
+        },
+        {
+          "name": "vendor",
+          "type": "String",
+          "info": "Filters report contents to include information for specified vendors.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createNoteAttachment",
+      "description": "Use this endpoint to attach a note to the an object.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "attachableRef",
+          "type": "Array",
+          "info": "Specifies the transaction object to which this attachable file is to be linked.",
+          "required": true
+        },
+        {
+          "name": "Note",
+          "type": "String",
+          "info": "Max 2000 chars, filterable, sortable ",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "readAttachable",
+      "description": "Retrieves the details of a attachable that has been previously created.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "attachableId",
+          "type": "Number",
+          "info": "Id of your attachable",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateNoteAttachable",
+      "description": "Updates attachable that has been previously created.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "attachableId",
+          "type": "Number",
+          "info": "Id of your attachable",
+          "required": true
+        },
+        {
+          "name": "note",
+          "type": "String",
+          "info": "Text of the attachable",
+          "required": true
+        },
+        {
+          "name": "syncToken",
+          "type": "Number",
+          "info": "Version number of the object.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteAttachable",
+      "description": "Deletes existing attachable",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "attachableId",
+          "type": "String",
+          "info": "Id of the attachable",
+          "required": true
+        },
+        {
+          "name": "syncToken",
+          "type": "String",
+          "info": "Version number of the object.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "queryAttachable",
+      "description": "Returns the results of the query.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Your query to process",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getChangedEntities",
+      "description": "The change data capture (cdc) operation returns a list of objects that have changed since a specified time.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "entityList",
+          "type": "String",
+          "info": "List of entities coma separated except JournalCode, TimeActivity, TaxAgency, TaxCode, and TaxRate.",
+          "required": true
+        },
+        {
+          "name": "changedSince",
+          "type": "String",
+          "info": "Date of change",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCompanyInfo",
+      "description": "Retrieves the details of the CompanyInfo object.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "queryCompanyInfo",
+      "description": "Returns the results of the query.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Your query to process",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "readEntitlements",
+      "description": "Retrieves the entitlements details.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getPreferences",
+      "description": "Retrieves the Preferences details for the specified company.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updatePreferences",
+      "description": "se this operation to update any of the writable preference fields. The request body must include all writable fields of the existing object as returned in a read response. Writable fields omitted from the request body are set to NULL or reverted to a default value. ",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "preferenceId",
+          "type": "Number",
+          "info": "Id of your attachable",
+          "required": true
+        },
+        {
+          "name": "accountingInfoPrefs",
+          "type": "JSON",
+          "info": "The following settings are available for QuickBooks Online Plus editions, only.",
+          "required": false
+        },
+        {
+          "name": "productAndServicesPrefs",
+          "type": "JSON",
+          "info": "Product and services preferences",
+          "required": false
+        },
+        {
+          "name": "salesFormsPrefs",
+          "type": "JSON",
+          "info": "Sales forms preferences",
+          "required": false
+        },
+        {
+          "name": "emailMessagesPrefs",
+          "type": "JSON",
+          "info": "Email messages preferences",
+          "required": false
+        },
+        {
+          "name": "vendorAndPurchasesPrefs",
+          "type": "JSON",
+          "info": "Vendor and purchase preferences",
+          "required": false
+        },
+        {
+          "name": "timeTrackingPrefs",
+          "type": "JSON",
+          "info": "Time tracking preferences",
+          "required": false
+        },
+        {
+          "name": "taxPrefs",
+          "type": "JSON",
+          "info": "Tax preferences",
+          "required": false
+        },
+        {
+          "name": "currencyPrefs",
+          "type": "JSON",
+          "info": "Currency preferences",
+          "required": false
+        },
+        {
+          "name": "reportPrefs",
+          "type": "JSON",
+          "info": "Report preferences",
+          "required": false
+        },
+        {
+          "name": "otherPrefs",
+          "type": "JSON",
+          "info": "Other preferences",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "queryPreferences",
+      "description": "Returns the results of the query.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Intuit",
+          "required": true
+        },
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided by user",
+          "required": true
+        },
+        {
+          "name": "tokenSecret",
+          "type": "String",
+          "info": "Token secret provided by user",
+          "required": true
+        },
+        {
+          "name": "companyId",
+          "type": "Number",
+          "info": "Id of the company",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Your query to process",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     }
   ]
 }
