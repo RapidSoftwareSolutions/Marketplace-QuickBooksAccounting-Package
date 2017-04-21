@@ -102,7 +102,7 @@
         },
         {
           "name": "billLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -230,7 +230,7 @@
         },
         {
           "name": "billLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -506,7 +506,7 @@
         },
         {
           "name": "billpaymentLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -594,7 +594,7 @@
         },
         {
           "name": "billpaymentLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -734,7 +734,7 @@
         },
         {
           "name": "billpaymentLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -912,7 +912,7 @@
         },
         {
           "name": "billpaymentLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -1124,7 +1124,7 @@
         },
         {
           "name": "creditMemoLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -1252,13 +1252,13 @@
         },
         {
           "name": "creditMemoLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
         {
           "name": "customField",
-          "type": " String",
+          "type": "Array",
           "info": "Custom field or data extension.",
           "required": false
         },
@@ -1582,7 +1582,7 @@
         },
         {
           "name": "depositLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -1762,7 +1762,7 @@
         },
         {
           "name": "depositLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": false
         },
@@ -1950,7 +1950,7 @@
         },
         {
           "name": "estimateLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -2240,13 +2240,13 @@
         },
         {
           "name": "estimateLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": false
         },
         {
           "name": "customField",
-          "type": " String",
+          "type": "Array",
           "info": "Custom field or data extension.",
           "required": false
         },
@@ -2306,7 +2306,7 @@
         },
         {
           "name": "linkedTxn",
-          "type": " String",
+          "type": "Array",
           "info": "Zero or more Invoice objects related to this transaction.",
           "required": false
         },
@@ -2560,7 +2560,7 @@
         },
         {
           "name": "invoiceLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -2908,13 +2908,13 @@
         },
         {
           "name": "invoiceLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": false
         },
         {
           "name": "customField",
-          "type": " String",
+          "type": "Array",
           "info": "Custom field or data extension.",
           "required": false
         },
@@ -2974,7 +2974,7 @@
         },
         {
           "name": "linkedTxn",
-          "type": " String",
+          "type": "Array",
           "info": "Zero or more Invoice objects related to this transaction.",
           "required": false
         },
@@ -3240,7 +3240,7 @@
         },
         {
           "name": "journalentryLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -3368,7 +3368,7 @@
         },
         {
           "name": "journalentryLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": false
         },
@@ -3776,7 +3776,7 @@
         },
         {
           "name": "paymentLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": false
         },
@@ -4058,7 +4058,7 @@
         },
         {
           "name": "purchaseLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -4198,7 +4198,7 @@
         },
         {
           "name": "purchaseLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -4480,7 +4480,7 @@
         },
         {
           "name": "purchaseorderLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -4672,7 +4672,7 @@
         },
         {
           "name": "purchaseorderLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -4702,7 +4702,7 @@
         },
         {
           "name": "customField",
-          "type": " String",
+          "type": "Array",
           "info": "Custom field or data extension.",
           "required": false
         },
@@ -4726,7 +4726,7 @@
         },
         {
           "name": "linkedTxn",
-          "type": " String",
+          "type": "Array",
           "info": "Zero or more Invoice objects related to this transaction.",
           "required": false
         },
@@ -4944,7 +4944,7 @@
         },
         {
           "name": "refundLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -5124,7 +5124,7 @@
         },
         {
           "name": "refundLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": false
         },
@@ -5142,7 +5142,7 @@
         },
         {
           "name": "customField",
-          "type": " String",
+          "type": "Array",
           "info": "Custom field or data extension.",
           "required": false
         },
@@ -5432,7 +5432,7 @@
         },
         {
           "name": "salesreceiptLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         }
@@ -5768,13 +5768,13 @@
         },
         {
           "name": "salesreceiptLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": false
         },
         {
           "name": "customField",
-          "type": " String",
+          "type": "Array",
           "info": "Custom field or data extension.",
           "required": false
         },
@@ -7248,7 +7248,7 @@
         },
         {
           "name": "vendorcreditLines",
-          "type": " String",
+          "type": "Array",
           "info": "Individual line items of a transaction.",
           "required": true
         },
@@ -10508,7 +10508,7 @@
         },
         {
           "name": "taxRateDetails",
-          "type": " String",
+          "type": "Array",
           "info": "One or more tax rate specifications.",
           "required": true
         }
@@ -13804,7 +13804,7 @@
         },
         {
           "name": "attachableRef",
-          "type": " String",
+          "type": "Array",
           "info": "Specifies the transaction object to which this attachable file is to be linked.",
           "required": true
         },
