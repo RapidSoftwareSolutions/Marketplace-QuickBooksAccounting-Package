@@ -11,7 +11,6 @@
        'deleteAttachable',
        'updateNoteAttachable',
        'readAttachable',
-       'uploadAttachments',
        'createNoteAttachment',
        'getVendorBalanceDetailReport',
        'getVendorBalanceReport',
