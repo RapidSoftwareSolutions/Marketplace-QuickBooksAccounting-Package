@@ -1764,7 +1764,7 @@
           "name": "depositLines",
           "type": "Array",
           "info": "Individual line items of a transaction.",
-          "required": false
+          "required": true
         },
         {
           "name": "txnDate",

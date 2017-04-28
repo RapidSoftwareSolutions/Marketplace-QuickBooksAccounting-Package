@@ -17,6 +17,7 @@ $app->post('/api/QuickBooksAccounting/updateDeposit', function ($request, $respo
     $body['Id'] = $post_data['args']['depositId'];
     $body['sparse'] = true;
     $body['SyncToken'] = $post_data['args']['syncToken'];
+
     $body['Line'] = $post_data['args']['depositLines'];
 
 

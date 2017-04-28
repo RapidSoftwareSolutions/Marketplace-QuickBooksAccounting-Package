@@ -18,7 +18,7 @@ $app->post('/api/QuickBooksAccounting/updatePayment', function ($request, $respo
     $body['sparse'] = false;
     $body['SyncToken'] = $post_data['args']['syncToken'];
 
-    if (isset($post_data['args']['paymentLines']) && strlen($post_data['args']['paymentLines']) > 0) {
+    if (isset($post_data['args']['paymentLines']) && count($post_data['args']['paymentLines']) > 0) {
         $body['Line'] = $post_data['args']['paymentLines'];
     }
 

@@ -18,11 +18,11 @@ $app->post('/api/QuickBooksAccounting/updateSalesreceipt', function ($request, $
     $body['SyncToken'] = $post_data['args']['syncToken'];
     $body['sparse'] = true;
 
-    if (isset($post_data['args']['salesreceiptLines']) && strlen($post_data['args']['salesreceiptLines']) > 0) {
+    if (isset($post_data['args']['salesreceiptLines']) && count($post_data['args']['salesreceiptLines']) > 0) {
         $body['Line'] = $post_data['args']['salesreceiptLines'];
     }
 
-    if (isset($post_data['args']['customField']) && strlen($post_data['args']['customField']) > 0) {
+    if (isset($post_data['args']['customField']) && count($post_data['args']['customField']) > 0) {
         $body['CustomField'] = $post_data['args']['customField'];
     }
     if (isset($post_data['args']['docNumber']) && strlen($post_data['args']['docNumber']) > 0) {

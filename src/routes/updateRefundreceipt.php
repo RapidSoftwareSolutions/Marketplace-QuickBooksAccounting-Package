@@ -18,7 +18,7 @@ $app->post('/api/QuickBooksAccounting/updateRefundreceipt', function ($request, 
     $body['SyncToken'] = $post_data['args']['syncToken'];
     $body['sparse'] = true;
 
-    if (isset($post_data['args']['refundLines']) && strlen($post_data['args']['refundLines']) > 0) {
+    if (isset($post_data['args']['refundLines']) && count($post_data['args']['refundLines']) > 0) {
         $body['Line'] = $post_data['args']['refundLines'];
     }
     if (isset($post_data['args']['depositToAccountId']) && strlen($post_data['args']['depositToAccountId']) > 0) {
@@ -28,7 +28,7 @@ $app->post('/api/QuickBooksAccounting/updateRefundreceipt', function ($request, 
         $body['DepositToAccountRef']['name'] = $post_data['args']['depositToAccountName'];
     }
 
-    if (isset($post_data['args']['customField']) && strlen($post_data['args']['customField']) > 0) {
+    if (isset($post_data['args']['customField']) && count($post_data['args']['customField']) > 0) {
         $body['CustomField'] = $post_data['args']['customField'];
     }
     if (isset($post_data['args']['docNumber']) && strlen($post_data['args']['docNumber']) > 0) {

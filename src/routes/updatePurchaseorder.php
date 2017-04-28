@@ -30,7 +30,7 @@ $app->post('/api/QuickBooksAccounting/updatePurchaseorder', function ($request, 
         $body['APAccountRef']['name'] = $post_data['args']['aPAccountRefName'];
     }
 
-    if (isset($post_data['args']['customField']) && strlen($post_data['args']['customField']) > 0) {
+    if (isset($post_data['args']['customField']) && count($post_data['args']['customField']) > 0) {
         $body['CustomField'] = $post_data['args']['customField'];
     }
     if (isset($post_data['args']['docNumber']) && strlen($post_data['args']['docNumber']) > 0) {

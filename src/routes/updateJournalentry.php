@@ -18,7 +18,7 @@ $app->post('/api/QuickBooksAccounting/updateJournalentry', function ($request, $
     $body['sparse'] = true;
     $body['SyncToken'] = $post_data['args']['syncToken'];
 
-    if (isset($post_data['args']['journalentryLines']) && strlen($post_data['args']['journalentryLines']) > 0) {
+    if (isset($post_data['args']['journalentryLines']) && count($post_data['args']['journalentryLines']) > 0) {
         $body['Line'] = $post_data['args']['journalentryLines'];
     }
 

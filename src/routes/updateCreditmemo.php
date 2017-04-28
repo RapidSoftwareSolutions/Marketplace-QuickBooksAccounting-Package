@@ -19,7 +19,7 @@ $app->post('/api/QuickBooksAccounting/updateCreditmemo', function ($request, $re
     $body['Line'] = $post_data['args']['creditMemoLines'];
 
 
-    if (isset($post_data['args']['customField']) && strlen($post_data['args']['customField']) > 0) {
+    if (isset($post_data['args']['customField']) && count($post_data['args']['customField']) > 0) {
         $body['CustomField'] = $post_data['args']['customField'];
     }
     if (isset($post_data['args']['docNumber']) && strlen($post_data['args']['docNumber']) > 0) {

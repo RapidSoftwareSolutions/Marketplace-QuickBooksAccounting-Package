@@ -18,11 +18,11 @@ $app->post('/api/QuickBooksAccounting/updateInvoice', function ($request, $respo
     $body['sparse'] = true;
     $body['SyncToken'] = $post_data['args']['syncToken'];
 
-    if (isset($post_data['args']['invoiceLines']) && strlen($post_data['args']['invoiceLines']) > 0) {
+    if (isset($post_data['args']['invoiceLines']) &&  count($post_data['args']['invoiceLines']) > 0) {
         $body['Line'] = $post_data['args']['invoiceLines'];
     }
 
-    if (isset($post_data['args']['customField']) && strlen($post_data['args']['customField']) > 0) {
+    if (isset($post_data['args']['customField']) && count($post_data['args']['customField']) > 0) {
         $body['CustomField'] = $post_data['args']['customField'];
     }
     if (isset($post_data['args']['docNumber']) && strlen($post_data['args']['docNumber']) > 0) {
@@ -52,7 +52,7 @@ $app->post('/api/QuickBooksAccounting/updateInvoice', function ($request, $respo
     if (isset($post_data['args']['txnStatus']) && strlen($post_data['args']['txnStatus']) > 0) {
         $body['TxnStatus'] = $post_data['args']['txnStatus'];
     }
-    if (isset($post_data['args']['linkedTxn']) && strlen($post_data['args']['linkedTxn']) > 0) {
+    if (isset($post_data['args']['linkedTxn']) && count($post_data['args']['linkedTxn']) > 0) {
         $body['LinkedTxn'] = $post_data['args']['linkedTxn'];
     }
     if (isset($post_data['args']['txnTaxDetail']) && strlen($post_data['args']['txnTaxDetail']) > 0) {
