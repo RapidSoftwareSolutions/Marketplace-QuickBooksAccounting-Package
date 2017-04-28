@@ -13809,7 +13809,7 @@
           "required": true
         },
         {
-          "name": "Note",
+          "name": "note",
           "type": "String",
           "info": "Max 2000 chars, filterable, sortable ",
           "required": true
@@ -14208,52 +14208,7 @@
         }
       ]
     },
-    {
-      "name": "readEntitlements",
-      "description": "Retrieves the entitlements details.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Api key obtained from Intuit",
-          "required": true
-        },
-        {
-          "name": "apiSecret",
-          "type": "credentials",
-          "info": "Api secret obtained from Intuit",
-          "required": true
-        },
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token provided by user",
-          "required": true
-        },
-        {
-          "name": "tokenSecret",
-          "type": "String",
-          "info": "Token secret provided by user",
-          "required": true
-        },
-        {
-          "name": "companyId",
-          "type": "Number",
-          "info": "Id of the company",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
+
     {
       "name": "getPreferences",
       "description": "Retrieves the Preferences details for the specified company.",

@@ -2850,7 +2850,7 @@ Use this endpoint to attach a note to the an object.
 | tokenSecret  | String     | Token secret provided by user
 | companyId    | Number     | Id of the company
 | attachableRef| Array      | Specifies the transaction object to which this attachable file is to be linked.
-| Note         | String     | Max 2000 chars, filterable, sortable 
+| note         | String     | Max 2000 chars, filterable, sortable 
 
 ## QuickBooksAccounting.readAttachable
 Retrieves the details of a attachable that has been previously created.
@@ -2939,16 +2939,6 @@ Returns the results of the query.
 | companyId  | Number     | Id of the company
 | query      | String     | Your query to process
 
-## QuickBooksAccounting.readEntitlements
-Retrieves the entitlements details.
-
-| Field      | Type       | Description
-|------------|------------|----------
-| apiKey     | credentials| Api key obtained from Intuit
-| apiSecret  | credentials| Api secret obtained from Intuit
-| accessToken| String     | Access token provided by user
-| tokenSecret| String     | Token secret provided by user
-| companyId  | Number     | Id of the company
 
 ## QuickBooksAccounting.getPreferences
 Retrieves the Preferences details for the specified company.

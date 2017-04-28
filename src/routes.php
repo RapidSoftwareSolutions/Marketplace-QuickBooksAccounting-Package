@@ -3,7 +3,6 @@
        'queryPreferences',
        'updatePreferences',
        'getPreferences',
-       'readEntitlements',
        'queryCompanyInfo',
        'getCompanyInfo',
        'getChangedEntities',
