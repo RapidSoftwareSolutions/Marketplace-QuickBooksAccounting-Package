@@ -15,7 +15,7 @@ return [
             'path' => __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
-        'api_url' => 'https://sandbox-quickbooks.api.intuit.com/v3/',
+        'api_url' => 'https://quickbooks.api.intuit.com/v3/',
         'uploadServiceUrl' => 'http://104.198.149.144:8080',
         'fileExtensions' => ['wav' => '.wav', 'html' => '.html', 'md' => '.md', 'jpeg' => '.jpeg', 'bmp'=> '.bmp', 'pdf'=>'.pdf'],
     ],
