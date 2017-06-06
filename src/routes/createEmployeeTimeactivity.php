@@ -36,10 +36,11 @@ $app->post('/api/QuickBooksAccounting/createEmployeeTimeactivity', function ($re
     if (isset($post_data['args']['startTime']) && strlen($post_data['args']['startTime']) > 0) {
         $dateTime = new DateTime($post_data['args']['startTime']);
         $body['StartTime'] = $dateTime->format('Y-m-d\TH:i:s\Z');
+
     }
     if (isset($post_data['args']['endTime']) && strlen($post_data['args']['endTime']) > 0) {
         $dateTime = new DateTime($post_data['args']['endTime']);
-        $body['endTime'] = $dateTime->format('Y-m-d\TH:i:s\Z');
+        $body['EndTime'] =$dateTime->format('Y-m-d\TH:i:s\Z');
     }
 
     $stack = HandlerStack::create();

@@ -39,7 +39,7 @@ $app->post('/api/QuickBooksAccounting/createVendorTimeactivity', function ($requ
     }
     if (isset($post_data['args']['endTime']) && strlen($post_data['args']['endTime']) > 0) {
         $dateTime = new DateTime($post_data['args']['endTime']);
-        $body['endTime'] = $dateTime->format('Y-m-d\TH:i:s\Z');
+        $body['EndTime'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
 
     $stack = HandlerStack::create();
