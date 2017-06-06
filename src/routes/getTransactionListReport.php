@@ -4,6 +4,9 @@ use GuzzleHttp\Subscriber\Oauth\Oauth1;
 
 $app->post('/api/QuickBooksAccounting/getTransactionListReport', function ($request, $response, $args) {
     $settings = $this->settings;
+    if (isset($post_data['args']['sandbox']) == 1) {
+        $settings['api_url'] = 'https://sandbox-quickbooks.api.intuit.com/v3/';
+    }
 
     //checking properly formed json
     $checkRequest = $this->validation;
@@ -71,8 +74,8 @@ $app->post('/api/QuickBooksAccounting/getTransactionListReport', function ($requ
     if (isset($post_data['args']['item']) && strlen($post_data['args']['item']) > 0) {
         $body['item'] = $post_data['args']['item'];
     }
-    if (isset($post_data['args']['memo']) && strlen($post_data['args']['memo']) > 0) {
-        $body['memo'] = $post_data['args']['memo'];
+    if (!empty($post_data['args']['memo'])) {
+        $body['memo'] = is_array($post_data['args']['memo']) ? implode(',', $post_data['args']['memo']) : $post_data['args']['memo'];
     }
     if (isset($post_data['args']['moddateMacro']) && strlen($post_data['args']['moddateMacro']) > 0) {
         $body['moddate_macro'] = $post_data['args']['moddateMacro'];

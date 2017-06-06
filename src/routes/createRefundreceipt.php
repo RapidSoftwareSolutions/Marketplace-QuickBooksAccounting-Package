@@ -3,7 +3,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 
 $app->post('/api/QuickBooksAccounting/createRefundreceipt', function ($request, $response, $args) {
-    $settings = $this->settings;
+        $settings = $this->settings;     if(isset($post_data['args']['sandbox']) == 1){         $settings['api_url'] = 'https://sandbox-quickbooks.api.intuit.com/v3/';     }
 
     //checking properly formed json
     $checkRequest = $this->validation;

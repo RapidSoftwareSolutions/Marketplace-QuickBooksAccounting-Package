@@ -4,6 +4,9 @@ use GuzzleHttp\Subscriber\Oauth\Oauth1;
 
 $app->post('/api/QuickBooksAccounting/getChangedEntities', function ($request, $response, $args) {
     $settings = $this->settings;
+    if (isset($post_data['args']['sandbox']) == 1) {
+        $settings['api_url'] = 'https://sandbox-quickbooks.api.intuit.com/v3/';
+    }
 
     //checking properly formed json
     $checkRequest = $this->validation;
@@ -24,7 +27,7 @@ $app->post('/api/QuickBooksAccounting/getChangedEntities', function ($request, $
     ]);
     $stack->push($middleware);
 
-    $body['entities'] = $post_data['args']['entityList'];
+    $body['entities'] = is_array($post_data['args']['entityList']) ? implode(',', $post_data['args']['entityList']) : $post_data['args']['entityList'];
     $body['changedSince'] = $post_data['args']['changedSince'];
     //requesting remote API
     $client = new GuzzleHttp\Client([
@@ -35,7 +38,7 @@ $app->post('/api/QuickBooksAccounting/getChangedEntities', function ($request, $
         'handler' => $stack
     ]);
     try {
-        $resp = $client->request('GET', 'company/' . $post_data['args']['companyId'] . '/cdc', ['auth' => 'oauth', 'query'=> $body]);
+        $resp = $client->request('GET', 'company/' . $post_data['args']['companyId'] . '/cdc', ['auth' => 'oauth', 'query' => $body]);
         $responseBody = $resp->getBody()->getContents();
         $rawBody = json_decode($resp->getBody());
         $all_data[] = $rawBody;

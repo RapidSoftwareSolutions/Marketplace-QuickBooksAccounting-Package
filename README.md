@@ -2,14 +2,25 @@
 
 # QuickBooksAccounting Package
 QuickBooksAccounting
-* Domain: ['Quickbooks Accounting](https://developer.intuit.com)
+* Domain: [QuickBooksAccounting](http://https://developer.intuit.com)
 * Credentials: apiKey, apiSecret
 
+## How to get credentials: 
 ## How to get credentials: 
 0. Open [Intuit website](https://developer.intuit.com)
 1. Register or log in
 2. Go to [My app page](https://developer.intuit.com/v2/ui#/app/dashboard)
 3. Register your application to get your apiKey and apiSecret
+
+## Custom datatypes: 
+ |Datatype|Description|Example
+ |--------|-----------|----------
+ |Datepicker|String which includes date and time|```2016-05-28 00:00:00```
+ |Map|String which includes latitude and longitude coma separated|```50.37, 26.56```
+ |List|Simple array|```["123", "sample"]``` 
+ |Select|String with predefined values|```sample```
+ |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
+ 
 
 ## QuickBooksAccounting.queryBill
 Returns the results of the query.
@@ -21,6 +32,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.createBill
@@ -33,8 +45,9 @@ Creates new bill
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
-| billLines     | Array      | Individual line items of a transaction.
-| vendorRefType | String     | Value of vendor type: name or value
+| sandbox       | String     | Whether to run in sandbox mode
+| billLines     | List       | Individual line items of a transaction.
+| vendorRefType | Select     | Value of vendor type: name or value
 | vendorRefValue| String     | Value of vendor ref
 
 ## QuickBooksAccounting.getBill
@@ -47,6 +60,7 @@ Retrieves the details of a bill that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | billId     | Number     | Id of your bill
 
 ## QuickBooksAccounting.updateBill
@@ -59,11 +73,12 @@ Updates a bill that has been previously created. Writable fields omitted from th
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | billId                 | Number     | Id of your bill
 | syncToken              | Number     | Version number of the object.
-| billLines              | Array      | Individual line items of a transaction.
+| billLines              | List       | Individual line items of a transaction.
 | docNumber              | String     | Reference number for the transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
@@ -75,12 +90,12 @@ Updates a bill that has been previously created. Writable fields omitted from th
 | vendorRefName          | String     | An identifying name for the object being referenced by vendorRefId
 | apAccountRefId         | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | apAccountRefName       | String     | An identifying name for the object being referenced by apAccountRefId
-| globalTaxCalculation   | String     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
+| globalTaxCalculation   | Select     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
 | salesTermRefId         | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | salesTermRefName       | String     | An identifying name for the object being referenced by salesTermRefId
-| dueDate                | String     | Date when the payment of the transaction is due.
+| dueDate                | DatePicker | Date when the payment of the transaction is due.
 | balance                | String     | The balance reflecting any payments made against the transaction.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.deleteBill
 Deletes existing bill. You must unlink any linked transactions associated with the bill object before deleting it.
@@ -92,6 +107,7 @@ Deletes existing bill. You must unlink any linked transactions associated with t
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | billId     | String     | Id of the bill
 | syncToken  | String     | Version number of the object.
 
@@ -105,6 +121,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.createCheckBillpayment
@@ -117,13 +134,14 @@ Creates new bill payment by check
 | accessToken       | String     | Access token provided by user
 | tokenSecret       | String     | Token secret provided by user
 | companyId         | Number     | Id of the company
-| billpaymentLines  | Array      | Individual line items of a transaction.
+| sandbox           | String     | Whether to run in sandbox mode
+| billpaymentLines  | List       | Individual line items of a transaction.
 | totalAmt          | String     | Indicates the total amount of the associated with this payment.
 | vendorRefId       | String     | The ID for the referenced object as found in the Id field of the object payload.
 | vendorRefName     | String     | An identifying name for the object being referenced by vendorRefId
 | bankAccountRefId  | String     | The ID for the referenced object as found in the Id field of the object payload.
 | bankAccountRefName| String     | An identifying name for the object being referenced by bankAccountRefId
-| printStatus       | String     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.
+| printStatus       | Select     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.
 
 ## QuickBooksAccounting.createCreditCardBillpayment
 Creates new bill payment by credit card
@@ -135,7 +153,8 @@ Creates new bill payment by credit card
 | accessToken     | String     | Access token provided by user
 | tokenSecret     | String     | Token secret provided by user
 | companyId       | Number     | Id of the company
-| billpaymentLines| Array      | Individual line items of a transaction.
+| sandbox         | String     | Whether to run in sandbox mode
+| billpaymentLines| List       | Individual line items of a transaction.
 | totalAmt        | String     | Indicates the total amount of the associated with this payment.
 | vendorRefId     | String     | The ID for the referenced object as found in the Id field of the object payload.
 | vendorRefName   | String     | An identifying name for the object being referenced by vendorRefId
@@ -152,6 +171,7 @@ Retrieves the details of a billpayment that has been previously created.
 | accessToken  | String     | Access token provided by user
 | tokenSecret  | String     | Token secret provided by user
 | companyId    | Number     | Id of the company
+| sandbox      | String     | Whether to run in sandbox mode
 | billpaymentId| Number     | Id of your billpayment
 
 ## QuickBooksAccounting.updateCheckBillpayment
@@ -164,17 +184,18 @@ Updates existing bill payment by check. Writable fields omitted from the request
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | billpaymentId          | Number     | Id of the billpayment
-| billpaymentLines       | Array      | Individual line items of a transaction.
+| billpaymentLines       | List       | Individual line items of a transaction.
 | totalAmt               | String     | Indicates the total amount of the associated with this payment.
 | syncToken              | Number     | Version number of the object.
 | vendorRefId            | String     | The ID for the referenced object as found in the Id field of the object payload.
 | vendorRefName          | String     | An identifying name for the object being referenced by vendorRefId
 | bankAccountRefId       | String     | The ID for the referenced object as found in the Id field of the object payload.
 | bankAccountRefName     | String     | An identifying name for the object being referenced by bankAccountRefId
-| printStatus            | String     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.
+| printStatus            | Select     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.
 | docNumber              | String     | Reference number for the transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
@@ -184,7 +205,7 @@ Updates existing bill payment by check. Writable fields omitted from the request
 | apAccountRefId         | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | apAccountRefName       | String     | An identifying name for the object being referenced by apAccountRefId
 | processBillPayment     | Boolean    | Indicates that the payment should be processed by merchant account service.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.updateCreditCardBillpayment
 Updates existing bill payment by credit card. Writable fields omitted from the request body are set to NULL.
@@ -196,16 +217,17 @@ Updates existing bill payment by credit card. Writable fields omitted from the r
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | syncToken              | Number     | Version number of the object.
 | billpaymentId          | Number     | Id of the billpayment
-| billpaymentLines       | Array      | Individual line items of a transaction.
+| billpaymentLines       | List       | Individual line items of a transaction.
 | totalAmt               | String     | Indicates the total amount of the associated with this payment.
 | vendorRefId            | String     | The ID for the referenced object as found in the Id field of the object payload.
 | vendorRefName          | String     | An identifying name for the object being referenced by vendorRefId
 | ccAccountRefId         | String     | The ID for the referenced object as found in the Id field of the object payload.
 | ccAccountRefName       | String     | An identifying name for the object being referenced by bankAccountRefId
 | docNumber              | String     | Reference number for the transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
@@ -215,7 +237,7 @@ Updates existing bill payment by credit card. Writable fields omitted from the r
 | apAccountRefId         | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | apAccountRefName       | String     | An identifying name for the object being referenced by apAccountRefId
 | processBillPayment     | Boolean    | Indicates that the payment should be processed by merchant account service.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.deleteBillpayment
 This operation deletes the billpayment object specified in the request body. 
@@ -227,6 +249,7 @@ This operation deletes the billpayment object specified in the request body.
 | accessToken  | String     | Access token provided by user
 | tokenSecret  | String     | Token secret provided by user
 | companyId    | Number     | Id of the company
+| sandbox      | String     | Whether to run in sandbox mode
 | billpaymentId| String     | Id of the billpayment
 | syncToken    | String     | Version number of the object.
 
@@ -240,7 +263,8 @@ Create new credit memo
 | accessToken    | String     | Access token provided by user
 | tokenSecret    | String     | Token secret provided by user
 | companyId      | Number     | Id of the company
-| creditMemoLines| Array      | Individual line items of a transaction.
+| sandbox        | String     | Whether to run in sandbox mode
+| creditMemoLines| List       | Individual line items of a transaction.
 | customerRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | customerRefName| String     | An identifying name for the object being referenced by customerRefId
 
@@ -254,6 +278,7 @@ Retrieves the details of a creditmemo that has been previously created.
 | accessToken | String     | Access token provided by user
 | tokenSecret | String     | Token secret provided by user
 | companyId   | Number     | Id of the company
+| sandbox     | String     | Whether to run in sandbox mode
 | creditMemoId| Number     | Id of your creditmemo
 
 ## QuickBooksAccounting.updateCreditmemo
@@ -266,12 +291,13 @@ Updates a credit memo that has been previously created. Writable fields omitted 
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | creditMemoId           | Number     | Id of your credit memo
 | syncToken              | Number     | Version number of the object.
-| creditMemoLines        | Array      | Individual line items of a transaction.
-| customField            | Array      | Custom field or data extension.
+| creditMemoLines        | List       | Individual line items of a transaction.
+| customField            | List       | Custom field or data extension.
 | docNumber              | String     | Reference number for the transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
@@ -286,17 +312,17 @@ Updates a credit memo that has been previously created. Writable fields omitted 
 | shipAddr               | JSON       | Identifies the address where the goods must be shipped. 
 | salesTermRefId         | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | salesTermRefName       | String     | An identifying name for the object being referenced by salesTermRefId
-| globalTaxCalculation   | String     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
+| globalTaxCalculation   | Select     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
 | totalAmt               | String     | Indicates the total amount of the transaction. This includes the total of all the charges, allowances, and taxes. 
 | applyTaxAfterDiscount  | Boolean    | If false or null, calculate the sales tax first, and then apply the discount. If true, subtract the discount first and then calculate the sales tax.
-| printStatus            | String     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete .
-| emailStatus            | String     | Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent
+| printStatus            | Select     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete .
+| emailStatus            | Select     | Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent
 | billEmail              | String     | Identifies the e-mail address where the invoice is sent.
 | balance                | String     | The balance reflecting any payments made against the transaction.
 | paymentMethodRefId     | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | paymentMethodRefName   | String     | An identifying name for the object being referenced by paymentMethodRefId
 | remainingCredit        | String     | Indicates the total credit amount still available to apply towards the payment.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.queryCreditmemo
 Returns the results of the query.
@@ -308,6 +334,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.deleteCreditmemo
@@ -320,6 +347,7 @@ Deletes existing creditmemo.
 | accessToken | String     | Access token provided by user
 | tokenSecret | String     | Token secret provided by user
 | companyId   | Number     | Id of the company
+| sandbox     | String     | Whether to run in sandbox mode
 | creditMemoId| String     | Id of the creditmemo
 | syncToken   | String     | Version number of the object.
 
@@ -333,7 +361,8 @@ Creates new deposit
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
-| depositLines           | Array      | Individual line items of a transaction.
+| sandbox                | String     | Whether to run in sandbox mode
+| depositLines           | List       | Individual line items of a transaction.
 | depositToAccountRefId  | Number     | The ID for the referenced object as found in the Id field of the object payload. 
 | depositToAccountRefName| String     | An identifying name for the object being referenced by depositToAccountRefId
 
@@ -347,6 +376,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.getDeposit
@@ -359,6 +389,7 @@ Retrieves the details of a deposit that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | depositId  | Number     | Id of your deposit
 
 ## QuickBooksAccounting.updateDeposit
@@ -371,22 +402,23 @@ Updates a deposit that has been previously created.
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | depositId              | Number     | Id of your deposit
 | syncToken              | Number     | Version number of the object.
-| depositLines           | Array      | Individual line items of a transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| depositLines           | List       | Individual line items of a transaction.
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
 | privateNote            | String     | User entered, organization-private note about the transaction.
-| globalTaxCalculation   | String     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
-| txnStatus              | String     | Status of the transaction. Valid values include: Draft, Overdue, Pending, Payable, Paid, Trash, and Unpaid.
+| globalTaxCalculation   | Select     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
+| txnStatus              | Select     | Status of the transaction. Valid values include: Draft, Overdue, Pending, Payable, Paid, Trash, and Unpaid.
 | txnTaxDetail           | JSON       | This data type provides information for taxes charged on the transaction as a whole. 
 | depositToAccountRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | depositToAccountRefName| String     | An identifying name for the object being referenced by vendorRefId
 | txnSource              | String     | Used internally to specify originating source of a credit card transaction.
 | cashBack               | JSON       | Cash back info
 | totalAmt               | String     | Indicates the total amount of the transaction. This includes the total of all the charges, allowances, and taxes. 
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.deleteDeposit
 Deletes existing deposit.
@@ -398,6 +430,7 @@ Deletes existing deposit.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | depositId  | String     | Id of the deposit
 | syncToken  | String     | Version number of the object.
 
@@ -411,7 +444,8 @@ Create new estimate
 | accessToken    | String     | Access token provided by user
 | tokenSecret    | String     | Token secret provided by user
 | companyId      | Number     | Id of the company
-| estimateLines  | Array      | Individual line items of a transaction.
+| sandbox        | String     | Whether to run in sandbox mode
+| estimateLines  | List       | Individual line items of a transaction.
 | customerRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | customerRefName| String     | An identifying name for the object being referenced by customerRefId
 
@@ -425,6 +459,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.getEstimate
@@ -437,6 +472,7 @@ Retrieves the details of a estimate that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | estimateId | Number     | Id of your estimate
 
 ## QuickBooksAccounting.getEstimateAsPDF
@@ -449,6 +485,7 @@ Retrieves the details of a estimate that has been previously created as link to 
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | estimateId | Number     | Id of your estimate
 
 ## QuickBooksAccounting.sendEstimate
@@ -461,6 +498,7 @@ Send the specified estimate object via email.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | estimateId | Number     | Id of your estimate
 | email      | String     | Email address
 
@@ -474,20 +512,21 @@ Updates a estimate that has been previously created.
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | estimateId             | Number     | Id of your estimate
 | syncToken              | Number     | Version number of the object.
-| estimateLines          | Array      | Individual line items of a transaction.
-| customField            | Array      | Custom field or data extension.
+| estimateLines          | List       | Individual line items of a transaction.
+| customField            | List       | Custom field or data extension.
 | docNumber              | String     | Reference number for the transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
 | currencyRefName        | String     | An identifying name for the currency being referenced by currencyRefId
 | exchangeRate           | String     | The number of home currency units it takes to equal one unit of currency specified by currencyRef
 | privateNote            | String     | User entered, organization-private note about the transaction.
-| txnStatus              | String     | Status of the transaction. Valid values include: Accepted, Closed, Pending, Rejected
-| linkedTxn              | Array      | Zero or more Invoice objects related to this transaction.
+| txnStatus              | Select     | Status of the transaction. Valid values include: Accepted, Closed, Pending, Rejected
+| linkedTxn              | List       | Zero or more Invoice objects related to this transaction.
 | txnTaxDetail           | JSON       | This data type provides information for taxes charged on the transaction as a whole. 
 | customerRefId          | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | customerRefName        | String     | An identifying name for the object being referenced by customerRefId
@@ -500,18 +539,18 @@ Updates a estimate that has been previously created.
 | salesTermRefName       | String     | An identifying name for the object being referenced by salesTermRefId
 | shipMethodRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | shipMethodRefName      | String     | An identifying name for the object being referenced by shipMethodRefId
-| dueDate                | String     | Date when the payment of the transaction is due.
-| shipDate               | String     | Date for delivery of goods or services.
-| globalTaxCalculation   | String     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
+| dueDate                | DatePicker | Date when the payment of the transaction is due.
+| shipDate               | DatePicker | Date for delivery of goods or services.
+| globalTaxCalculation   | Select     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
 | totalAmt               | String     | Indicates the total amount of the transaction. This includes the total of all the charges, allowances, and taxes. 
 | applyTaxAfterDiscount  | Boolean    | If false or null, calculate the sales tax first, and then apply the discount. If true, subtract the discount first and then calculate the sales tax.
-| printStatus            | String     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete .
-| emailStatus            | String     | Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent
+| printStatus            | Select     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete .
+| emailStatus            | Select     | Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent
 | billEmail              | String     | Identifies the e-mail address where the invoice is sent.
-| expirationDate         | String     | Date by which estimate must be accepted before invalidation.
+| expirationDate         | DatePicker | Date by which estimate must be accepted before invalidation.
 | acceptedBy             | String     | Name of customer who accepted the estimate.
-| acceptedDate           | String     | Date estimate was accepted.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| acceptedDate           | DatePicker | Date estimate was accepted.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.deleteEstimate
 Deletes existing estimate.
@@ -523,6 +562,7 @@ Deletes existing estimate.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | estimateId | String     | Id of the estimate
 | syncToken  | String     | Version number of the object.
 
@@ -536,7 +576,8 @@ Create new invoice
 | accessToken    | String     | Access token provided by user
 | tokenSecret    | String     | Token secret provided by user
 | companyId      | Number     | Id of the company
-| invoiceLines   | Array      | Individual line items of a transaction.
+| sandbox        | String     | Whether to run in sandbox mode
+| invoiceLines   | List       | Individual line items of a transaction.
 | customerRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | customerRefName| String     | An identifying name for the object being referenced by customerRefId
 
@@ -550,6 +591,7 @@ Retrieves the details of a invoice that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | invoiceId  | Number     | Id of your invoice
 
 ## QuickBooksAccounting.getInvoiceAsPDF
@@ -562,6 +604,7 @@ Retrieves the details of a invoice that has been previously created as link to P
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | invoiceId  | Number     | Id of your invoice
 
 ## QuickBooksAccounting.sendInvoice
@@ -574,6 +617,7 @@ Send the specified invoice object via email.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | invoiceId  | Number     | Id of your invoice
 | email      | String     | Email address
 
@@ -587,6 +631,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.makeInvoiceVoid
@@ -599,6 +644,7 @@ Use this operation to void an existing invoice object
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | invoiceId  | String     | Id of the invoice
 | syncToken  | String     | Version number of the object.
 
@@ -612,20 +658,21 @@ Updates an invoice that has been previously created.
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | invoiceId              | Number     | Id of your estimate
 | syncToken              | Number     | Version number of the object.
-| invoiceLines           | Array      | Individual line items of a transaction.
-| customField            | Array      | Custom field or data extension.
+| invoiceLines           | List       | Individual line items of a transaction.
+| customField            | List       | Custom field or data extension.
 | docNumber              | String     | Reference number for the transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
 | currencyRefName        | String     | An identifying name for the currency being referenced by currencyRefId
 | exchangeRate           | String     | The number of home currency units it takes to equal one unit of currency specified by currencyRef
 | privateNote            | String     | User entered, organization-private note about the transaction.
-| txnStatus              | String     | Status of the transaction. Valid values include: Accepted, Closed, Pending, Rejected
-| linkedTxn              | Array      | Zero or more Invoice objects related to this transaction.
+| txnStatus              | Select     | Status of the transaction. Valid values include: Accepted, Closed, Pending, Rejected
+| linkedTxn              | List       | Zero or more Invoice objects related to this transaction.
 | txnTaxDetail           | JSON       | This data type provides information for taxes charged on the transaction as a whole. 
 | customerRefId          | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | customerRefName        | String     | An identifying name for the object being referenced by customerRefId
@@ -637,20 +684,20 @@ Updates an invoice that has been previously created.
 | salesTermRefName       | String     | An identifying name for the object being referenced by salesTermRefId
 | shipMethodRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | shipMethodRefName      | String     | An identifying name for the object being referenced by shipMethodRefId
-| dueDate                | String     | Date when the payment of the transaction is due.
-| shipDate               | String     | Date for delivery of goods or services.
-| globalTaxCalculation   | String     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
+| dueDate                | DatePicker | Date when the payment of the transaction is due.
+| shipDate               | DatePicker | Date for delivery of goods or services.
+| globalTaxCalculation   | Select     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
 | totalAmt               | String     | Indicates the total amount of the transaction. This includes the total of all the charges, allowances, and taxes. 
 | trackingNum            | String     | Shipping provider's tracking number for the delivery of the goods associated with the transaction.
 | applyTaxAfterDiscount  | Boolean    | If false or null, calculate the sales tax first, and then apply the discount. If true, subtract the discount first and then calculate the sales tax.
-| printStatus            | String     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete .
-| emailStatus            | String     | Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent
+| printStatus            | Select     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete .
+| emailStatus            | Select     | Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent
 | billEmail              | String     | Identifies the e-mail address where the invoice is sent.
 | billEmailCc            | String     | Identifies the carbon copy e-mail address where the invoice is sent.
 | billEmailBcc           | String     | Identifies the blind carbon copy e-mail address where the invoice is sent.
 | txnSource              | String     | Used internally to specify originating source of a credit card transaction.
 | deposit                | String     | The deposit made towards this invoice.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 | customerMemo           | String     | User-entered message to the customer; this message is visible to end user on their transactions.
 
 ## QuickBooksAccounting.deleteInvoice
@@ -663,6 +710,7 @@ Deletes existing invoice
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | invoiceId  | String     | Id of the invoice
 | syncToken  | String     | Version number of the object.
 
@@ -676,7 +724,8 @@ Create new journal entry
 | accessToken       | String     | Access token provided by user
 | tokenSecret       | String     | Token secret provided by user
 | companyId         | Number     | Id of the company
-| journalentryLines | Array      | Individual line items of a transaction.
+| sandbox           | String     | Whether to run in sandbox mode
+| journalentryLines | List       | Individual line items of a transaction.
 | journalCodeRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | journalCodeRefName| String     | An identifying name for the object being referenced by customerRefId
 
@@ -690,6 +739,7 @@ Retrieves the details of a journal entry that has been previously created.
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | journalentryId| Number     | Id of your journal entry
 
 ## QuickBooksAccounting.updateJournalentry
@@ -702,11 +752,12 @@ Updates an journal entry that has been previously created.
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | journalentryId         | Number     | Id of your journal entry
 | syncToken              | Number     | Version number of the object.
-| journalentryLines      | Array      | Individual line items of a transaction.
+| journalentryLines      | List       | Individual line items of a transaction.
 | docNumber              | String     | Reference number for the transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
 | currencyRefName        | String     | An identifying name for the currency being referenced by currencyRefId
 | exchangeRate           | String     | The number of home currency units it takes to equal one unit of currency specified by currencyRef
@@ -715,7 +766,7 @@ Updates an journal entry that has been previously created.
 | totalAmt               | String     | Indicates the total amount of the transaction. This includes the total of all the charges, allowances, and taxes. 
 | txnSource              | String     | Used internally to specify originating source of a credit card transaction.
 | adjustment             | Boolean    | Indicates the total amount of the transaction. This includes the total of all the charges, allowances, and taxes. By default, this is recalculated by the system based on sub-items total and overridden.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.queryJournalentry
 Returns the results of the query.
@@ -727,6 +778,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.deleteJournalentry
@@ -739,6 +791,7 @@ Deletes existing journal entry.
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | journalentryId| String     | Id of the journal entry
 | syncToken     | String     | Version number of the object.
 
@@ -752,6 +805,7 @@ Create new payment
 | accessToken    | String     | Access token provided by user
 | tokenSecret    | String     | Token secret provided by user
 | companyId      | Number     | Id of the company
+| sandbox        | String     | Whether to run in sandbox mode
 | totalAmt       | String     | Indicates the total amount of the transaction. This includes the total of all the charges, allowances, and taxes.
 | customerRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | customerRefName| String     | An identifying name for the object being referenced by customerRefId
@@ -766,6 +820,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.getPayment
@@ -778,6 +833,7 @@ Retrieves the details of a payment that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | paymentId  | Number     | Id of your payment
 
 ## QuickBooksAccounting.updatePayment
@@ -790,10 +846,11 @@ Updates a payment that has been previously created. Writable fields omitted from
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | paymentId              | Number     | Id of your payment
 | syncToken              | Number     | Version number of the object.
-| paymentLines           | Array      | Individual line items of a transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| paymentLines           | List       | Individual line items of a transaction.
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | txnStatus              | String     | The status of the transaction. For Payment objects, this status is always set to PAID.
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
 | currencyRefName        | String     | An identifying name for the currency being referenced by currencyRefId
@@ -811,7 +868,7 @@ Updates a payment that has been previously created. Writable fields omitted from
 | creditCardPayment      | JSON       | Information about a payment received by credit card. Inject with data only if the payment was transacted through Intuit Payments API.
 | totalAmt               | String     | Indicates the total amount of the transaction. This includes the total of all the charges, allowances, and taxes. 
 | txnSource              | String     | Used internally to specify originating source of a credit card transaction.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.makePaymentVoid
 Use this operation to void an existing payment object
@@ -823,6 +880,7 @@ Use this operation to void an existing payment object
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | paymentId  | String     | Id of the payment
 | syncToken  | String     | Version number of the object.
 
@@ -836,6 +894,7 @@ Deletes existing payment
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | paymentId  | String     | Id of the payment
 | syncToken  | String     | Version number of the object.
 
@@ -849,10 +908,11 @@ Create new purchase
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
-| purchaseLines | Array      | Individual line items of a transaction.
+| sandbox       | String     | Whether to run in sandbox mode
+| purchaseLines | List       | Individual line items of a transaction.
 | accountRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | accountRefName| String     | An identifying name for the object being referenced by customerRefId
-| paymentType   | String     | Payment Type can be  Cash, Check, or CreditCard
+| paymentType   | Select     | Payment Type can be  Cash, Check, or CreditCard
 
 ## QuickBooksAccounting.getPurchase
 Retrieves the details of a purchase that has been previously created.
@@ -864,6 +924,7 @@ Retrieves the details of a purchase that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | purchaseId | Number     | Id of your purchase
 
 ## QuickBooksAccounting.updatePurchase
@@ -876,14 +937,15 @@ Updates a purchase that has been previously created. Writable fields omitted fro
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | purchaseId             | Number     | Id of your purchase
 | syncToken              | Number     | Version number of the object.
-| paymentType            | String     | Type can be Cash, Check, or CreditCard.
-| purchaseLines          | Array      | Individual line items of a transaction.
+| paymentType            | Select     | Type can be Cash, Check, or CreditCard.
+| purchaseLines          | List       | Individual line items of a transaction.
 | accountRefId           | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | accountRefName         | String     | An identifying name for the object being referenced by accountRefId
 | docNumber              | String     | Reference number for the transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
@@ -898,8 +960,8 @@ Updates a purchase that has been previously created. Writable fields omitted fro
 | credit                 | Boolean    | False—it represents a charge.True—it represents a refund. Valid only for CreditCardpayment type.
 | txnSource              | String     | Used internally to specify originating source of a credit card transaction.
 | totalAmt               | String     | Indicates the total amount of the associated with this payment.
-| printStatus            | String     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| printStatus            | Select     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.queryPurchase
 Returns the results of the query.
@@ -911,6 +973,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.deletePurchase
@@ -923,6 +986,7 @@ Deletes existing purchase.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | purchaseId | String     | Id of the purchase
 | syncToken  | String     | Version number of the object.
 
@@ -936,7 +1000,8 @@ Create new purchase order
 | accessToken       | String     | Access token provided by user
 | tokenSecret       | String     | Token secret provided by user
 | companyId         | Number     | Id of the company
-| purchaseorderLines| Array      | Individual line items of a transaction.
+| sandbox           | String     | Whether to run in sandbox mode
+| purchaseorderLines| List       | Individual line items of a transaction.
 | vendorRefId       | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | vendorRefName     | String     | An identifying name for the object being referenced by vendorRefId
 | aPAccountRefID    | String     | The ID for the referenced object as found in the Id field of the object payload. 
@@ -952,6 +1017,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.getPurchaseorder
@@ -964,6 +1030,7 @@ Retrieves the details of a purchase order that has been previously created.
 | accessToken    | String     | Access token provided by user
 | tokenSecret    | String     | Token secret provided by user
 | companyId      | Number     | Id of the company
+| sandbox        | String     | Whether to run in sandbox mode
 | purchaseorderId| Number     | Id of your purchase
 
 ## QuickBooksAccounting.updatePurchaseorder
@@ -976,36 +1043,37 @@ Updates a purchase order that has been previously created. Writable fields omitt
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | purchaseorderId        | Number     | Id of your purchase order
 | syncToken              | Number     | Version number of the object.
-| purchaseorderLines     | Array      | Individual line items of a transaction.
+| purchaseorderLines     | List       | Individual line items of a transaction.
 | vendorRefId            | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | vendorRefName          | String     | An identifying name for the object being referenced by vendorRefId
 | aPAccountRefID         | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | aPAccountRefName       | String     | An identifying name for the object being referenced by aPAccountRefID
-| customField            | Array      | Custom field or data extension.
+| customField            | List       | Custom field or data extension.
 | docNumber              | String     | Reference number for the transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | privateNote            | String     | User entered, organization-private note about the transaction.
-| linkedTxn              | Array      | Zero or more Invoice objects related to this transaction.
+| linkedTxn              | List       | Zero or more Invoice objects related to this transaction.
 | totalAmt               | String     | Indicates the total amount of the associated with this payment.
 | memo                   | String     | A message for the vendor. This text appears on the Purchase Order object sent to the vendor.
 | classRefId             | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | classRefName           | String     | An identifying name for the object being referenced by classRefId
 | salesTermRefId         | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | salesTermRefName       | String     | An identifying name for the object being referenced by salesTermRefId
-| dueDate                | String     | Date when the payment of the transaction is due.
+| dueDate                | DatePicker | Date when the payment of the transaction is due.
 | vendorAddr             | JSON       | Address to which the payment should be sent.
 | shipAddr               | JSON       | Address to which the vendor shipped or will ship any goods associated with the purchase.
 | shipMethodRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | shipMethodRefName      | String     | An identifying name for the object being referenced by shipMethodRefId
-| poStatus               | String     | Purchase order status. Valid values are: Open and Closed.
+| poStatus               | Select     | Purchase order status. Valid values are: Open and Closed.
 | txnTaxDetail           | JSON       | This data type provides information for taxes charged on the transaction as a whole. 
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
 | currencyRefName        | String     | An identifying name for the currency being referenced by currencyRefId
 | exchangeRate           | String     | The number of home currency units it takes to equal one unit of currency specified by currencyRef
-| globalTaxCalculation   | String     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| globalTaxCalculation   | Select     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.deletePurchaseorder
 Deletes existing purchase order.
@@ -1017,6 +1085,7 @@ Deletes existing purchase order.
 | accessToken    | String     | Access token provided by user
 | tokenSecret    | String     | Token secret provided by user
 | companyId      | Number     | Id of the company
+| sandbox        | String     | Whether to run in sandbox mode
 | purchaseorderId| String     | Id of the purchase order
 | syncToken      | String     | Version number of the object.
 
@@ -1030,7 +1099,8 @@ Create new refund receipt
 | accessToken         | String     | Access token provided by user
 | tokenSecret         | String     | Token secret provided by user
 | companyId           | Number     | Id of the company
-| refundLines         | Array      | Individual line items of a transaction.
+| sandbox             | String     | Whether to run in sandbox mode
+| refundLines         | List       | Individual line items of a transaction.
 | depositToAccountId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | depositToAccountName| String     | An identifying name for the object being referenced by depositToAccountId
 
@@ -1044,6 +1114,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.getRefundreceipt
@@ -1056,6 +1127,7 @@ Retrieves the details of a refund receipt that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | refundId   | Number     | Id of your refund receipt
 
 ## QuickBooksAccounting.updateRefundreceipt
@@ -1068,14 +1140,15 @@ Updates an refund receipt that has been previously created.
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | refundId               | Number     | Id of your refund receipt
 | syncToken              | Number     | Version number of the object.
-| refundLines            | Array      | Individual line items of a transaction.
+| refundLines            | List       | Individual line items of a transaction.
 | depositToAccountRefId  | Number     | The ID for the referenced object as found in the Id field of the object payload. 
 | depositToAccountRefName| String     | An identifying name for the object being referenced by depositToAccountRefId
-| customField            | Array      | Custom field or data extension.
+| customField            | List       | Custom field or data extension.
 | docNumber              | String     | Reference number for the transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
@@ -1092,18 +1165,18 @@ Updates an refund receipt that has been previously created.
 | classRefName           | String     | An identifying name for the object being referenced by classRefId
 | totalAmt               | String     | Indicates the total amount of the associated with this payment.
 | applyTaxAfterDiscount  | Boolean    | If false or null, calculate the sales tax first, and then apply the discount. If true, subtract the discount first and then calculate the sales tax.
-| printStatus            | String     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.
+| printStatus            | Select     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.
 | billEmail              | String     | Identifies the e-mail address where the invoice is sent.
 | balance                | String     | The balance reflecting any payments made against the transaction.
 | paymentMethodRefId     | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | paymentMethodRefName   | String     | An identifying name for the object being referenced by paymentMethodRefId
 | paymentRefNum          | String     | The reference number for the payment received. For example,  Check # for a check, envelope # for a cash donation.
-| paymentType            | String     | Payment Type can be  Cash, Check, or CreditCard
+| paymentType            | Select     | Payment Type can be  Cash, Check, or CreditCard
 | checkPayment           | JSON       | Information about a check payment for the transaction.
 | creditCardPayment      | JSON       | Information about a credit card for the transaction.
 | txnSource              | String     | Used internally to specify originating source of a credit card transaction.
-| globalTaxCalculation   | String     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| globalTaxCalculation   | Select     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.deleteRefundreceipt
 Deletes existing refund receipt. You must unlink any linked transactions associated with the refund receipt object before deleting it.
@@ -1115,6 +1188,7 @@ Deletes existing refund receipt. You must unlink any linked transactions associa
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | refundId   | String     | Id of the refund receipt
 | syncToken  | String     | Version number of the object.
 
@@ -1128,7 +1202,8 @@ Create new sales receipt
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| salesreceiptLines| Array      | Individual line items of a transaction.
+| sandbox          | String     | Whether to run in sandbox mode
+| salesreceiptLines| List       | Individual line items of a transaction.
 
 ## QuickBooksAccounting.getSalesreceipt
 Retrieves the details of a invoice that has been previously created.
@@ -1140,6 +1215,7 @@ Retrieves the details of a invoice that has been previously created.
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | salesreceiptId| Number     | Id of your sales receipt
 
 ## QuickBooksAccounting.getSalesreceiptAsPDF
@@ -1152,6 +1228,7 @@ Retrieves the details of a sales receipt that has been previously created as lin
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | salesreceiptId| Number     | Id of your sales receipt
 
 ## QuickBooksAccounting.sendSalesreceipt
@@ -1164,6 +1241,7 @@ Send the specified sales receipt object via email.
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | salesreceiptId| Number     | Id of your sales receipt
 | email         | String     | Email address
 
@@ -1177,6 +1255,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.makeSalesreceiptVoid
@@ -1189,6 +1268,7 @@ Use this operation to void an existing sales receipt object
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | salesreceiptId| String     | Id of the sales receipt
 | syncToken     | String     | Version number of the object.
 
@@ -1202,12 +1282,13 @@ Updates an sales receipt that has been previously created.
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | salesreceiptId         | Number     | Id of your sales receipt
 | syncToken              | Number     | Version number of the object.
-| salesreceiptLines      | Array      | Individual line items of a transaction.
-| customField            | Array      | Custom field or data extension.
+| salesreceiptLines      | List       | Individual line items of a transaction.
+| customField            | List       | Custom field or data extension.
 | docNumber              | String     | Reference number for the transaction.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
 | privateNote            | String     | User entered, organization-private note about the transaction.
@@ -1221,11 +1302,11 @@ Updates an sales receipt that has been previously created.
 | classRefName           | String     | An identifying name for the object being referenced by classRefId
 | shipMethodRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | shipMethodRefName      | String     | An identifying name for the object being referenced by shipMethodRefId
-| shipDate               | String     | Date for delivery of goods or services.
+| shipDate               | DatePicker | Date for delivery of goods or services.
 | trackingNum            | String     | Shipping provider's tracking number for the delivery of the goods associated with the transaction.
 | totalAmt               | String     | Indicates the total amount of the associated with this payment.
-| printStatus            | String     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.
-| emailStatus            | String     | Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent
+| printStatus            | Select     | Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.
+| emailStatus            | Select     | Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent
 | billEmail              | String     | Identifies the e-mail address where the invoice is sent.
 | paymentMethodRefId     | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | paymentMethodRefName   | String     | An identifying name for the object being referenced by paymentMethodRefId
@@ -1238,8 +1319,8 @@ Updates an sales receipt that has been previously created.
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
 | currencyRefName        | String     | An identifying name for the currency being referenced by currencyRefId
 | exchangeRate           | String     | The number of home currency units it takes to equal one unit of currency specified by currencyRef
-| globalTaxCalculation   | String     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| globalTaxCalculation   | Select     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.deleteSalesreceipt
 Deletes existing sales receipt.
@@ -1251,6 +1332,7 @@ Deletes existing sales receipt.
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | salesreceiptId| String     | Id of the sales receipt
 | syncToken     | String     | Version number of the object.
 
@@ -1264,6 +1346,7 @@ Create new transfer
 | accessToken       | String     | Access token provided by user
 | tokenSecret       | String     | Token secret provided by user
 | companyId         | Number     | Id of the company
+| sandbox           | String     | Whether to run in sandbox mode
 | amount            | String     | Amount to transfer
 | fromAccountRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | fromAccountRefName| String     | An identifying name for the object being referenced by fromAccountRefId
@@ -1280,6 +1363,7 @@ Retrieves the details of a transfer that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | transferId | Number     | Id of your transfer
 
 ## QuickBooksAccounting.updateTransfer
@@ -1292,15 +1376,16 @@ Update existing transfer
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | transferId             | Number     | Id of the transfer
 | amount                 | String     | Amount to transfer
 | fromAccountRefId       | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | fromAccountRefName     | String     | An identifying name for the object being referenced by fromAccountRefId
 | toAccountRefId         | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | toAccountRefName       | String     | An identifying name for the object being referenced by toAccountRefId
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
 | privateNote            | String     | User entered, organization-private note about the transaction.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.queryTransfer
 Returns the results of the query.
@@ -1312,6 +1397,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.deleteTransfer
@@ -1324,6 +1410,7 @@ Deletes existing transfer.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | transferId | String     | Id of the transfer
 | syncToken  | String     | Version number of the object.
 
@@ -1337,6 +1424,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.createEmployeeTimeactivity
@@ -1348,9 +1436,10 @@ Create new timactivity for employee
 | apiSecret      | credentials| Api secret obtained from Intuit
 | accessToken    | String     | Access token provided by user
 | tokenSecret    | String     | Token secret provided by user
-| startTime      | String     | Start of time activity
-| endTime        | String     | End of time activity
+| startTime      | DatePicker | Start of time activity
+| endTime        | DatePicker | End of time activity
 | companyId      | Number     | Id of the company
+| sandbox        | String     | Whether to run in sandbox mode
 | employeeRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | employeeRefName| String     | An identifying name for the object being referenced by employeeRefId
 | customerRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
@@ -1366,9 +1455,10 @@ Create new timactivity for vendor
 | apiSecret      | credentials| Api secret obtained from Intuit
 | accessToken    | String     | Access token provided by user
 | tokenSecret    | String     | Token secret provided by user
-| startTime      | String     | Start of time activity
-| endTime        | String     | End of time activity
+| startTime      | DatePicker | Start of time activity
+| endTime        | DatePicker | End of time activity
 | companyId      | Number     | Id of the company
+| sandbox        | String     | Whether to run in sandbox mode
 | vendorRefId    | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | vendorRefName  | String     | An identifying name for the object being referenced by vendorRefId
 | customerRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
@@ -1385,6 +1475,7 @@ Retrieves the details of a time activity that has been previously created.
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | timeactivityId| Number     | Id of your time activity
 
 ## QuickBooksAccounting.updateEmployeeTimeactivity
@@ -1398,16 +1489,17 @@ Update existing timactivity for employee. Writable fields omitted from the reque
 | tokenSecret            | String     | Token secret provided by user
 | timeactivityId         | String     | Id of time activity
 | syncToken              | String     | Version number of the object.
-| startTime              | String     | Start of time activity
-| endTime                | String     | End of time activity
+| startTime              | DatePicker | Start of time activity
+| endTime                | DatePicker | End of time activity
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | employeeRefId          | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | employeeRefName        | String     | An identifying name for the object being referenced by employeeRefId
 | customerRefId          | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | customerRefName        | String     | An identifying name for the object being referenced by customerRefId
 | hourlyRate             | String     | Hourly bill rate of the employee for this time activity.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
-| billableStatus         | String     | Billable status of the time recorded. Valid values: Billable, NotBillable, HasBeenBilled. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
+| billableStatus         | Select     | Billable status of the time recorded. Valid values: Billable, NotBillable, HasBeenBilled. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
 | itemRefId              | String     | The ID for the referenced object as found in the Id field of the object payload. 
@@ -1418,7 +1510,7 @@ Update existing timactivity for employee. Writable fields omitted from the reque
 | breakHours             | String     | Hours of break taken between StartTime and EndTime.
 | breakMinutes           | String     | Minutes of break taken between StartTime and EndTime.
 | description            | String     | Description of work completed during time activity.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.updateVendorTimeactivity
 Update existing timeactivity for vendor. Writable fields omitted from the request body are set to NULL.
@@ -1431,16 +1523,17 @@ Update existing timeactivity for vendor. Writable fields omitted from the reques
 | tokenSecret            | String     | Token secret provided by user
 | timeactivityId         | String     | Id of time activity
 | syncToken              | String     | Version number of the object.
-| startTime              | String     | Start of time activity
-| endTime                | String     | End of time activity
+| startTime              | DatePicker | Start of time activity
+| endTime                | DatePicker | End of time activity
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | vendorRefId            | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | vendorRefName          | String     | An identifying name for the object being referenced by vendorRefId
 | customerRefId          | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | customerRefName        | String     | An identifying name for the object being referenced by customerRefId
 | hourlyRate             | String     | Hourly bill rate of the employee for this time activity.
-| txnDate                | String     | The date entered by the user when this transaction occurred. 
-| billableStatus         | String     | Billable status of the time recorded. Valid values: Billable, NotBillable, HasBeenBilled. 
+| txnDate                | DatePicker | The date entered by the user when this transaction occurred. 
+| billableStatus         | Select     | Billable status of the time recorded. Valid values: Billable, NotBillable, HasBeenBilled. 
 | departmentRefId        | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | departmentRefName      | String     | An identifying name for the object being referenced by departmentRefId
 | itemRefId              | String     | The ID for the referenced object as found in the Id field of the object payload. 
@@ -1451,7 +1544,7 @@ Update existing timeactivity for vendor. Writable fields omitted from the reques
 | breakHours             | String     | Hours of break taken between StartTime and EndTime.
 | breakMinutes           | String     | Minutes of break taken between StartTime and EndTime.
 | description            | String     | Description of work completed during time activity.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 
 ## QuickBooksAccounting.deleteTimeactivity
 Deletes existing time activity. 
@@ -1463,6 +1556,7 @@ Deletes existing time activity.
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | timeactivityId| String     | Id of the time activity
 | syncToken     | String     | Version number of the object.
 
@@ -1476,7 +1570,8 @@ Creates new vendor credit
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| vendorcreditLines| Array      | Individual line items of a transaction.
+| sandbox          | String     | Whether to run in sandbox mode
+| vendorcreditLines| List       | Individual line items of a transaction.
 | vendorRefId      | String     | The ID for the referenced object as found in the Id field of the object payload.
 | vendorRefName    | String     | An identifying name for the object being referenced by vendorRefId
 
@@ -1490,6 +1585,7 @@ Retrieves the details of a vendor credit that has been previously created.
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | vendorcreditId| Number     | Id of your vendor credit
 
 ## QuickBooksAccounting.updateVendorcredit
@@ -1502,9 +1598,10 @@ Update existing vendor credit
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | vendorcreditId         | Number     | Id of the vendor credit
 | syncToken              | Number     | Version number of the object.
-| vendorcreditLines      | Array      | Individual line items of a transaction.
+| vendorcreditLines      | List       | Individual line items of a transaction.
 | vendorRefId            | String     | The ID for the referenced object as found in the Id field of the object payload.
 | vendorRefName          | String     | An identifying name for the object being referenced by vendorRefId
 | docNumber              | String     | Reference number for the transaction.
@@ -1515,8 +1612,8 @@ Update existing vendor credit
 | currencyRefId          | String     | A three letter string representing the ISO 4217 code for the currency. 
 | currencyRefName        | String     | An identifying name for the currency being referenced by currencyRefId
 | exchangeRate           | String     | The number of home currency units it takes to equal one unit of currency specified by currencyRef
-| globalTaxCalculation   | String     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
-| transactionLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| globalTaxCalculation   | Select     | Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.
+| transactionLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 | privateNote            | String     | User entered, organization-private note about the transaction.
 
 ## QuickBooksAccounting.queryVendorcredit
@@ -1529,6 +1626,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.deleteVendorcredit
@@ -1541,6 +1639,7 @@ This operation deletes the vendor credit object specified in the request body.
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | vendorcreditId| String     | Id of the vendor credit
 | syncToken     | String     | Version number of the object.
 
@@ -1554,8 +1653,9 @@ Create new account
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | name          | String     | User recognizable name for the Account. attribute must not contain double quotes (") or colon (:).
-| accountType   | String     | A detailed account classification that specifies the use of this account. The type is based on the Classification. 
+| accountType   | Select     | A detailed account classification that specifies the use of this account. The type is based on the Classification. 
 | accountSubType| String     | The account sub-type classification and is based on the AccountType value. 
 | acctNum       | String     | User-defined account number to help the user in identifying the account within the chart-of-accounts and in deciding what should be posted to the account
 | taxCodeRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
@@ -1571,6 +1671,7 @@ Retrieves the details of a account that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | accountId  | Number     | Id of your account
 
 ## QuickBooksAccounting.updateAccount
@@ -1583,15 +1684,16 @@ Update existing account. he request body must include all writable fields of the
 | accessToken    | String     | Access token provided by user
 | tokenSecret    | String     | Token secret provided by user
 | companyId      | Number     | Id of the company
+| sandbox        | String     | Whether to run in sandbox mode
 | accountId      | Number     | Id of the account
 | syncToken      | Number     | Version number of the object.
 | name           | String     | User recognizable name for the Account. attribute must not contain double quotes (") or colon (:).
-| accountType    | String     | A detailed account classification that specifies the use of this account. The type is based on the Classification. 
+| accountType    | Select     | A detailed account classification that specifies the use of this account. The type is based on the Classification. 
 | accountSubType | String     | The account sub-type classification and is based on the AccountType value. 
 | accountAlias   | String     | A user friendly name for the account. It must be unique across all account categories.
-| txnLocationType| String     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
+| txnLocationType| Select     | The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.
 | active         | Boolean    | Whether or not active inactive accounts may be hidden from most display purposes and may not be posted to.
-| classification | Boolean    | The classification of an account. Not supported for non-posting accounts. Valid values include: Asset, Equity, Expense, Liability, Revenue
+| classification | Select     | The classification of an account. Not supported for non-posting accounts. Valid values include: Asset, Equity, Expense, Liability, Revenue
 | acctNum        | String     | User-defined account number to help the user in identifying the account within the chart-of-accounts and in deciding what should be posted to the account
 | description    | String     | User entered description for the account, which may include user entered information to guide bookkeepers/accountants in deciding what journal entries to post to the account.
 | taxCodeRefId   | String     | The ID for the referenced object as found in the Id field of the object payload. 
@@ -1611,6 +1713,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.queryBudget
@@ -1623,6 +1726,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.createClass
@@ -1635,6 +1739,7 @@ Create new class
 | accessToken  | String     | Access token provided by user
 | tokenSecret  | String     | Token secret provided by user
 | companyId    | Number     | Id of the company
+| sandbox      | String     | Whether to run in sandbox mode
 | name         | String     | User recognizable name for the class.
 | parentRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | parentRefName| String     | An identifying name for the object being referenced by parentRefId
@@ -1649,6 +1754,7 @@ Retrieves the details of a class that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | classId    | Number     | Id of your class
 
 ## QuickBooksAccounting.updateClass
@@ -1661,6 +1767,7 @@ Update existing class. he request body must include all writable fields of the e
 | accessToken       | String     | Access token provided by user
 | tokenSecret       | String     | Token secret provided by user
 | companyId         | Number     | Id of the company
+| sandbox           | String     | Whether to run in sandbox mode
 | classId           | Number     | Id of the class
 | syncToken         | Number     | Version number of the object.
 | name              | String     | User recognizable name for the class.
@@ -1679,6 +1786,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.createCompanyCurrency
@@ -1691,6 +1799,7 @@ Create new company currency
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | code       | String     | A three letter string representing the ISO 4217 code for the currency. For example, USD, AUD, EUR, and so on.
 
 ## QuickBooksAccounting.queryCompanyCurrency
@@ -1703,6 +1812,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.getCompanyCurrency
@@ -1715,6 +1825,7 @@ Retrieves the details of a company currency that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | currencyId | Number     | Id of your company currency
 
 ## QuickBooksAccounting.updateCompanyCurrency
@@ -1727,6 +1838,7 @@ Update existing company currency
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | currencyId | Number     | Id of the currency
 | syncToken  | Number     | Version number of the object.
 | code       | String     | A three letter string representing the ISO 4217 code for the currency. For example, USD, AUD, EUR, and so on.
@@ -1742,6 +1854,7 @@ This operation deletes the company currency object specified in the request body
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | currencyId | String     | Id of the company currency
 | syncToken  | String     | Version number of the object.
 
@@ -1755,6 +1868,7 @@ Create new customer
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | displayName| String     | The name of the person or organization as displayed. Must be unique across all Customer, Vendor, and Employee objects. Cannot be removed with sparse update. 
 | title      | String     | Title of the person.
 | givenName  | String     | Given name or first name of a person.
@@ -1772,6 +1886,7 @@ Retrieves the details of a customer that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | customerId | Number     | Id of your customer
 
 ## QuickBooksAccounting.updateCustomer
@@ -1784,6 +1899,7 @@ Update existing customer
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | customerId             | Number     | Id of the customer
 | syncToken              | String     | Version number of the object.
 | displayName            | String     | The name of the person or organization as displayed. Must be unique across all Customer, Vendor, and Employee objects. Cannot be removed with sparse update. 
@@ -1833,6 +1949,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.createDepartment
@@ -1845,6 +1962,7 @@ Create new department
 | accessToken  | String     | Access token provided by user
 | tokenSecret  | String     | Token secret provided by user
 | companyId    | Number     | Id of the company
+| sandbox      | String     | Whether to run in sandbox mode
 | name         | String     | User recognizable name for the department.
 | parentRefId  | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | parentRefName| String     | An identifying name for the object being referenced by parentRefId
@@ -1859,6 +1977,7 @@ Retrieves the details of a department that has been previously created.
 | accessToken | String     | Access token provided by user
 | tokenSecret | String     | Token secret provided by user
 | companyId   | Number     | Id of the company
+| sandbox     | String     | Whether to run in sandbox mode
 | departmentId| Number     | Id of your department
 
 ## QuickBooksAccounting.updateDepartment
@@ -1871,6 +1990,7 @@ Update existing department. The request body must include all writable fields of
 | accessToken       | String     | Access token provided by user
 | tokenSecret       | String     | Token secret provided by user
 | companyId         | Number     | Id of the company
+| sandbox           | String     | Whether to run in sandbox mode
 | departmentId      | Number     | Id of the department
 | syncToken         | Number     | Version number of the object.
 | name              | String     | User recognizable name for the class.
@@ -1890,6 +2010,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.createEmployee
@@ -1902,6 +2023,7 @@ Create new employee
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | givenName  | String     | Given name or first name of a person.
 | familyName | String     | Family name or the last name of the person.
 | primaryAddr| JSON       | Represents the physical street address for this employee.
@@ -1916,6 +2038,7 @@ Retrieves the details of a employee that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | employeeId | Number     | Id of your employee
 
 ## QuickBooksAccounting.updateEmployee
@@ -1928,6 +2051,7 @@ Update existing employee
 | accessToken     | String     | Access token provided by user
 | tokenSecret     | String     | Token secret provided by user
 | companyId       | Number     | Id of the company
+| sandbox         | String     | Whether to run in sandbox mode
 | employeeId      | Number     | Id of the employee
 | givenName       | String     | Given name or first name of a person.
 | familyName      | String     | Family name or the last name of the person.
@@ -1947,10 +2071,11 @@ Update existing employee
 | primaryAddr     | String     | Represents the physical street address for this employee.
 | billableTime    | Boolean    | If true, this entity is currently enabled for use by QuickBooks.
 | billRate        | String     | This attribute can only be set if BillableTime is true. Not supported when QuickBooks Payroll is enabled.
-| birthDate       | String     | Birth date of the employee.
-| gender          | String     | Gender of the employee. To clear the gender value, set to Null in a full update request. Supported values include: Male or Female.
-| hiredDate       | String     | Hire date of the employee.
-| releasedDate    | String     | Release date of the employee.
+| birthDate       | DatePicker | Birth date of the employee.
+| gender          | Select     | Gender of the employee. To clear the gender value, set to Null in a full update request. Supported values include: Male or Female.
+| hiredDate       | DatePicker | Hire date of the employee.
+| releasedDate    | DatePicker | Release date of the employee.
+| syncToken       | Number     | Version number of the object.
 
 ## QuickBooksAccounting.queryEmployee
 Returns the results of the query.
@@ -1962,6 +2087,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.queryItem
@@ -1974,6 +2100,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.createItem
@@ -1986,6 +2113,7 @@ Create new item
 | accessToken          | String     | Access token provided by user
 | tokenSecret          | String     | Token secret provided by user
 | companyId            | Number     | Id of the company
+| sandbox              | String     | Whether to run in sandbox mode
 | name                 | String     | User recognizable name for the item.
 | incomeAccountRefId   | String     | The ID for the referenced object as found in the Id field of the object payload. 
 | incomeAccountRefName | String     | An identifying name for the object being referenced by incomeAccountRefId
@@ -1993,7 +2121,7 @@ Create new item
 | expenseAccountRefName| String     | An identifying name for the object being referenced by expenseAccountRefId
 | assetAccountRefId    | String     | The ID for the referenced object as found in the Id field of the object payload.
 | assetAccountRefName  | String     | An identifying name for the object being referenced by assetAccountRefId
-| invStartDate         | String     | Date of opening balance for the inventory transaction.
+| invStartDate         | DatePicker | Date of opening balance for the inventory transaction.
 
 ## QuickBooksAccounting.getItem
 Retrieves the details of a item that has been previously created.
@@ -2005,6 +2133,7 @@ Retrieves the details of a item that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | itemId     | Number     | Id of your item
 
 ## QuickBooksAccounting.updateItem
@@ -2017,6 +2146,7 @@ Update existing item
 | accessToken           | String     | Access token provided by user
 | tokenSecret           | String     | Token secret provided by user
 | companyId             | Number     | Id of the company
+| sandbox               | String     | Whether to run in sandbox mode
 | itemId                | Number     | Id of the item
 | syncToken             | String     | Version number of the object.
 | name                  | String     | User recognizable name for the item.
@@ -2026,7 +2156,7 @@ Update existing item
 | expenseAccountRefName | String     | An identifying name for the object being referenced by expenseAccountRefId
 | assetAccountRefId     | String     | The ID for the referenced object as found in the Id field of the object payload.
 | assetAccountRefName   | String     | An identifying name for the object being referenced by assetAccountRefId
-| invStartDate          | String     | Date of opening balance for the inventory transaction.
+| invStartDate          | DatePicker | Date of opening balance for the inventory transaction.
 | sku                   | String     | The stock keeping unit (SKU) for this Item.
 | description           | String     | Description of the item.
 | active                | Boolean    | If true, the object is currently enabled for use by QuickBooks.
@@ -2056,6 +2186,7 @@ Create new payment method
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | name       | String     | User recognizable name for the payment method.
 
 ## QuickBooksAccounting.getPaymentMethod
@@ -2068,6 +2199,7 @@ Retrieves the details of a payment method that has been previously created.
 | accessToken    | String     | Access token provided by user
 | tokenSecret    | String     | Token secret provided by user
 | companyId      | Number     | Id of the company
+| sandbox        | String     | Whether to run in sandbox mode
 | paymentmethodId| Number     | Id of your payment method
 
 ## QuickBooksAccounting.updatePaymentMethod
@@ -2080,10 +2212,11 @@ Update existing payment method. Writable fields omitted from the request body ar
 | accessToken    | String     | Access token provided by user
 | tokenSecret    | String     | Token secret provided by user
 | companyId      | Number     | Id of the company
+| sandbox        | String     | Whether to run in sandbox mode
 | paymentmethodId| Number     | Id of the payment method
 | syncToken      | Number     | Version number of the object.
 | name           | String     | User recognizable name for the payment method.
-| type           | String     | Defines the type of payment. Valid values include CREDIT_CARD or NON_CREDIT_CARD.
+| type           | Select     | Defines the type of payment. Valid values include CREDIT_CARD or NON_CREDIT_CARD.
 | active         | Boolean    | If true, this entity is currently enabled for use by QuickBooks.
 
 ## QuickBooksAccounting.queryPaymentMethod
@@ -2096,6 +2229,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.createTaxAgency
@@ -2108,6 +2242,7 @@ Create new tax agency
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | displayName| String     | User recognizable name for the tax agency.
 
 ## QuickBooksAccounting.getTaxAgency
@@ -2120,6 +2255,7 @@ Retrieves the details of a tax agency that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | taxAgencyId| Number     | Id of your tax agency
 
 ## QuickBooksAccounting.queryTaxAgency
@@ -2132,6 +2268,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.queryTaxCode
@@ -2144,6 +2281,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.getTaxCode
@@ -2156,6 +2294,7 @@ Retrieves the details of a tax code that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | taxCodeId  | Number     | Id of your tax code
 
 ## QuickBooksAccounting.getTaxRate
@@ -2168,6 +2307,7 @@ Retrieves the details of a tax rate that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | taxRateId  | Number     | Id of your tax rate
 
 ## QuickBooksAccounting.queryTaxCode
@@ -2180,6 +2320,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.createTaxService
@@ -2192,8 +2333,9 @@ Create new tax service
 | accessToken   | String     | Access token provided by user
 | tokenSecret   | String     | Token secret provided by user
 | companyId     | Number     | Id of the company
+| sandbox       | String     | Whether to run in sandbox mode
 | taxCode       | String     | Name of new tax code. 
-| taxRateDetails| Array      | One or more tax rate specifications.
+| taxRateDetails| List       | One or more tax rate specifications.
 
 ## QuickBooksAccounting.createTerm
 Create new term
@@ -2205,6 +2347,7 @@ Create new term
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | name       | String     | User recognizable name for the term.
 | dueDays    | Number     | Number of days from delivery of goods or services until the payment is due. 0 - 999
 
@@ -2218,6 +2361,7 @@ Retrieves the details of a term that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | termId     | Number     | Id of your term
 
 ## QuickBooksAccounting.updateTerm
@@ -2230,6 +2374,7 @@ Update a term that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | termId     | Number     | Id of your term
 | syncToken  | Number     | Version number of the object.
 | name       | String     | User recognizable name for the term.
@@ -2245,6 +2390,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.createVendor
@@ -2257,6 +2403,7 @@ Create new vendor
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | displayName| String     | The name of the organization as displayed. Must be unique across all Customer, Vendor, and Employee objects. Cannot be removed with sparse update. 
 | title      | String     | Title of the person.
 | givenName  | String     | Given name or first name of a person.
@@ -2274,6 +2421,7 @@ Retrieves the details of a vendor that has been previously created.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | vendorId   | Number     | Id of your vendor
 
 ## QuickBooksAccounting.updateVendor
@@ -2286,6 +2434,7 @@ Update existing vendor
 | accessToken     | String     | Access token provided by user
 | tokenSecret     | String     | Token secret provided by user
 | companyId       | Number     | Id of the company
+| sandbox         | String     | Whether to run in sandbox mode
 | vendorId        | Number     | Id of the vendor
 | syncToken       | String     | Version number of the object.
 | displayName     | String     | The name of the person or organization as displayed. Must be unique across all Customer, Vendor, and Employee objects. Cannot be removed with sparse update. 
@@ -2323,6 +2472,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.getAccountListDetailReport
@@ -2335,17 +2485,18 @@ Returns the results of the report request.
 | accessToken    | String     | Access token provided by user
 | tokenSecret    | String     | Token secret provided by user
 | companyId      | Number     | Id of the company
-| accountStatus  | String     | The account status. Supported values include: Deleted, Not_Deleted
-| accountType    | String     | Account type from which transactions are included in the report. 
-| columns        | String     | Column types to be shown in the report. Supported Values: account_name*, account_type*, detail_acc_type, create_date, create_by, detail_acc_type*, last_ mod_date, last_ mod_by, account_desc*, account_bal*
+| sandbox        | String     | Whether to run in sandbox mode
+| accountStatus  | Select     | The account status. Supported values include: Deleted, Not_Deleted
+| accountType    | Select     | Account type from which transactions are included in the report. 
+| columns        | Select     | Column types to be shown in the report. Supported Values: account_name*, account_type*, detail_acc_type, create_date, create_by, detail_acc_type*, last_mod_date, last_mod_by, account_desc*, account_bal*
 | createdateMacro| String     | Predefined report account create date range.
 | moddateMacro   | String     | Predefined report account modification date range.
 | sortBy         | String     | The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.
-| sortOrder      | String     | The sort order. Supported Values: ascend, descend
-| startDate      | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate        | String     | The end date date of the report, in the format YYYY-MM-DD.
-| startModdate   | String     | Specify an explicit account modification report date range, in the format YYYY-MM-DD. 
-| endModdate     | String     | Specify an explicit account modification report date range, in the format YYYY-MM-DD. 
+| sortOrder      | Select     | The sort order. Supported Values: ascend, descend
+| startDate      | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate        | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
+| startModdate   | DatePicker | Specify an explicit account modification report date range, in the format YYYY-MM-DD. 
+| endModdate     | DatePicker | Specify an explicit account modification report date range, in the format YYYY-MM-DD. 
 
 ## QuickBooksAccounting.getAPagingDetailReport
 Returns the results of the report request.
@@ -2357,18 +2508,19 @@ Returns the results of the report request.
 | accessToken     | String     | Access token provided by user
 | tokenSecret     | String     | Token secret provided by user
 | companyId       | Number     | Id of the company
-| accountingMethod| String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| sandbox         | String     | Whether to run in sandbox mode
+| accountingMethod| Select     | The accounting method used in the report. Supported Values:Cash, Accrual
 | agingPeriod     | Number     | The number of days in the aging period. 
-| columns         | String     | Column types to be shown in the report. Supported Values: create_by create_date doc_num* due_date* last_mod_by last_mod_date memo* past_due* term_name tx_date* txn_type* vend_bill_addr vend_comp_name vend_name* vend_pri_cont vend_pri_email vend_pri_tel  Additional columns with location tracking enabled: dept_name*
+| columns         | Select     | Column types to be shown in the report. Supported Values: create_by create_date doc_num* due_date* last_mod_by last_mod_date memo* past_due* term_name tx_date* txn_type* vend_bill_addr vend_comp_name vend_name* vend_pri_cont vend_pri_email vend_pri_tel  Additional columns with location tracking enabled: dept_name*
 | custom1         | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
 | custom2         | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
 | custom3         | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
 | numPeriods      | Number     | The number of periods to be shown in the report. 
 | pastDue         | Number     | Filters report contents based on minimum days past due. 
-| reportDate      | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| reportDate      | DatePicker | Start date to use for the report, in the format YYYY-MM-DD.
 | shipvia         | String     | Filter by the shipping method
-| startDuedate    | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
-| endDuedate      | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| startDuedate    | DatePicker | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| endDuedate      | DatePicker | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
 | term            | String     | Filters report contents based on term or terms supplied. 
 | vendor          | String     | Filters report contents to include information for specified vendors.
 
@@ -2382,14 +2534,15 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| agingMethod      | String     | The date upon which aging is determined. Supported Values:Report_Date, Current
+| sandbox          | String     | Whether to run in sandbox mode
+| agingMethod      | Select     | The date upon which aging is determined. Supported Values:Report_Date, Current
 | customer         | String     | Filters report contents to include information for specified customers. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
 | qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
-| reportDate       | String     | Start date to use for the report, in the format YYYY-MM-DD.
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
-| vendor           | String     | Filters report contents to include information for specified vendors. Supported Values: One or more comma separated vendor IDs as returned in the attribute, Vendor.Id, of the Vendor object response code.
+| reportDate       | DatePicker | Start date to use for the report, in the format YYYY-MM-DD.
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| vendor           | List       | Filters report contents to include information for specified vendors. Supported Values: One or more comma separated vendor IDs as returned in the attribute, Vendor.Id, of the Vendor object response code.
 
 ## QuickBooksAccounting.getARagingDetailReport
 Returns the results of the report request.
@@ -2401,18 +2554,19 @@ Returns the results of the report request.
 | accessToken | String     | Access token provided by user
 | tokenSecret | String     | Token secret provided by user
 | companyId   | Number     | Id of the company
-| agingMethod | String     | The date upon which aging is determined. Supported Values:Report_Date, Current
+| sandbox     | String     | Whether to run in sandbox mode
+| agingMethod | Select     | The date upon which aging is determined. Supported Values:Report_Date, Current
 | agingPeriod | Number     | The number of days in the aging period. 
-| columns     | String     | Column types to be shown in the report. Supported Values: bill_addr create_by create_date cust_bill_email cust_comp_name   cust_msg cust_phone_other cust_tel cust_name deliv_addr doc_num* due_date* last_mod_by last_mod_date memo* past_due sale_sent_state ship_addr term_name tx_date* txn_type* Additional columns with custom fields enabled: sales_cust1 sales_cust2 sales_cust3 Additional columns with location tracking enabled: dept_name*
+| columns     | Select     | Column types to be shown in the report. Supported Values: bill_addr create_by create_date cust_bill_email cust_comp_name   cust_msg cust_phone_other cust_tel cust_name deliv_addr doc_num* due_date* last_mod_by last_mod_date memo* past_due sale_sent_state ship_addr term_name tx_date* txn_type* Additional columns with custom fields enabled: sales_cust1 sales_cust2 sales_cust3 Additional columns with location tracking enabled: dept_name*
 | custom1     | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
 | custom2     | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
 | custom3     | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
 | numPeriods  | Number     | The number of periods to be shown in the report. 
 | pastDue     | Number     | Filters report contents based on minimum days past due. 
-| reportDate  | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| reportDate  | DatePicker | Start date to use for the report, in the format YYYY-MM-DD.
 | shipvia     | String     | Filter by the shipping method
-| startDuedate| String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
-| endDuedate  | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| startDuedate| DatePicker | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| endDuedate  | DatePicker | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
 | term        | String     | Filters report contents based on term or terms supplied. 
 | customer    | String     | Filters report contents to include information for specified customers. 
 
@@ -2426,13 +2580,14 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| agingMethod      | String     | The date upon which aging is determined. Supported Values:Report_Date, Current
+| sandbox          | String     | Whether to run in sandbox mode
+| agingMethod      | Select     | The date upon which aging is determined. Supported Values:Report_Date, Current
 | customer         | String     | Filters report contents to include information for specified customers. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
 | qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
-| reportDate       | String     | Start date to use for the report, in the format YYYY-MM-DD.
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| reportDate       | DatePicker | Start date to use for the report, in the format YYYY-MM-DD.
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getBalanceSheetReport
 Returns the results of the report request.
@@ -2444,17 +2599,18 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| sandbox          | String     | Whether to run in sandbox mode
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
 | customer         | String     | Filters report contents to include information for specified customers. 
 | class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
 | item<            | String     | Filters report contents to include information for specified items. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
 | qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
 | vendor           | String     | Filters report contents to include information for specified vendors.
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getCashFlowReport
 Returns the results of the report request.
@@ -2466,16 +2622,17 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
+| sandbox          | String     | Whether to run in sandbox mode
 | customer         | String     | Filters report contents to include information for specified customers. 
 | class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
 | item<            | String     | Filters report contents to include information for specified items. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
 | qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
 | vendor           | String     | Filters report contents to include information for specified vendors.
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getCustomerBalanceReport
 Returns the results of the report request.
@@ -2487,13 +2644,14 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
-| arpaid           | String     | Supported Values:All, Paid, Unpaid
+| sandbox          | String     | Whether to run in sandbox mode
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
+| arpaid           | Select     | Supported Values:All, Paid, Unpaid
 | customer         | String     | Filters report contents to include information for specified customers. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
-| reportDate       | String     | Start date to use for the report, in the format YYYY-MM-DD.
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| reportDate       | DatePicker | Start date to use for the report, in the format YYYY-MM-DD.
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getCustomerBalanceDetailReport
 Returns the results of the report request.
@@ -2505,17 +2663,18 @@ Returns the results of the report request.
 | accessToken | String     | Access token provided by user
 | tokenSecret | String     | Token secret provided by user
 | companyId   | Number     | Id of the company
+| sandbox     | String     | Whether to run in sandbox mode
 | agingMethod | String     | The date upon which aging is determined. Supported Values:Report_Date, Current
-| arpaid      | String     | Supported Values:All, Paid, Unpaid
+| arpaid      | Select     | Supported Values:All, Paid, Unpaid
 | columns     | String     | Column types to be shown in the report. Supported Values: bill_addr create_by create_date cust_bill_email cust_comp_name   cust_msg cust_phone_other cust_tel cust_name deliv_addr doc_num* due_date* last_mod_by last_mod_date memo* past_due sale_sent_state ship_addr term_name tx_date* txn_type* Additional columns with custom fields enabled: sales_cust1 sales_cust2 sales_cust3 Additional columns with location tracking enabled: dept_name*
 | custom1     | String     | Filter by the specified custom field as defined by the CustomField attribute in transaction entities where supported. 
 | department  | String     | Filters report contents to include information for specified departments if so configured in the company file. 
 | sortBy      | String     | The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.
-| sortOrder   | String     | The sort order. Supported Values: ascend, descend
-| reportDate  | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| sortOrder   | Select     | The sort order. Supported Values: ascend, descend
+| reportDate  | DatePicker | Start date to use for the report, in the format YYYY-MM-DD.
 | shipvia     | String     | Filter by the shipping method
-| startDuedate| String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
-| endDuedate  | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| startDuedate| DatePicker | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| endDuedate  | DatePicker | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
 | term        | String     | Filters report contents based on term or terms supplied. 
 | customer    | String     | Filters report contents to include information for specified customers. 
 
@@ -2529,16 +2688,17 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| sandbox          | String     | Whether to run in sandbox mode
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
 | customer         | String     | Filters report contents to include information for specified customers. 
 | class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
 | term             | String     | Filters report contents based on term or terms supplied. 
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
 | vendor           | String     | Filters report contents to include information for specified vendors.
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getExpensesByVendorReport
 Returns the results of the report request.
@@ -2550,15 +2710,16 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| sandbox          | String     | Whether to run in sandbox mode
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
 | customer         | String     | Filters report contents to include information for specified customers. 
 | class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
 | vendor           | String     | Filters report contents to include information for specified vendors.
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getGeneralLedgerReport
 Returns the results of the report request.
@@ -2570,19 +2731,20 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
+| sandbox          | String     | Whether to run in sandbox mode
 | account          | String     | Filters report contents to include information for specified accounts. 
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
-| accountType      | String     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
-| sourceAccountType| String     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
+| accountType      | Select     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
+| sourceAccountType| Select     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
 | class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
-| columns          | String     | Supported values:  account_name chk_print_state create_by create_date cust_name    doc_num* emp_name inv_date is_adj* is_ap_paid  is_ar_paid is_cleared item_name last_mod_by last_mod_date   memo* name* quantity rate split_acc*   tx_date* txn_type* vend_name Additional columns when sales tax enabled: net_amount tax_amount tax_code Additional columns when account numbering enabled: account_num Additional columns when class tracking enabled: klass_name* Additional columns when location tracking enabled: dept_name*  
+| columns          | Select     | Supported values:  account_name chk_print_state create_by create_date cust_name    doc_num* emp_name inv_date is_adj* is_ap_paid  is_ar_paid is_cleared item_name last_mod_by last_mod_date   memo* name* quantity rate split_acc*   tx_date* txn_type* vend_name Additional columns when sales tax enabled: net_amount tax_amount tax_code Additional columns when account numbering enabled: account_num Additional columns when class tracking enabled: klass_name* Additional columns when location tracking enabled: dept_name*  
 | customer         | String     | Filters report contents to include information for specified customers. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
 | sortBy           | String     | The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.
-| sortOrder        | String     | The sort order. Supported Values: ascend, descend
+| sortOrder        | Select     | The sort order. Supported Values: ascend, descend
 | vendor           | String     | Filters report contents to include information for specified vendors.
 | sourceAccount    | String     | Filters report contents to include information for specified source accounts. 
 
@@ -2596,11 +2758,12 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| sandbox          | String     | Whether to run in sandbox mode
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
 | qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
-| reportDate       | String     | Start date to use for the report, in the format YYYY-MM-DD.
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| reportDate       | DatePicker | Start date to use for the report, in the format YYYY-MM-DD.
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 | item             | String     | Filters report contents to include information for specified items. 
 
 ## QuickBooksAccounting.getProfitAndLossReport
@@ -2613,17 +2776,18 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| sandbox          | String     | Whether to run in sandbox mode
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
 | customer         | String     | Filters report contents to include information for specified customers. 
 | class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
 | item             | String     | Filters report contents to include information for specified items. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
 | qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
 | vendor           | String     | Filters report contents to include information for specified vendors.
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getProfitAndLossDetailReport
 Returns the results of the report request.
@@ -2635,21 +2799,22 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
+| sandbox          | String     | Whether to run in sandbox mode
 | account          | String     | Filters report contents to include information for specified accounts. 
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
-| accountType      | String     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
-| sourceAccountType| String     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
+| accountType      | Select     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
+| sourceAccountType| Select     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
 | class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
 | columns          | String     | Supported values: create_by create_date doc_num* last_mod_by last_mod_date   memo* name* pmt_mthd split_acc* tx_date*    txn_type*   Additional columns with tax enabled: tax_code  Additional columns with account numbering enabled: account_num Additional columns with class tracking enabled: klass_name* Additional columns with location tracking enabled: dept_name*   
 | customer         | String     | Filters report contents to include information for specified customers. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
 | employee         | String     | Filters report contents to include information for specified employees. 
 | paymentMethod    | String     | Filters report contents based on payment method. Supported Values: Cash, Check, Dinners Club, American Express, Discover, MasterCard, Visa
 | sortBy           | String     | The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.
-| sortOrder        | String     | The sort order. Supported Values: ascend, descend
+| sortOrder        | Select     | The sort order. Supported Values: ascend, descend
 | vendor           | String     | Filters report contents to include information for specified vendors.
 | sourceAccount    | String     | Filters report contents to include information for specified source accounts. 
 
@@ -2663,15 +2828,16 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| sandbox          | String     | Whether to run in sandbox mode
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
 | customer         | String     | Filters report contents to include information for specified customers. 
 | class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
 | item<            | String     | Filters report contents to include information for specified items. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getSalesByCustomerReport
 Returns the results of the report request.
@@ -2683,16 +2849,17 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| sandbox          | String     | Whether to run in sandbox mode
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
 | customer         | String     | Filters report contents to include information for specified customers. 
 | class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
 | item<            | String     | Filters report contents to include information for specified items. 
 | qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report.
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getSalesByDepartmentReport
 Returns the results of the report request.
@@ -2704,15 +2871,16 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| sandbox          | String     | Whether to run in sandbox mode
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
 | customer         | String     | Filters report contents to include information for specified customers. 
 | class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
 | item<            | String     | Filters report contents to include information for specified items. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getSalesByProductReport
 Returns the results of the report request.
@@ -2724,15 +2892,16 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
+| sandbox          | String     | Whether to run in sandbox mode
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
 | customer         | String     | Filters report contents to include information for specified customers. 
 | class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
 | item<            | String     | Filters report contents to include information for specified items. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getTransactionListReport
 Returns the results of the report request.
@@ -2744,40 +2913,40 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
-| appaid           | String     | Status of the balance. Supported Values: Paid, Unpaid, All
-| arpaid           | String     | Supported Values:All, Paid, Unpaid
+| sandbox          | String     | Whether to run in sandbox mode
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
+| arpaid           | Select     | Supported Values:All, Paid, Unpaid
 | bothamount       | String     | Filters report contents to include information for specified transaction amount.
 | class            | String     | Filters report contents to include information for specified classes if so configured in the company file. 
-| cleared          | String     | Filters report contents to include information for specified check status. Supported Values: Cleared, Uncleared, Reconciled, Deposited
-| columns          | String     | Supported Values: account_name* create_by create_date cust_msg due_date doc_num* inv_date is_ap_paid is_cleared is_no_post* last_mod_by memo* name* other_account* pmt_mthd printed sales_cust1 sales_cust2 sales_cust3 term_name tracking_num tx_date* txn_type* term_name Additional columns when account numbering enabled: account_num Additional columns when location tracking enabled: dept_name*  
-| createdateMacro  | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| cleared          | Select     | Filters report contents to include information for specified check status. Supported Values: Cleared, Uncleared, Reconciled, Deposited
+| columns          | Select     | Supported Values: account_name* create_by create_date cust_msg due_date doc_num* inv_date is_ap_paid is_cleared is_no_post* last_mod_by memo* name* other_account* pmt_mthd printed sales_cust1 sales_cust2 sales_cust3 term_name tracking_num tx_date* txn_type* term_name Additional columns when account numbering enabled: account_num Additional columns when location tracking enabled: dept_name*  
+| createdateMacro  | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
 | customer         | String     | Filters report contents to include information for specified customers. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file.
 | docnum           | String     | Filters report contents to include information for specified transaction number, as found in the docnum parameter of the transaction object.
-| duedateMacro     | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| groupBy          | String     | The field in the transaction by which to group results. Supported Values: Name, Account, Transaction Type, Customer, Vendor, Employee, Location, Payment Method, Day, Week, Month, Quarter, Year, None
+| duedateMacro     | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| groupBy          | Select     | The field in the transaction by which to group results. Supported Values: Name, Account, Transaction Type, Customer, Vendor, Employee, Location, Payment Method, Day, Week, Month, Quarter, Year, None
 | item             | String     | Filters report contents to include information for specified items. 
-| memo             | String     | Filters report contents to include information for specified memo. Supported Values: One or more comma separated memo IDs.
-| moddateMacro     | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| memo             | List       | Filters report contents to include information for specified memo. Supported Values: One or more comma separated memo IDs.
+| moddateMacro     | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
 | name             | String     | Filters report contents based on the specified comma separated list of ids for the name list customer, vendor, or employee objects. 
-| paymentMethod    | String     | Filters report contents based on payment method. Supported Values: Cash, Check, Dinners Club, American Express, Discover, MasterCard, Visa
-| printed          | String     | Filters report contents based on whether checks are printed or not. Supported Values: Printed, To_be_printed
+| paymentMethod    | Select     | Filters report contents based on payment method. Supported Values: Cash, Check, Dinners Club, American Express, Discover, MasterCard, Visa
+| printed          | Select     | Filters report contents based on whether checks are printed or not. Supported Values: Printed, To_be_printed
 | qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report.
 | sortBy           | String     | The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.
-| sortOrder        | String     | The sort order. Supported Values: ascend, descend
-| sourceAccountType| String     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
-| startCreatedate  | String     | Specify an explicit account create report date range, in the format YYYY-MM-DD
-| subtendCreatedate| String     | Specify an explicit account create report date range, in the format YYYY-MM-DD
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD. 
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD. 
-| startDuedate     | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| sortOrder        | Select     | The sort order. Supported Values: ascend, descend
+| sourceAccountType| Select     | Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome
+| startCreatedate  | DatePicker | Specify an explicit account create report date range, in the format YYYY-MM-DD
+| subtendCreatedate| DatePicker | Specify an explicit account create report date range, in the format YYYY-MM-DD
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD. 
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD. 
+| startDuedate     | DatePicker | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
 | subtendDuedate   | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
-| startModdate     | String     | Specify an explicit account modification report date range, in the format YYYY-MM-DD. 
-| endModdate       | String     | Specify an explicit account modification report date range, in the format YYYY-MM-DD. 
+| startModdate     | DatePicker | Specify an explicit account modification report date range, in the format YYYY-MM-DD. 
+| endModdate       | DatePicker | Specify an explicit account modification report date range, in the format YYYY-MM-DD. 
 | term             | String     | Filters report contents based on term or terms supplied.
-| transactionType  | String     | Filters report contents based transaction type. Supported values include: CreditCardCharge, Check, Invoice, ReceivePayment, JournalEntry, Bill, CreditCardCredit, VendorCredit, Credit, BillPaymentCheck, BillPaymentCreditCard, Charge, Transfer, Deposit, Statement, BillableCharge, TimeActivity, CashPurchase, SalesReceipt, CreditMemo, CreditRefund, Estimate, InventoryQuantityAdjustment, PurchaseOrder, GlobalTaxPayment, GlobalTaxAdjustment, Service Tax Refund, Service Tax Gross Adjustment, Service Tax Reversal, Service Tax Defer, Service Tax Partial Utilisation
+| transactionType  | Select     | Filters report contents based transaction type. Supported values include: CreditCardCharge, Check, Invoice, ReceivePayment, JournalEntry, Bill, CreditCardCredit, VendorCredit, Credit, BillPaymentCheck, BillPaymentCreditCard, Charge, Transfer, Deposit, Statement, BillableCharge, TimeActivity, CashPurchase, SalesReceipt, CreditMemo, CreditRefund, Estimate, InventoryQuantityAdjustment, PurchaseOrder, GlobalTaxPayment, GlobalTaxAdjustment, Service Tax Refund, Service Tax Gross Adjustment, Service Tax Reversal, Service Tax Defer, Service Tax Partial Utilisation
 | vendor           | String     | Filters report contents to include information for specified vendors. 
 
 ## QuickBooksAccounting.getTrialBalanceReport
@@ -2790,11 +2959,12 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| startDate        | String     | The start date date of the report, in the format YYYY-MM-DD.
-| endDate          | String     | The end date date of the report, in the format YYYY-MM-DD.
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| sandbox          | String     | Whether to run in sandbox mode
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| startDate        | DatePicker | The start date date of the report, in the format YYYY-MM-DD.
+| endDate          | DatePicker | The end date date of the report, in the format YYYY-MM-DD.
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getVendorBalanceReport
 Returns the results of the report request.
@@ -2806,14 +2976,15 @@ Returns the results of the report request.
 | accessToken      | String     | Access token provided by user
 | tokenSecret      | String     | Token secret provided by user
 | companyId        | Number     | Id of the company
-| accountingMethod | String     | The accounting method used in the report. Supported Values:Cash, Accrual
-| appaid           | String     | Status of the balance. Supported Values: Paid, Unpaid, All
+| sandbox          | String     | Whether to run in sandbox mode
+| accountingMethod | Select     | The accounting method used in the report. Supported Values:Cash, Accrual
+| appaid           | Select     | Status of the balance. Supported Values: Paid, Unpaid, All
 | qzurl            | String     | Specifies whether Quick Zoom URL information should be generated for rows in the report. 
-| dateMacro        | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| dateMacro        | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
 | department       | String     | Filters report contents to include information for specified departments if so configured in the company file. 
 | vendor           | String     | Filters report contents to include information for specified vendors. 
-| reportDate       | String     | Start date to use for the report, in the format YYYY-MM-DD.
-| summarizeColumnBy| String     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
+| reportDate       | DatePicker | Start date to use for the report, in the format YYYY-MM-DD.
+| summarizeColumnBy| Select     | The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices
 
 ## QuickBooksAccounting.getVendorBalanceDetailReport
 Returns the results of the report request.
@@ -2825,17 +2996,18 @@ Returns the results of the report request.
 | accessToken     | String     | Access token provided by user
 | tokenSecret     | String     | Token secret provided by user
 | companyId       | Number     | Id of the company
-| accountingMethod| String     | The accounting method used in the report. Supported Values:Cash, Accrual
-| appaid          | String     | Status of the balance. Supported Values: Paid, Unpaid, All
-| columns         | String     | Column types to be shown in the report. Supported Values:create_by create_date doc_num* due_date* last_mod_by  last_mod_date memo*   term_name tx_date* txn_type* vend_bill_addr vend_comp_name vend_name* vend_pri_cont vend_pri_email vend_pri_tel Additional columns with location tracking enabled: dept_name*  
-| dateMacro       | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| sandbox         | String     | Whether to run in sandbox mode
+| accountingMethod| Select     | The accounting method used in the report. Supported Values:Cash, Accrual
+| appaid          | Select     | Status of the balance. Supported Values: Paid, Unpaid, All
+| columns         | Select     | Column types to be shown in the report. Supported Values:create_by create_date doc_num* due_date* last_mod_by  last_mod_date memo*   term_name tx_date* txn_type* vend_bill_addr vend_comp_name vend_name* vend_pri_cont vend_pri_email vend_pri_tel Additional columns with location tracking enabled: dept_name*  
+| dateMacro       | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
 | department      | String     | Filters report contents to include information for specified departments if so configured in the company file. 
-| duedateMacro    | String     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
-| reportDate      | String     | Start date to use for the report, in the format YYYY-MM-DD.
+| duedateMacro    | Select     | Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year
+| reportDate      | DatePicker | Start date to use for the report, in the format YYYY-MM-DD.
 | sortBy          | String     | The column type used in sorting report rows. Specify a column type as defined with the columns query parameter, above.
-| sortOrder       | String     | The sort order. Supported Values: ascend, descend
-| startDuedate    | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
-| endDuedate      | String     | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| sortOrder       | Select     | The sort order. Supported Values: ascend, descend
+| startDuedate    | DatePicker | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
+| endDuedate      | DatePicker | The range of dates over which receivables are due, in the format YYYY-MM-DD. 
 | term            | String     | Filters report contents based on term or terms supplied. 
 | vendor          | String     | Filters report contents to include information for specified vendors.
 
@@ -2849,7 +3021,8 @@ Use this endpoint to attach a note to the an object.
 | accessToken  | String     | Access token provided by user
 | tokenSecret  | String     | Token secret provided by user
 | companyId    | Number     | Id of the company
-| attachableRef| Array      | Specifies the transaction object to which this attachable file is to be linked.
+| sandbox      | String     | Whether to run in sandbox mode
+| attachableRef| List       | Specifies the transaction object to which this attachable file is to be linked.
 | note         | String     | Max 2000 chars, filterable, sortable 
 
 ## QuickBooksAccounting.readAttachable
@@ -2862,6 +3035,7 @@ Retrieves the details of a attachable that has been previously created.
 | accessToken | String     | Access token provided by user
 | tokenSecret | String     | Token secret provided by user
 | companyId   | Number     | Id of the company
+| sandbox     | String     | Whether to run in sandbox mode
 | attachableId| Number     | Id of your attachable
 
 ## QuickBooksAccounting.updateNoteAttachable
@@ -2874,6 +3048,7 @@ Updates attachable that has been previously created.
 | accessToken | String     | Access token provided by user
 | tokenSecret | String     | Token secret provided by user
 | companyId   | Number     | Id of the company
+| sandbox     | String     | Whether to run in sandbox mode
 | attachableId| Number     | Id of your attachable
 | note        | String     | Text of the attachable
 | syncToken   | Number     | Version number of the object.
@@ -2888,6 +3063,7 @@ Deletes existing attachable
 | accessToken | String     | Access token provided by user
 | tokenSecret | String     | Token secret provided by user
 | companyId   | Number     | Id of the company
+| sandbox     | String     | Whether to run in sandbox mode
 | attachableId| String     | Id of the attachable
 | syncToken   | String     | Version number of the object.
 
@@ -2901,6 +3077,7 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 
 ## QuickBooksAccounting.getChangedEntities
@@ -2913,8 +3090,9 @@ The change data capture (cdc) operation returns a list of objects that have chan
 | accessToken | String     | Access token provided by user
 | tokenSecret | String     | Token secret provided by user
 | companyId   | Number     | Id of the company
-| entityList  | String     | List of entities coma separated except JournalCode, TimeActivity, TaxAgency, TaxCode, and TaxRate.
-| changedSince| String     | Date of change
+| sandbox     | String     | Whether to run in sandbox mode
+| entityList  | List       | List of entities coma separated except JournalCode, TimeActivity, TaxAgency, TaxCode, and TaxRate.
+| changedSince| DatePicker | Date of change
 
 ## QuickBooksAccounting.getCompanyInfo
 Retrieves the details of the CompanyInfo object.
@@ -2937,8 +3115,8 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
-
 
 ## QuickBooksAccounting.getPreferences
 Retrieves the Preferences details for the specified company.
@@ -2961,6 +3139,7 @@ se this operation to update any of the writable preference fields. The request b
 | accessToken            | String     | Access token provided by user
 | tokenSecret            | String     | Token secret provided by user
 | companyId              | Number     | Id of the company
+| sandbox                | String     | Whether to run in sandbox mode
 | preferenceId           | Number     | Id of your attachable
 | accountingInfoPrefs    | JSON       | The following settings are available for QuickBooks Online Plus editions, only.
 | productAndServicesPrefs| JSON       | Product and services preferences
@@ -2983,5 +3162,6 @@ Returns the results of the query.
 | accessToken| String     | Access token provided by user
 | tokenSecret| String     | Token secret provided by user
 | companyId  | Number     | Id of the company
+| sandbox    | String     | Whether to run in sandbox mode
 | query      | String     | Your query to process
 

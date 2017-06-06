@@ -49,6 +49,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -101,14 +107,29 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "billLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "billLine",
+            "type": "JSON",
+            "info": "Single bill line"
+          }
         },
         {
           "name": "vendorRefType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "name",
+            "value"
+          ],
           "info": "Value of vendor type: name or value",
           "required": true
         },
@@ -165,6 +186,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "billId",
           "type": "Number",
           "info": "Id of your bill",
@@ -217,6 +244,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "billId",
           "type": "Number",
           "info": "Id of your bill",
@@ -230,9 +263,14 @@
         },
         {
           "name": "billLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "billLine",
+            "type": "JSON",
+            "info": "Single bill line"
+          }
         },
         {
           "name": "docNumber",
@@ -242,7 +280,7 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -314,7 +352,12 @@
         },
         {
           "name": "globalTaxCalculation",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "TaxExcluded",
+            "TaxInclusive",
+            "NotApplicable"
+          ],
           "info": "Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.",
           "required": false
         },
@@ -332,7 +375,7 @@
         },
         {
           "name": "dueDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Date when the payment of the transaction is due.",
           "required": false
         },
@@ -344,7 +387,13 @@
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -393,6 +442,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "billId",
@@ -453,6 +508,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -505,10 +566,21 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "billpaymentLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "billpaymentLine",
+            "type": "JSON",
+            "info": "Single billpaymentLine"
+          }
         },
         {
           "name": "totalAmt",
@@ -542,7 +614,12 @@
         },
         {
           "name": "printStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "NotSet",
+            "NeedToPrint",
+            "PrintComplete"
+          ],
           "info": "Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.",
           "required": false
         }
@@ -593,10 +670,21 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "billpaymentLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "billpaymentLine",
+            "type": "JSON",
+            "info": "Single billpaymentLine"
+          }
         },
         {
           "name": "totalAmt",
@@ -675,6 +763,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "billpaymentId",
           "type": "Number",
           "info": "Id of your billpayment",
@@ -727,6 +821,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "billpaymentId",
           "type": "Number",
           "info": "Id of the billpayment",
@@ -734,9 +834,14 @@
         },
         {
           "name": "billpaymentLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "billpaymentLine",
+            "type": "JSON",
+            "info": "Single billpaymentLine"
+          }
         },
         {
           "name": "totalAmt",
@@ -776,7 +881,12 @@
         },
         {
           "name": "printStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "NotSet",
+            "NeedToPrint",
+            "PrintComplete"
+          ],
           "info": "Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.",
           "required": false
         },
@@ -788,7 +898,7 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -848,7 +958,13 @@
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -899,6 +1015,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "syncToken",
           "type": "Number",
           "info": "Version number of the object.",
@@ -912,9 +1034,14 @@
         },
         {
           "name": "billpaymentLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "billpaymentLine",
+            "type": "JSON",
+            "info": "Single billpaymentLine"
+          }
         },
         {
           "name": "totalAmt",
@@ -954,7 +1081,7 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -1014,7 +1141,13 @@
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -1063,6 +1196,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "billpaymentId",
@@ -1123,10 +1262,21 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "creditMemoLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "creditMemoLine",
+            "type": "String",
+            "info": "Single creditMemoLine"
+          }
         },
         {
           "name": "customerRefId",
@@ -1187,6 +1337,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "creditMemoId",
           "type": "Number",
           "info": "Id of your creditmemo",
@@ -1239,6 +1395,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "creditMemoId",
           "type": "Number",
           "info": "Id of your credit memo",
@@ -1252,15 +1414,25 @@
         },
         {
           "name": "creditMemoLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "creditMemoLine",
+            "type": "String",
+            "info": "Single creditMemoLine"
+          }
         },
         {
           "name": "customField",
-          "type": "Array",
+          "type": "List",
           "info": "Custom field or data extension.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "customField",
+            "type": "String",
+            "info": "Single customField"
+          }
         },
         {
           "name": "docNumber",
@@ -1270,7 +1442,7 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -1360,7 +1532,12 @@
         },
         {
           "name": "globalTaxCalculation",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "TaxExcluded",
+            "TaxInclusive",
+            "NotApplicable"
+          ],
           "info": "Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.",
           "required": false
         },
@@ -1378,13 +1555,23 @@
         },
         {
           "name": "printStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "NotSet",
+            "NeedToPrint",
+            "PrintComplete"
+          ],
           "info": "Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete .",
           "required": false
         },
         {
           "name": "emailStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "NotSet",
+            "NeedToSend",
+            "EmailSent"
+          ],
           "info": "Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent",
           "required": false
         },
@@ -1420,7 +1607,13 @@
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -1469,6 +1662,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "query",
@@ -1521,6 +1720,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "creditMemoId",
@@ -1581,10 +1786,21 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "depositLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "depositLine",
+            "type": "String",
+            "info": "Single depositLine"
+          }
         },
         {
           "name": "depositToAccountRefId",
@@ -1645,6 +1861,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -1695,6 +1917,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "depositId",
@@ -1749,6 +1977,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "depositId",
           "type": "Number",
           "info": "Id of your deposit",
@@ -1762,13 +1996,18 @@
         },
         {
           "name": "depositLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "depositLine",
+            "type": "String",
+            "info": "Single depositLine"
+          }
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -1792,13 +2031,27 @@
         },
         {
           "name": "globalTaxCalculation",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "TaxExcluded",
+            "TaxInclusive",
+            "NotApplicable"
+          ],
           "info": "Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.",
           "required": false
         },
         {
           "name": "txnStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Draft",
+            "Overdue",
+            "Pending",
+            "Payable",
+            "Paid",
+            "Trash",
+            "Unpaid"
+          ],
           "info": "Status of the transaction. Valid values include: Draft, Overdue, Pending, Payable, Paid, Trash, and Unpaid.",
           "required": false
         },
@@ -1840,7 +2093,13 @@
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -1889,6 +2148,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "depositId",
@@ -1949,10 +2214,21 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "estimateLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "estimateLine",
+            "type": "String",
+            "info": "Single estimateLine65"
+          }
         },
         {
           "name": "customerRefId",
@@ -2013,6 +2289,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -2063,6 +2345,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "estimateId",
@@ -2117,6 +2405,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "estimateId",
           "type": "Number",
           "info": "Id of your estimate",
@@ -2167,6 +2461,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "estimateId",
@@ -2227,6 +2527,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "estimateId",
           "type": "Number",
           "info": "Id of your estimate",
@@ -2240,15 +2546,25 @@
         },
         {
           "name": "estimateLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "estimateLine",
+            "type": "String",
+            "info": "Single estimateLine65"
+          }
         },
         {
           "name": "customField",
-          "type": "Array",
+          "type": "List",
           "info": "Custom field or data extension.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "customField",
+            "type": "String",
+            "info": "Single customField"
+          }
         },
         {
           "name": "docNumber",
@@ -2258,7 +2574,7 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -2300,15 +2616,26 @@
         },
         {
           "name": "txnStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Accepted",
+            "Closed",
+            "Pending",
+            "Rejected"
+          ],
           "info": "Status of the transaction. Valid values include: Accepted, Closed, Pending, Rejected",
           "required": false
         },
         {
           "name": "linkedTxn",
-          "type": "Array",
+          "type": "List",
           "info": "Zero or more Invoice objects related to this transaction.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "linkedTxn",
+            "type": "String",
+            "info": "Single linkedTxn"
+          }
         },
         {
           "name": "txnTaxDetail",
@@ -2384,19 +2711,24 @@
         },
         {
           "name": "dueDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Date when the payment of the transaction is due.",
           "required": false
         },
         {
           "name": "shipDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Date for delivery of goods or services.",
           "required": false
         },
         {
           "name": "globalTaxCalculation",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "TaxExcluded",
+            "TaxInclusive",
+            "NotApplicable"
+          ],
           "info": "Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.",
           "required": false
         },
@@ -2414,13 +2746,23 @@
         },
         {
           "name": "printStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "NotSet",
+            "NeedToPrint",
+            "PrintComplete"
+          ],
           "info": "Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete .",
           "required": false
         },
         {
           "name": "emailStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "NotSet",
+            "NeedToSend",
+            "EmailSent"
+          ],
           "info": "Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent",
           "required": false
         },
@@ -2432,7 +2774,7 @@
         },
         {
           "name": "expirationDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Date by which estimate must be accepted before invalidation.",
           "required": false
         },
@@ -2444,13 +2786,19 @@
         },
         {
           "name": "acceptedDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Date estimate was accepted.",
           "required": false
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -2499,6 +2847,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "estimateId",
@@ -2559,10 +2913,21 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "invoiceLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "invoiceLine",
+            "type": "String",
+            "info": "Single invoiceLine"
+          }
         },
         {
           "name": "customerRefId",
@@ -2623,6 +2988,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "invoiceId",
           "type": "Number",
           "info": "Id of your invoice",
@@ -2675,6 +3046,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "invoiceId",
           "type": "Number",
           "info": "Id of your invoice",
@@ -2725,6 +3102,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "invoiceId",
@@ -2785,6 +3168,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -2835,6 +3224,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "invoiceId",
@@ -2895,6 +3290,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "invoiceId",
           "type": "Number",
           "info": "Id of your estimate",
@@ -2908,15 +3309,25 @@
         },
         {
           "name": "invoiceLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "invoiceLine",
+            "type": "String",
+            "info": "Single invoiceLine"
+          }
         },
         {
           "name": "customField",
-          "type": "Array",
+          "type": "List",
           "info": "Custom field or data extension.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "customField",
+            "type": "String",
+            "info": "Single customField"
+          }
         },
         {
           "name": "docNumber",
@@ -2926,7 +3337,7 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -2968,15 +3379,26 @@
         },
         {
           "name": "txnStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Accepted",
+            "Closed",
+            "Pending",
+            "Rejected"
+          ],
           "info": "Status of the transaction. Valid values include: Accepted, Closed, Pending, Rejected",
           "required": false
         },
         {
           "name": "linkedTxn",
-          "type": "Array",
+          "type": "List",
           "info": "Zero or more Invoice objects related to this transaction.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "linkedTxn",
+            "type": "String",
+            "info": "Single linkedTxn"
+          }
         },
         {
           "name": "txnTaxDetail",
@@ -3046,19 +3468,24 @@
         },
         {
           "name": "dueDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Date when the payment of the transaction is due.",
           "required": false
         },
         {
           "name": "shipDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Date for delivery of goods or services.",
           "required": false
         },
         {
           "name": "globalTaxCalculation",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "TaxExcluded",
+            "TaxInclusive",
+            "NotApplicable"
+          ],
           "info": "Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.",
           "required": false
         },
@@ -3082,13 +3509,23 @@
         },
         {
           "name": "printStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "NotSet",
+            "NeedToPrint",
+            "PrintComplete"
+          ],
           "info": "Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete .",
           "required": false
         },
         {
           "name": "emailStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "NotSet",
+            "NeedToSend",
+            "EmailSent"
+          ],
           "info": "Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent",
           "required": false
         },
@@ -3124,7 +3561,13 @@
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         },
@@ -3179,6 +3622,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "invoiceId",
@@ -3239,10 +3688,21 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "journalentryLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "journalentryLine",
+            "type": "String",
+            "info": "Single journalentryLine"
+          }
         },
         {
           "name": "journalCodeRefId",
@@ -3303,6 +3763,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "journalentryId",
           "type": "Number",
           "info": "Id of your journal entry",
@@ -3355,6 +3821,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "journalentryId",
           "type": "Number",
           "info": "Id of your journal entry",
@@ -3368,9 +3840,14 @@
         },
         {
           "name": "journalentryLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "journalentryLine",
+            "type": "String",
+            "info": "Single journalentryLine"
+          }
         },
         {
           "name": "docNumber",
@@ -3380,7 +3857,7 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -3434,7 +3911,13 @@
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -3483,6 +3966,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "query",
@@ -3535,6 +4024,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "journalentryId",
@@ -3593,6 +4088,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "totalAmt",
@@ -3659,6 +4160,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -3709,6 +4216,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "paymentId",
@@ -3763,6 +4276,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "paymentId",
           "type": "Number",
           "info": "Id of your payment",
@@ -3776,13 +4295,18 @@
         },
         {
           "name": "paymentLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "paymentLines",
+            "type": "String",
+            "info": "Single paymentLine"
+          }
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -3890,7 +4414,13 @@
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -3939,6 +4469,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "paymentId",
@@ -3999,6 +4535,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "paymentId",
           "type": "String",
           "info": "Id of the payment",
@@ -4057,10 +4599,21 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "purchaseLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "purchaseLine",
+            "type": "String",
+            "info": "Single purchaseLine"
+          }
         },
         {
           "name": "accountRefId",
@@ -4076,7 +4629,12 @@
         },
         {
           "name": "paymentType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Check",
+            "CreditCard"
+          ],
           "info": "Payment Type can be  Cash, Check, or CreditCard",
           "required": true
         }
@@ -4125,6 +4683,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "purchaseId",
@@ -4179,6 +4743,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "purchaseId",
           "type": "Number",
           "info": "Id of your purchase",
@@ -4192,15 +4762,25 @@
         },
         {
           "name": "paymentType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Check",
+            "CreditCard"
+          ],
           "info": "Type can be Cash, Check, or CreditCard.",
           "required": true
         },
         {
           "name": "purchaseLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "purchaseLine",
+            "type": "String",
+            "info": "Single purchaseLine"
+          }
         },
         {
           "name": "accountRefId",
@@ -4222,7 +4802,7 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -4312,13 +4892,24 @@
         },
         {
           "name": "printStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "NotSet",
+            "NeedToPrint",
+            "PrintComplete"
+          ],
           "info": "Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.",
           "required": false
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -4367,6 +4958,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "query",
@@ -4419,6 +5016,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "purchaseId",
@@ -4479,10 +5082,21 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "purchaseorderLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "purchaseorderLine",
+            "type": "String",
+            "info": "Single purchaseorderLine"
+          }
         },
         {
           "name": "vendorRefId",
@@ -4555,6 +5169,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -4605,6 +5225,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "purchaseorderId",
@@ -4659,6 +5285,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "purchaseorderId",
           "type": "Number",
           "info": "Id of your purchase order",
@@ -4672,9 +5304,14 @@
         },
         {
           "name": "purchaseorderLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "purchaseorderLine",
+            "type": "String",
+            "info": "Single purchaseorderLine"
+          }
         },
         {
           "name": "vendorRefId",
@@ -4702,9 +5339,14 @@
         },
         {
           "name": "customField",
-          "type": "Array",
+          "type": "List",
           "info": "Custom field or data extension.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "customField",
+            "type": "String",
+            "info": "Single customField"
+          }
         },
         {
           "name": "docNumber",
@@ -4714,7 +5356,7 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -4726,9 +5368,14 @@
         },
         {
           "name": "linkedTxn",
-          "type": "Array",
+          "type": "List",
           "info": "Zero or more Invoice objects related to this transaction.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "linkedTxn",
+            "type": "String",
+            "info": "Single linkedTxn"
+          }
         },
         {
           "name": "totalAmt",
@@ -4768,7 +5415,7 @@
         },
         {
           "name": "dueDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Date when the payment of the transaction is due.",
           "required": false
         },
@@ -4798,7 +5445,11 @@
         },
         {
           "name": "poStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Open",
+            "Closed"
+          ],
           "info": "Purchase order status. Valid values are: Open and Closed.",
           "required": false
         },
@@ -4828,13 +5479,24 @@
         },
         {
           "name": "globalTaxCalculation",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "TaxExcluded",
+            "TaxInclusive",
+            "NotApplicable"
+          ],
           "info": "Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.",
           "required": false
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -4883,6 +5545,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "purchaseorderId",
@@ -4943,10 +5611,21 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "refundLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "refundLine",
+            "type": "String",
+            "info": "Single refundLine"
+          }
         },
         {
           "name": "depositToAccountId",
@@ -5007,6 +5686,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -5057,6 +5742,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "refundId",
@@ -5111,6 +5802,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "refundId",
           "type": "Number",
           "info": "Id of your refund receipt",
@@ -5124,9 +5821,14 @@
         },
         {
           "name": "refundLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "refundLine",
+            "type": "String",
+            "info": "Single refundLine"
+          }
         },
         {
           "name": "depositToAccountRefId",
@@ -5142,9 +5844,14 @@
         },
         {
           "name": "customField",
-          "type": "Array",
+          "type": "List",
           "info": "Custom field or data extension.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "customField",
+            "type": "String",
+            "info": "Single customField"
+          }
         },
         {
           "name": "docNumber",
@@ -5154,7 +5861,7 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -5256,7 +5963,12 @@
         },
         {
           "name": "printStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "NotSet",
+            "NeedToPrint",
+            "PrintComplete"
+          ],
           "info": "Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.",
           "required": false
         },
@@ -5292,7 +6004,12 @@
         },
         {
           "name": "paymentType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Check",
+            "CreditCard"
+          ],
           "info": "Payment Type can be  Cash, Check, or CreditCard",
           "required": false
         },
@@ -5316,13 +6033,24 @@
         },
         {
           "name": "globalTaxCalculation",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "TaxExcluded",
+            "TaxInclusive",
+            "NotApplicable"
+          ],
           "info": "Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.",
           "required": false
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -5371,6 +6099,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "refundId",
@@ -5431,10 +6165,21 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "salesreceiptLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "salesreceiptLine",
+            "type": "String",
+            "info": "Single salesreceiptLine"
+          }
         }
       ],
       "callbacks": [
@@ -5481,6 +6226,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "salesreceiptId",
@@ -5535,6 +6286,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "salesreceiptId",
           "type": "Number",
           "info": "Id of your sales receipt",
@@ -5585,6 +6342,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "salesreceiptId",
@@ -5645,6 +6408,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -5695,6 +6464,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "salesreceiptId",
@@ -5755,6 +6530,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "salesreceiptId",
           "type": "Number",
           "info": "Id of your sales receipt",
@@ -5768,15 +6549,25 @@
         },
         {
           "name": "salesreceiptLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "salesreceiptLine",
+            "type": "String",
+            "info": "Single salesreceiptLine"
+          }
         },
         {
           "name": "customField",
-          "type": "Array",
+          "type": "List",
           "info": "Custom field or data extension.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "customField",
+            "type": "String",
+            "info": "Single customField"
+          }
         },
         {
           "name": "docNumber",
@@ -5786,7 +6577,7 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -5870,7 +6661,7 @@
         },
         {
           "name": "shipDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Date for delivery of goods or services.",
           "required": false
         },
@@ -5888,13 +6679,23 @@
         },
         {
           "name": "printStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "NotSet",
+            "NeedToPrint",
+            "PrintComplete"
+          ],
           "info": "Printing status of the invoice. Valid values: NotSet, NeedToPrint, PrintComplete.",
           "required": false
         },
         {
           "name": "emailStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "NotSet",
+            "NeedToSend",
+            "EmailSent"
+          ],
           "info": "Email status of the invoice. Valid values: NotSet, NeedToSend, EmailSent",
           "required": false
         },
@@ -5972,13 +6773,24 @@
         },
         {
           "name": "globalTaxCalculation",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "TaxExcluded",
+            "TaxInclusive",
+            "NotApplicable"
+          ],
           "info": "Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.",
           "required": false
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -6027,6 +6839,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "salesreceiptId",
@@ -6085,6 +6903,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "amount",
@@ -6163,6 +6987,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "transferId",
           "type": "Number",
           "info": "Id of your transfer",
@@ -6215,6 +7045,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "transferId",
           "type": "Number",
           "info": "Id of the transfer",
@@ -6252,7 +7088,7 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
@@ -6264,7 +7100,13 @@
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -6313,6 +7155,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "query",
@@ -6365,6 +7213,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "transferId",
@@ -6425,6 +7279,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -6472,13 +7332,13 @@
         },
         {
           "name": "startTime",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start of time activity",
           "required": true
         },
         {
           "name": "endTime",
-          "type": "String",
+          "type": "DatePicker",
           "info": "End of time activity",
           "required": true
         },
@@ -6487,6 +7347,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "employeeRefId",
@@ -6560,13 +7426,13 @@
         },
         {
           "name": "startTime",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start of time activity",
           "required": true
         },
         {
           "name": "endTime",
-          "type": "String",
+          "type": "DatePicker",
           "info": "End of time activity",
           "required": true
         },
@@ -6575,6 +7441,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "vendorRefId",
@@ -6653,6 +7525,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "timeactivityId",
           "type": "Number",
           "info": "Id of your time activity",
@@ -6712,13 +7590,13 @@
         },
         {
           "name": "startTime",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start of time activity",
           "required": false
         },
         {
           "name": "endTime",
-          "type": "String",
+          "type": "DatePicker",
           "info": "End of time activity",
           "required": false
         },
@@ -6727,6 +7605,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "employeeRefId",
@@ -6760,13 +7644,18 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
         {
           "name": "billableStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Billable",
+            "NotBillable",
+            "HasBeenBilled"
+          ],
           "info": "Billable status of the time recorded. Valid values: Billable, NotBillable, HasBeenBilled. ",
           "required": false
         },
@@ -6832,7 +7721,13 @@
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -6890,13 +7785,13 @@
         },
         {
           "name": "startTime",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start of time activity",
           "required": false
         },
         {
           "name": "endTime",
-          "type": "String",
+          "type": "DatePicker",
           "info": "End of time activity",
           "required": false
         },
@@ -6905,6 +7800,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "vendorRefId",
@@ -6938,13 +7839,18 @@
         },
         {
           "name": "txnDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The date entered by the user when this transaction occurred. ",
           "required": false
         },
         {
           "name": "billableStatus",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Billable",
+            "NotBillable",
+            "HasBeenBilled"
+          ],
           "info": "Billable status of the time recorded. Valid values: Billable, NotBillable, HasBeenBilled. ",
           "required": false
         },
@@ -7010,7 +7916,13 @@
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         }
@@ -7059,6 +7971,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "timeactivityId",
@@ -7119,10 +8037,21 @@
           "required": true
         },
         {
-          "name": "vendorcreditLines",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "vendorcreditLines",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "vendorcreditLine",
+            "type": "String",
+            "info": "Single vendorcreditLine"
+          }
         },
         {
           "name": "vendorRefId",
@@ -7183,6 +8112,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "vendorcreditId",
           "type": "Number",
           "info": "Id of your vendor credit",
@@ -7235,6 +8170,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "vendorcreditId",
           "type": "Number",
           "info": "Id of the vendor credit",
@@ -7248,9 +8189,14 @@
         },
         {
           "name": "vendorcreditLines",
-          "type": "Array",
+          "type": "List",
           "info": "Individual line items of a transaction.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "vendorcreditLine",
+            "type": "String",
+            "info": "Single vendorcreditLine"
+          }
         },
         {
           "name": "vendorRefId",
@@ -7314,13 +8260,24 @@
         },
         {
           "name": "globalTaxCalculation",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "TaxExcluded",
+            "TaxInclusive",
+            "NotApplicable"
+          ],
           "info": "Method in which tax is applied. Allowed values are: TaxExcluded, TaxInclusive, and NotApplicable.",
           "required": false
         },
         {
           "name": "transactionLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         },
@@ -7377,6 +8334,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -7427,6 +8390,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "vendorcreditId",
@@ -7487,6 +8456,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "name",
           "type": "String",
           "info": "User recognizable name for the Account. attribute must not contain double quotes (\") or colon (:).",
@@ -7494,7 +8469,25 @@
         },
         {
           "name": "accountType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "AccountsPayable",
+            "AccountsReceivable",
+            "Bank",
+            "CostOfGoodsSold",
+            "CreditCard",
+            "Equity",
+            "Expense",
+            "FixedAsset",
+            "Income",
+            "LongTermLiability",
+            "NonPosting",
+            "OtherAsset",
+            "OtherCurrentAsset",
+            "OtherCurrentLiability",
+            "OtherExpense",
+            "OtherIncome"
+          ],
           "info": "A detailed account classification that specifies the use of this account. The type is based on the Classification. ",
           "required": true
         },
@@ -7569,6 +8562,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "accountId",
           "type": "Number",
           "info": "Id of your account",
@@ -7621,6 +8620,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "accountId",
           "type": "Number",
           "info": "Id of the account",
@@ -7640,7 +8645,25 @@
         },
         {
           "name": "accountType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "AccountsPayable",
+            "AccountsReceivable",
+            "Bank",
+            "CostOfGoodsSold",
+            "CreditCard",
+            "Equity",
+            "Expense",
+            "FixedAsset",
+            "Income",
+            "LongTermLiability",
+            "NonPosting",
+            "OtherAsset",
+            "OtherCurrentAsset",
+            "OtherCurrentLiability",
+            "OtherExpense",
+            "OtherIncome"
+          ],
           "info": "A detailed account classification that specifies the use of this account. The type is based on the Classification. ",
           "required": true
         },
@@ -7658,7 +8681,13 @@
         },
         {
           "name": "txnLocationType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "WithinFrance",
+            "FranceOverseas",
+            "OutsideFranceWithEU",
+            "OutsideEU"
+          ],
           "info": "The account location. Valid values include: WithinFrance, FranceOverseas, OutsideFranceWithEU, OutsideEU.For France locales, only.",
           "required": false
         },
@@ -7670,7 +8699,13 @@
         },
         {
           "name": "classification",
-          "type": "Boolean",
+          "type": "Select",
+          "options": [
+            "Asset",
+            "Equity",
+            "Liability",
+            "Revenue"
+          ],
           "info": "The classification of an account. Not supported for non-posting accounts. Valid values include: Asset, Equity, Expense, Liability, Revenue",
           "required": false
         },
@@ -7769,6 +8804,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -7821,6 +8862,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -7871,6 +8918,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "name",
@@ -7937,6 +8990,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "classId",
           "type": "Number",
           "info": "Id of your class",
@@ -7987,6 +9046,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "classId",
@@ -8077,6 +9142,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -8127,6 +9198,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "code",
@@ -8181,6 +9258,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -8233,6 +9316,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "currencyId",
           "type": "Number",
           "info": "Id of your company currency",
@@ -8283,6 +9372,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "currencyId",
@@ -8355,6 +9450,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "currencyId",
           "type": "String",
           "info": "Id of the company currency",
@@ -8411,6 +9512,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "displayName",
@@ -8495,6 +9602,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "customerId",
           "type": "Number",
           "info": "Id of your customer",
@@ -8545,6 +9658,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "customerId",
@@ -8821,6 +9940,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -8871,6 +9996,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "name",
@@ -8937,6 +10068,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "departmentId",
           "type": "Number",
           "info": "Id of your department",
@@ -8987,6 +10124,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "departmentId",
@@ -9083,6 +10226,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -9133,6 +10282,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "givenName",
@@ -9199,6 +10354,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "employeeId",
           "type": "Number",
           "info": "Id of your employee",
@@ -9249,6 +10410,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "employeeId",
@@ -9366,25 +10533,29 @@
         },
         {
           "name": "birthDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Birth date of the employee.",
           "required": false
         },
         {
           "name": "gender",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Male",
+            "Female"
+          ],
           "info": "Gender of the employee. To clear the gender value, set to Null in a full update request. Supported values include: Male or Female.",
           "required": false
         },
         {
           "name": "hiredDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Hire date of the employee.",
           "required": false
         },
         {
           "name": "releasedDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Release date of the employee.",
           "required": false
         },
@@ -9441,6 +10612,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -9491,6 +10668,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "query",
@@ -9545,6 +10728,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "name",
           "type": "String",
           "info": "User recognizable name for the item.",
@@ -9588,7 +10777,7 @@
         },
         {
           "name": "invStartDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Date of opening balance for the inventory transaction.",
           "required": false
         }
@@ -9637,6 +10826,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "itemId",
@@ -9689,6 +10884,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "itemId",
@@ -9746,7 +10947,7 @@
         },
         {
           "name": "invStartDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Date of opening balance for the inventory transaction.",
           "required": false
         },
@@ -9905,6 +11106,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "name",
           "type": "String",
           "info": "User recognizable name for the payment method.",
@@ -9955,6 +11162,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "paymentmethodId",
@@ -10009,6 +11222,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "paymentmethodId",
           "type": "Number",
           "info": "Id of the payment method",
@@ -10028,7 +11247,11 @@
         },
         {
           "name": "type",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "CREDIT_CARD",
+            "NON_CREDIT_CARD"
+          ],
           "info": "Defines the type of payment. Valid values include CREDIT_CARD or NON_CREDIT_CARD.",
           "required": false
         },
@@ -10085,6 +11308,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -10135,6 +11364,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "displayName",
@@ -10189,6 +11424,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "taxAgencyId",
           "type": "Number",
           "info": "Id of your tax agency",
@@ -10241,6 +11482,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -10291,6 +11538,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "query",
@@ -10345,6 +11598,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "taxCodeId",
           "type": "Number",
           "info": "Id of your tax code",
@@ -10395,6 +11654,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "taxRateId",
@@ -10449,6 +11714,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -10501,6 +11772,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "taxCode",
           "type": "String",
           "info": "Name of new tax code. ",
@@ -10508,9 +11785,14 @@
         },
         {
           "name": "taxRateDetails",
-          "type": "Array",
+          "type": "List",
           "info": "One or more tax rate specifications.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "taxRateDetail",
+            "type": "String",
+            "info": "Single specification"
+          }
         }
       ],
       "callbacks": [
@@ -10557,6 +11839,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "name",
@@ -10617,6 +11905,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "termId",
           "type": "Number",
           "info": "Id of your term",
@@ -10667,6 +11961,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "termId",
@@ -10739,6 +12039,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -10789,6 +12095,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "displayName",
@@ -10873,6 +12185,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "vendorId",
           "type": "Number",
           "info": "Id of your vendor",
@@ -10923,6 +12241,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "vendorId",
@@ -11127,6 +12451,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -11179,21 +12509,61 @@
           "required": true
         },
         {
-          "name": "accountStatus",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountStatus",
+          "type": "Select",
+          "options": [
+            "Deleted",
+            "Not_Deleted"
+          ],
           "info": "The account status. Supported values include: Deleted, Not_Deleted",
           "required": false
         },
         {
           "name": "accountType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "AccountsPayable",
+            "AccountsReceivable",
+            "Bank",
+            "CostOfGoodsSold",
+            "CreditCard",
+            "Equity",
+            "Expense",
+            "FixedAsset",
+            "Income",
+            "LongTermLiability",
+            "NonPosting",
+            "OtherAsset",
+            "OtherCurrentAsset",
+            "OtherCurrentLiability",
+            "OtherExpense",
+            "OtherIncome"
+          ],
           "info": "Account type from which transactions are included in the report. ",
           "required": false
         },
         {
           "name": "columns",
-          "type": "String",
-          "info": "Column types to be shown in the report. Supported Values: account_name*, account_type*, detail_acc_type, create_date, create_by, detail_acc_type*, last_ mod_date, last_ mod_by, account_desc*, account_bal*",
+          "type": "Select",
+          "options": [
+            "account_name*",
+            "account_type*",
+            "detail_acc_type",
+            "create_date",
+            "create_by",
+            "detail_acc_type*",
+            "last_mod_date",
+            "last_mod_by",
+            "account_desc*",
+            "account_bal*"
+          ],
+          "info": "Column types to be shown in the report. Supported Values: account_name*, account_type*, detail_acc_type, create_date, create_by, detail_acc_type*, last_mod_date, last_mod_by, account_desc*, account_bal*",
           "required": false
         },
         {
@@ -11216,31 +12586,35 @@
         },
         {
           "name": "sortOrder",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "ascend",
+            "descend"
+          ],
           "info": "The sort order. Supported Values: ascend, descend",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "startModdate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Specify an explicit account modification report date range, in the format YYYY-MM-DD. ",
           "required": false
         },
         {
           "name": "endModdate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Specify an explicit account modification report date range, in the format YYYY-MM-DD. ",
           "required": false
         }
@@ -11291,8 +12665,18 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
@@ -11304,7 +12688,26 @@
         },
         {
           "name": "columns",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "create_by",
+            "create_date",
+            "doc_num*",
+            "last_mod_by",
+            "due_date*",
+            "last_mod_date",
+            "memo*",
+            "past_due*",
+            "term_name",
+            "tx_date*",
+            "txn_type*",
+            "vend_bill_addr",
+            "vend_comp_name",
+            "vend_name*",
+            "vend_pri_cont",
+            "vend_pri_email",
+            "vend_pri_tel"
+          ],
           "info": "Column types to be shown in the report. Supported Values: create_by create_date doc_num* due_date* last_mod_by last_mod_date memo* past_due* term_name tx_date* txn_type* vend_bill_addr vend_comp_name vend_name* vend_pri_cont vend_pri_email vend_pri_tel  Additional columns with location tracking enabled: dept_name*",
           "required": false
         },
@@ -11340,7 +12743,7 @@
         },
         {
           "name": "reportDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start date to use for the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -11352,13 +12755,13 @@
         },
         {
           "name": "startDuedate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
           "required": false
         },
         {
           "name": "endDuedate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
           "required": false
         },
@@ -11421,8 +12824,18 @@
           "required": true
         },
         {
-          "name": "agingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "agingMethod",
+          "type": "Select",
+          "options": [
+            "Report_Date",
+            "Current"
+          ],
           "info": "The date upon which aging is determined. Supported Values:Report_Date, Current",
           "required": false
         },
@@ -11434,7 +12847,32 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
@@ -11452,21 +12890,40 @@
         },
         {
           "name": "reportDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start date to use for the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         },
         {
           "name": "vendor",
-          "type": "String",
+          "type": "List",
           "info": "Filters report contents to include information for specified vendors. Supported Values: One or more comma separated vendor IDs as returned in the attribute, Vendor.Id, of the Vendor object response code.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "vendor",
+            "type": "String",
+            "info": "Single vendor"
+          }
         }
       ],
       "callbacks": [
@@ -11515,8 +12972,18 @@
           "required": true
         },
         {
-          "name": "agingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "agingMethod",
+          "type": "Select",
+          "options": [
+            "Report_Date",
+            "Current"
+          ],
           "info": "The date upon which aging is determined. Supported Values:Report_Date, Current",
           "required": false
         },
@@ -11528,7 +12995,29 @@
         },
         {
           "name": "columns",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "bill_addr",
+            "create_by",
+            "create_date",
+            "cust_bill_email",
+            "cust_comp_name",
+            "cust_msg",
+            "cust_phone_other",
+            "cust_tel",
+            "cust_name",
+            "deliv_addr",
+            "doc_num*",
+            "due_date*",
+            "last_mod_by",
+            "last_mod_date",
+            "memo*",
+            "past_due",
+            "sale_sent_state",
+            "ship_addr",
+            "tx_date*",
+            "txn_type*"
+          ],
           "info": "Column types to be shown in the report. Supported Values: bill_addr create_by create_date cust_bill_email cust_comp_name   cust_msg cust_phone_other cust_tel cust_name deliv_addr doc_num* due_date* last_mod_by last_mod_date memo* past_due sale_sent_state ship_addr term_name tx_date* txn_type* Additional columns with custom fields enabled: sales_cust1 sales_cust2 sales_cust3 Additional columns with location tracking enabled: dept_name*",
           "required": false
         },
@@ -11564,7 +13053,7 @@
         },
         {
           "name": "reportDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start date to use for the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -11576,13 +13065,13 @@
         },
         {
           "name": "startDuedate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
           "required": false
         },
         {
           "name": "endDuedate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
           "required": false
         },
@@ -11645,8 +13134,18 @@
           "required": true
         },
         {
-          "name": "agingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "agingMethod",
+          "type": "Select",
+          "options": [
+            "Report_Date",
+            "Current"
+          ],
           "info": "The date upon which aging is determined. Supported Values:Report_Date, Current",
           "required": false
         },
@@ -11658,7 +13157,32 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
@@ -11676,13 +13200,27 @@
         },
         {
           "name": "reportDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start date to use for the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -11733,8 +13271,18 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
@@ -11758,19 +13306,44 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -11794,7 +13367,21 @@
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -11845,6 +13432,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "customer",
           "type": "String",
           "info": "Filters report contents to include information for specified customers. ",
@@ -11864,19 +13457,44 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -11900,7 +13518,21 @@
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -11951,14 +13583,29 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
         {
           "name": "arpaid",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "All",
+            "Paid",
+            "Unpaid"
+          ],
           "info": "Supported Values:All, Paid, Unpaid",
           "required": false
         },
@@ -11970,7 +13617,32 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
@@ -11982,13 +13654,27 @@
         },
         {
           "name": "reportDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start date to use for the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -12039,6 +13725,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "agingMethod",
           "type": "String",
           "info": "The date upon which aging is determined. Supported Values:Report_Date, Current",
@@ -12046,7 +13738,12 @@
         },
         {
           "name": "arpaid",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "All",
+            "Paid",
+            "Unpaid"
+          ],
           "info": "Supported Values:All, Paid, Unpaid",
           "required": false
         },
@@ -12076,13 +13773,17 @@
         },
         {
           "name": "sortOrder",
-          "type": "String",
+          "type": "Select",
+          "opyions": [
+            "ascend",
+            "descend"
+          ],
           "info": "The sort order. Supported Values: ascend, descend",
           "required": false
         },
         {
           "name": "reportDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start date to use for the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -12094,13 +13795,13 @@
         },
         {
           "name": "startDuedate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
           "required": false
         },
         {
           "name": "endDuedate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
           "required": false
         },
@@ -12163,8 +13864,18 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
@@ -12182,19 +13893,44 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -12218,7 +13954,21 @@
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -12269,8 +14019,18 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
@@ -12288,19 +14048,44 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -12318,7 +14103,21 @@
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -12369,6 +14168,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "account",
           "type": "String",
           "info": "Filters report contents to include information for specified accounts. ",
@@ -12376,19 +14181,59 @@
         },
         {
           "name": "accountingMethod",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
         {
           "name": "accountType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "AccountsPayable",
+            "AccountsReceivable",
+            "Bank",
+            "CostOfGoodsSold",
+            "CreditCard",
+            "Equity",
+            "Expense",
+            "FixedAsset",
+            "Income",
+            "LongTermLiability",
+            "NonPosting",
+            "OtherAsset",
+            "OtherCurrentAsset",
+            "OtherCurrentLiability",
+            "OtherExpense",
+            "OtherIncome"
+          ],
           "info": "Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome",
           "required": false
         },
         {
           "name": "sourceAccountType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "AccountsPayable",
+            "AccountsReceivable",
+            "Bank",
+            "CostOfGoodsSold",
+            "CreditCard",
+            "Equity",
+            "Expense",
+            "FixedAsset",
+            "Income",
+            "LongTermLiability",
+            "NonPosting",
+            "OtherAsset",
+            "OtherCurrentAsset",
+            "OtherCurrentLiability",
+            "OtherExpense",
+            "OtherIncome"
+          ],
           "info": "Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome",
           "required": false
         },
@@ -12400,7 +14245,32 @@
         },
         {
           "name": "columns",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "account_name",
+            "chk_print_state",
+            "create_by",
+            "create_date",
+            "cust_name",
+            "doc_num*",
+            "emp_name",
+            "inv_date",
+            "is_adj*",
+            "is_ap_paid",
+            "is_ar_paid",
+            "is_cleared",
+            "item_name",
+            "last_mod_by",
+            "last_mod_date",
+            "memo*",
+            "name*",
+            "quantity",
+            "rate",
+            "split_acc*",
+            "tx_date*",
+            "txn_type*",
+            "vend_name"
+          ],
           "info": "Supported values:  account_name chk_print_state create_by create_date cust_name    doc_num* emp_name inv_date is_adj* is_ap_paid  is_ar_paid is_cleared item_name last_mod_by last_mod_date   memo* name* quantity rate split_acc*   tx_date* txn_type* vend_name Additional columns when sales tax enabled: net_amount tax_amount tax_code Additional columns when account numbering enabled: account_num Additional columns when class tracking enabled: klass_name* Additional columns when location tracking enabled: dept_name*  ",
           "required": false
         },
@@ -12412,19 +14282,44 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -12442,7 +14337,11 @@
         },
         {
           "name": "sortOrder",
-          "type": "String",
+          "type": "Select",
+          "opyions": [
+            "ascend",
+            "descend"
+          ],
           "info": "The sort order. Supported Values: ascend, descend",
           "required": false
         },
@@ -12505,8 +14404,39 @@
           "required": true
         },
         {
-          "name": "dateMacro",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "dateMacro",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
@@ -12524,13 +14454,27 @@
         },
         {
           "name": "reportDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start date to use for the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         },
@@ -12587,8 +14531,18 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
@@ -12612,19 +14566,44 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -12648,7 +14627,21 @@
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -12699,6 +14692,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "account",
           "type": "String",
           "info": "Filters report contents to include information for specified accounts. ",
@@ -12706,19 +14705,59 @@
         },
         {
           "name": "accountingMethod",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
         {
           "name": "accountType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "AccountsPayable",
+            "AccountsReceivable",
+            "Bank",
+            "CostOfGoodsSold",
+            "CreditCard",
+            "Equity",
+            "Expense",
+            "FixedAsset",
+            "Income",
+            "LongTermLiability",
+            "NonPosting",
+            "OtherAsset",
+            "OtherCurrentAsset",
+            "OtherCurrentLiability",
+            "OtherExpense",
+            "OtherIncome"
+          ],
           "info": "Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome",
           "required": false
         },
         {
           "name": "sourceAccountType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "AccountsPayable",
+            "AccountsReceivable",
+            "Bank",
+            "CostOfGoodsSold",
+            "CreditCard",
+            "Equity",
+            "Expense",
+            "FixedAsset",
+            "Income",
+            "LongTermLiability",
+            "NonPosting",
+            "OtherAsset",
+            "OtherCurrentAsset",
+            "OtherCurrentLiability",
+            "OtherExpense",
+            "OtherIncome"
+          ],
           "info": "Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome",
           "required": false
         },
@@ -12742,19 +14781,44 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -12784,7 +14848,11 @@
         },
         {
           "name": "sortOrder",
-          "type": "String",
+          "type": "Select",
+          "opyions": [
+            "ascend",
+            "descend"
+          ],
           "info": "The sort order. Supported Values: ascend, descend",
           "required": false
         },
@@ -12847,8 +14915,18 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
@@ -12872,19 +14950,44 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -12896,7 +14999,21 @@
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -12947,8 +15064,18 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
@@ -12978,19 +15105,44 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -13002,7 +15154,21 @@
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -13053,8 +15219,18 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
@@ -13078,19 +15254,44 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -13102,7 +15303,21 @@
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -13153,8 +15368,18 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
@@ -13178,19 +15403,44 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -13202,7 +15452,21 @@
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -13253,20 +15517,29 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
         {
-          "name": "appaid",
-          "type": "String",
-          "info": "Status of the balance. Supported Values: Paid, Unpaid, All",
-          "required": false
-        },
-        {
           "name": "arpaid",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "All",
+            "Paid",
+            "Unpaid"
+          ],
           "info": "Supported Values:All, Paid, Unpaid",
           "required": false
         },
@@ -13284,19 +15557,77 @@
         },
         {
           "name": "cleared",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Cleared",
+            "Uncleared",
+            "Reconciled",
+            "Deposited"
+          ],
           "info": "Filters report contents to include information for specified check status. Supported Values: Cleared, Uncleared, Reconciled, Deposited",
           "required": false
         },
         {
           "name": "columns",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "account_name*",
+            "create_by",
+            "create_date",
+            "cust_msg",
+            "due_date",
+            "doc_num*",
+            "inv_date",
+            "is_ap_paid",
+            "is_cleared",
+            "is_no_post*",
+            "last_mod_by",
+            "memo*",
+            "name*",
+            "other_account*",
+            "pmt_mthd",
+            "printed",
+            "sales_cust1",
+            "sales_cust2",
+            "sales_cust3",
+            "term_name",
+            "tracking_num",
+            "tracking_num",
+            "tx_date*",
+            "txn_type*",
+            "term_name"
+          ],
           "info": "Supported Values: account_name* create_by create_date cust_msg due_date doc_num* inv_date is_ap_paid is_cleared is_no_post* last_mod_by memo* name* other_account* pmt_mthd printed sales_cust1 sales_cust2 sales_cust3 term_name tracking_num tx_date* txn_type* term_name Additional columns when account numbering enabled: account_num Additional columns when location tracking enabled: dept_name*  ",
           "required": false
         },
         {
           "name": "createdateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
@@ -13308,7 +15639,32 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
@@ -13326,13 +15682,54 @@
         },
         {
           "name": "duedateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "groupBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Name",
+            "Account",
+            "Transaction Type",
+            "Customer",
+            "Vendor",
+            "Employee",
+            "Location",
+            "Payment Method",
+            "Day",
+            "Week",
+            "Month",
+            "Quarter",
+            "Year",
+            "None"
+          ],
           "info": "The field in the transaction by which to group results. Supported Values: Name, Account, Transaction Type, Customer, Vendor, Employee, Location, Payment Method, Day, Week, Month, Quarter, Year, None",
           "required": false
         },
@@ -13344,13 +15741,43 @@
         },
         {
           "name": "memo",
-          "type": "String",
+          "type": "List",
           "info": "Filters report contents to include information for specified memo. Supported Values: One or more comma separated memo IDs.",
-          "required": false
+          "required": false,
+          "structure": {
+            "name": "memoId",
+            "type": "String",
+            "info": "single memo id"
+          }
         },
         {
           "name": "moddateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
@@ -13362,13 +15789,26 @@
         },
         {
           "name": "paymentMethod",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Check",
+            "Dinners Club",
+            "American Express",
+            "Discover",
+            "MasterCard",
+            "Visa"
+          ],
           "info": "Filters report contents based on payment method. Supported Values: Cash, Check, Dinners Club, American Express, Discover, MasterCard, Visa",
           "required": false
         },
         {
           "name": "printed",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Printed",
+            "To_be_printed"
+          ],
           "info": "Filters report contents based on whether checks are printed or not. Supported Values: Printed, To_be_printed",
           "required": false
         },
@@ -13386,43 +15826,65 @@
         },
         {
           "name": "sortOrder",
-          "type": "String",
+          "type": "Select",
+          "opyions": [
+            "ascend",
+            "descend"
+          ],
           "info": "The sort order. Supported Values: ascend, descend",
           "required": false
         },
         {
           "name": "sourceAccountType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "AccountsPayable",
+            "AccountsReceivable",
+            "Bank",
+            "CostOfGoodsSold",
+            "CreditCard",
+            "Equity",
+            "Expense",
+            "FixedAsset",
+            "Income",
+            "LongTermLiability",
+            "NonPosting",
+            "OtherAsset",
+            "OtherCurrentAsset",
+            "OtherCurrentLiability",
+            "OtherExpense",
+            "OtherIncome"
+          ],
           "info": "Supported Values: AccountsPayable AccountsReceivable Bank CostOfGoodsSold  CreditCard Equity Expense FixedAsset  Income LongTermLiability NonPosting OtherAsset OtherCurrentAsset OtherCurrentLiability OtherExpense OtherIncome",
           "required": false
         },
         {
           "name": "startCreatedate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Specify an explicit account create report date range, in the format YYYY-MM-DD",
           "required": false
         },
         {
           "name": "subtendCreatedate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Specify an explicit account create report date range, in the format YYYY-MM-DD",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD. ",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD. ",
           "required": false
         },
         {
           "name": "startDuedate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
           "required": false
         },
@@ -13434,13 +15896,13 @@
         },
         {
           "name": "startModdate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Specify an explicit account modification report date range, in the format YYYY-MM-DD. ",
           "required": false
         },
         {
           "name": "endModdate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Specify an explicit account modification report date range, in the format YYYY-MM-DD. ",
           "required": false
         },
@@ -13452,7 +15914,40 @@
         },
         {
           "name": "transactionType",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "CreditCardCharge",
+            "Check",
+            "Invoice",
+            "ReceivePayment",
+            "JournalEntry",
+            "Bill",
+            "CreditCardCredit",
+            "VendorCredit",
+            "Credit",
+            "BillPaymentCheck",
+            "BillPaymentCreditCard",
+            "Charge",
+            "Transfer",
+            "Deposit",
+            "Statement",
+            "BillableCharge",
+            "TimeActivity",
+            "CashPurchase",
+            "SalesReceipt",
+            "CreditMemo",
+            "CreditRefund",
+            "Estimate",
+            "InventoryQuantityAdjustment",
+            "PurchaseOrder",
+            "GlobalTaxPayment",
+            "GlobalTaxAdjustment",
+            "Service Tax Refund",
+            "Service Tax Gross Adjustment",
+            "Service Tax Reversal",
+            "Service Tax Defer",
+            "Service Tax Partial Utilisation"
+          ],
           "info": "Filters report contents based transaction type. Supported values include: CreditCardCharge, Check, Invoice, ReceivePayment, JournalEntry, Bill, CreditCardCredit, VendorCredit, Credit, BillPaymentCheck, BillPaymentCreditCard, Charge, Transfer, Deposit, Statement, BillableCharge, TimeActivity, CashPurchase, SalesReceipt, CreditMemo, CreditRefund, Estimate, InventoryQuantityAdjustment, PurchaseOrder, GlobalTaxPayment, GlobalTaxAdjustment, Service Tax Refund, Service Tax Gross Adjustment, Service Tax Reversal, Service Tax Defer, Service Tax Partial Utilisation",
           "required": false
         },
@@ -13509,32 +16004,81 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The start date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date date of the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -13585,14 +16129,29 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
         {
           "name": "appaid",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "All",
+            "Paid",
+            "Unpaid"
+          ],
           "info": "Status of the balance. Supported Values: Paid, Unpaid, All",
           "required": false
         },
@@ -13604,7 +16163,32 @@
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
@@ -13622,13 +16206,27 @@
         },
         {
           "name": "reportDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start date to use for the report, in the format YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "summarizeColumnBy",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Total",
+            "Month",
+            "Week",
+            "Days",
+            "Quarter",
+            "Year",
+            "Customers",
+            "Vendors",
+            "Classes",
+            "Departments",
+            "Employees",
+            "ProductsAndServices"
+          ],
           "info": "The criteria by which to group the report results.  Supported Values: Total Month Week Days Quarter Year  Customers Vendors Classes Departments Employees  ProductsAndServices",
           "required": false
         }
@@ -13679,26 +16277,84 @@
           "required": true
         },
         {
-          "name": "accountingMethod",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "accountingMethod",
+          "type": "Select",
+          "options": [
+            "Cash",
+            "Accrual"
+          ],
           "info": "The accounting method used in the report. Supported Values:Cash, Accrual",
           "required": false
         },
         {
           "name": "appaid",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "All",
+            "Paid",
+            "Unpaid"
+          ],
           "info": "Status of the balance. Supported Values: Paid, Unpaid, All",
           "required": false
         },
         {
           "name": "columns",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "create_by",
+            "create_date",
+            "doc_num*",
+            "due_date*",
+            "last_mod_by",
+            "last_mod_date",
+            "memo*",
+            "term_name",
+            "tx_date*",
+            "txn_type*",
+            "vend_bill_addr",
+            "vend_comp_name",
+            "vend_name*",
+            "vend_pri_cont",
+            "vend_pri_email",
+            "vend_pri_tel"
+          ],
           "info": "Column types to be shown in the report. Supported Values:create_by create_date doc_num* due_date* last_mod_by  last_mod_date memo*   term_name tx_date* txn_type* vend_bill_addr vend_comp_name vend_name* vend_pri_cont vend_pri_email vend_pri_tel Additional columns with location tracking enabled: dept_name*  ",
           "required": false
         },
         {
           "name": "dateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
@@ -13710,13 +16366,38 @@
         },
         {
           "name": "duedateMacro",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Week-to-date",
+            "Last Week-to-date",
+            "Next Week",
+            "Next 4 Weeks",
+            "This Month",
+            "Last Month",
+            "This Month-to-date",
+            "Last Month-to-date",
+            "Next Month",
+            "This Fiscal Quarter",
+            "Last Fiscal Quarter",
+            "This Fiscal Quarter-to-date",
+            "Last Fiscal Quarter-to-date",
+            "Next Fiscal Quarter",
+            "This Fiscal Year",
+            "Last Fiscal Year",
+            "This Fiscal Year-to-date",
+            "Last Fiscal Year-to-date",
+            "Next Fiscal Year"
+          ],
           "info": "Supported Values: Today  Yesterday This Week Last Week This Week-to-date   Last Week-to-date Next Week   Next 4 Weeks  This Month  Last Month This Month-to-date    Last Month-to-date Next Month   This Fiscal Quarter  Last Fiscal Quarter This Fiscal Quarter-to-date  Last Fiscal Quarter-to-date Next Fiscal Quarter  This Fiscal Year Last Fiscal Year This Fiscal Year-to-date Last Fiscal Year-to-date Next Fiscal Year",
           "required": false
         },
         {
           "name": "reportDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Start date to use for the report, in the format YYYY-MM-DD.",
           "required": false
         },
@@ -13728,19 +16409,23 @@
         },
         {
           "name": "sortOrder",
-          "type": "String",
+          "type": "Select",
+          "opyions": [
+            "ascend",
+            "descend"
+          ],
           "info": "The sort order. Supported Values: ascend, descend",
           "required": false
         },
         {
           "name": "startDuedate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
           "required": false
         },
         {
           "name": "endDuedate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The range of dates over which receivables are due, in the format YYYY-MM-DD. ",
           "required": false
         },
@@ -13803,10 +16488,21 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "attachableRef",
-          "type": "Array",
+          "type": "List",
           "info": "Specifies the transaction object to which this attachable file is to be linked.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "attachableRef",
+            "type": "String",
+            "info": "Single attachableRef"
+          }
         },
         {
           "name": "note",
@@ -13861,6 +16557,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "attachableId",
           "type": "Number",
           "info": "Id of your attachable",
@@ -13911,6 +16613,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "attachableId",
@@ -13977,6 +16685,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "attachableId",
           "type": "String",
           "info": "Id of the attachable",
@@ -14035,6 +16749,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -14087,14 +16807,25 @@
           "required": true
         },
         {
-          "name": "entityList",
+          "name": "sandbox",
           "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
+          "name": "entityList",
+          "type": "List",
           "info": "List of entities coma separated except JournalCode, TimeActivity, TaxAgency, TaxCode, and TaxRate.",
-          "required": true
+          "required": true,
+          "structure": {
+            "name": "entity",
+            "type": "String",
+            "info": "Single entity"
+          }
         },
         {
           "name": "changedSince",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Date of change",
           "required": true
         }
@@ -14191,6 +16922,12 @@
           "required": true
         },
         {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
+        },
+        {
           "name": "query",
           "type": "String",
           "info": "Your query to process",
@@ -14208,7 +16945,6 @@
         }
       ]
     },
-
     {
       "name": "getPreferences",
       "description": "Retrieves the Preferences details for the specified company.",
@@ -14288,6 +17024,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "preferenceId",
@@ -14400,6 +17142,12 @@
           "type": "Number",
           "info": "Id of the company",
           "required": true
+        },
+        {
+          "name": "sandbox",
+          "type": "String",
+          "info": "Whether to run in sandbox mode",
+          "required": false
         },
         {
           "name": "query",
