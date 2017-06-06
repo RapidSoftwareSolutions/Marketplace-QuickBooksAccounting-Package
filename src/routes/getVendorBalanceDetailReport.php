@@ -45,7 +45,8 @@ $app->post('/api/QuickBooksAccounting/getVendorBalanceDetailReport', function ($
         $body['duedate_macro'] = $post_data['args']['duedateMacro'];
     }
     if (isset($post_data['args']['reportDate']) && strlen($post_data['args']['reportDate']) > 0) {
-        $body['report_date'] = $post_data['args']['reportDate'];
+        $dateTime = new DateTime($post_data['args']['reportDate']);
+        $body['report_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['sortBy']) && strlen($post_data['args']['sortBy']) > 0) {
         $body['sort_by'] = $post_data['args']['sortBy'];
@@ -54,10 +55,12 @@ $app->post('/api/QuickBooksAccounting/getVendorBalanceDetailReport', function ($
         $body['sort_order'] = $post_data['args']['sortOrder'];
     }
     if (isset($post_data['args']['startDuedate']) && strlen($post_data['args']['startDuedate']) > 0) {
-        $body['start_duedate'] = $post_data['args']['startDuedate'];
+        $dateTime = new DateTime($post_data['args']['startDuedate']);
+        $body['start_duedate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['endDuedate']) && strlen($post_data['args']['endDuedate']) > 0) {
-        $body['end_duedate'] = $post_data['args']['endDuedate'];
+        $dateTime = new DateTime($post_data['args']['endDuedate']);
+        $body['end_duedate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['term']) && strlen($post_data['args']['term']) > 0) {
         $body['term'] = $post_data['args']['term'];

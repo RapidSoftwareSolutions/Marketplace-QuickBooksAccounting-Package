@@ -71,10 +71,12 @@ $app->post('/api/QuickBooksAccounting/getProfitAndLossDetailReport', function ($
         $body['source_account'] = $post_data['args']['sourceAccount'];
     }
     if (isset($post_data['args']['startDate']) && strlen($post_data['args']['startDate']) > 0) {
-        $body['start_date'] = $post_data['args']['startDate'];
+        $dateTime = new DateTime($post_data['args']['startDate']);
+        $body['start_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['endDate']) && strlen($post_data['args']['endDate']) > 0) {
-        $body['end_date'] = $post_data['args']['endDate'];
+        $dateTime = new DateTime($post_data['args']['endDate']);
+        $body['end_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['vendor']) && strlen($post_data['args']['vendor']) > 0) {
         $body['vendor'] = $post_data['args']['vendor'];

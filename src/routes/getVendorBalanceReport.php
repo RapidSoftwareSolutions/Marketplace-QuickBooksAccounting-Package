@@ -34,7 +34,8 @@ $app->post('/api/QuickBooksAccounting/getVendorBalanceReport', function ($reques
         $body['date_macro'] = $post_data['args']['dateMacro'];
     }
     if (isset($post_data['args']['reportDate']) && strlen($post_data['args']['reportDate']) > 0) {
-        $body['report_date'] = $post_data['args']['reportDate'];
+        $dateTime = new DateTime($post_data['args']['reportDate']);
+        $body['report_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['qzurl']) && strlen($post_data['args']['qzurl']) > 0) {
         $body['qzurl'] = $post_data['args']['qzurl'];

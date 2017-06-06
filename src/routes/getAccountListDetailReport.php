@@ -46,16 +46,20 @@ $app->post('/api/QuickBooksAccounting/getAccountListDetailReport', function ($re
         $body['sort_order'] = $post_data['args']['sortOrder'];
     }
     if (isset($post_data['args']['startDate']) && strlen($post_data['args']['startDate']) > 0) {
-        $body['start_date'] = $post_data['args']['startDate'];
+        $dateTime = new DateTime($post_data['args']['startDate']);
+        $body['start_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['endDate']) && strlen($post_data['args']['endDate']) > 0) {
-        $body['end_date'] = $post_data['args']['endDate'];
+        $dateTime = new DateTime($post_data['args']['endDate']);
+        $body['end_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['startModdate']) && strlen($post_data['args']['startModdate']) > 0) {
-        $body['start_moddate'] = $post_data['args']['startModdate'];
+        $dateTime = new DateTime($post_data['args']['startModdate']);
+        $body['start_moddate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['endModdate']) && strlen($post_data['args']['endModdate']) > 0) {
-        $body['end_moddate'] = $post_data['args']['endModdate'];
+        $dateTime = new DateTime($post_data['args']['endModdate']);
+        $body['end_moddate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     //requesting remote API
     $client = new GuzzleHttp\Client([

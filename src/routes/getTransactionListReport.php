@@ -102,28 +102,36 @@ $app->post('/api/QuickBooksAccounting/getTransactionListReport', function ($requ
         $body['source_account_type'] = $post_data['args']['sourceAccountType'];
     }
     if (isset($post_data['args']['startCreatedate']) && strlen($post_data['args']['startCreatedate']) > 0) {
-        $body['start_createdate'] = $post_data['args']['startCreatedate'];
+        $dateTime = new DateTime($post_data['args']['startCreatedate']);
+        $body['start_createdate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['subtendCreatedate']) && strlen($post_data['args']['subtendCreatedate']) > 0) {
-        $body['subtend_createdate'] = $post_data['args']['subtendCreatedate'];
+        $dateTime = new DateTime($post_data['args']['subtendCreatedate']);
+        $body['subtend_createdate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['startDate']) && strlen($post_data['args']['startDate']) > 0) {
-        $body['start_date'] = $post_data['args']['startDate'];
+        $dateTime = new DateTime($post_data['args']['startDate']);
+        $body['start_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['endDate']) && strlen($post_data['args']['endDate']) > 0) {
-        $body['end_date'] = $post_data['args']['endDate'];
+        $dateTime = new DateTime($post_data['args']['endDate']);
+        $body['end_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['startDuedate']) && strlen($post_data['args']['startDuedate']) > 0) {
-        $body['start_duedate'] = $post_data['args']['startDuedate'];
+        $dateTime = new DateTime($post_data['args']['startDuedate']);
+        $body['start_duedate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['subtendDuedate']) && strlen($post_data['args']['subtendDuedate']) > 0) {
-        $body['subtend_duedate'] = $post_data['args']['subtendDuedate'];
+        $dateTime = new DateTime($post_data['args']['subtendDuedate']);
+        $body['subtend_duedate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['startModdate']) && strlen($post_data['args']['startModdate']) > 0) {
-        $body['start_moddate'] = $post_data['args']['startModdate'];
+        $dateTime = new DateTime($post_data['args']['startModdate']);
+        $body['start_moddate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['endModdate']) && strlen($post_data['args']['endModdate']) > 0) {
-        $body['end_moddate'] = $post_data['args']['endModdate'];
+        $dateTime = new DateTime($post_data['args']['endModdate']);
+        $body['end_moddate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['term']) && strlen($post_data['args']['term']) > 0) {
         $body['term'] = $post_data['args']['term'];

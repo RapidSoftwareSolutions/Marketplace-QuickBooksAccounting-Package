@@ -38,10 +38,12 @@ $app->post('/api/QuickBooksAccounting/getExpensesByVendorReport', function ($req
         $body['date_macro'] = $post_data['args']['dateMacro'];
     }
     if (isset($post_data['args']['startDate']) && strlen($post_data['args']['startDate']) > 0) {
-        $body['start_date'] = $post_data['args']['startDate'];
+        $dateTime = new DateTime($post_data['args']['startDate']);
+        $body['start_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['endDate']) && strlen($post_data['args']['endDate']) > 0) {
-        $body['end_date'] = $post_data['args']['endDate'];
+        $dateTime = new DateTime($post_data['args']['endDate']);
+        $body['end_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['department']) && strlen($post_data['args']['department']) > 0) {
         $body['department'] = $post_data['args']['department'];

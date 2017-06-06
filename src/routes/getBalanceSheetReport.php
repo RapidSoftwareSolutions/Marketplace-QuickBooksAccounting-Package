@@ -42,10 +42,12 @@ $app->post('/api/QuickBooksAccounting/getBalanceSheetReport', function ($request
         $body['date_macro'] = $post_data['args']['dateMacro'];
     }
     if (isset($post_data['args']['startDate']) && strlen($post_data['args']['startDate']) > 0) {
-        $body['start_date'] = $post_data['args']['startDate'];
+        $dateTime = new DateTime($post_data['args']['startDate']);
+        $body['start_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['endDate']) && strlen($post_data['args']['endDate']) > 0) {
-        $body['end_date'] = $post_data['args']['endDate'];
+        $dateTime = new DateTime($post_data['args']['endDate']);
+        $body['end_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['qzurl']) && strlen($post_data['args']['qzurl']) > 0) {
         $body['qzurl'] = $post_data['args']['qzurl'];

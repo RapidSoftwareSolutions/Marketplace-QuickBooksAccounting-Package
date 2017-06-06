@@ -3,7 +3,10 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 
 $app->post('/api/QuickBooksAccounting/getCustomerBalanceDetailReport', function ($request, $response, $args) {
-        $settings = $this->settings;     if(isset($post_data['args']['sandbox']) == 1){         $settings['api_url'] = 'https://sandbox-quickbooks.api.intuit.com/v3/';     }
+    $settings = $this->settings;
+    if (isset($post_data['args']['sandbox']) == 1) {
+        $settings['api_url'] = 'https://sandbox-quickbooks.api.intuit.com/v3/';
+    }
 
     //checking properly formed json
     $checkRequest = $this->validation;
@@ -48,7 +51,8 @@ $app->post('/api/QuickBooksAccounting/getCustomerBalanceDetailReport', function 
         $body['department'] = $post_data['args']['department'];
     }
     if (isset($post_data['args']['reportDate']) && strlen($post_data['args']['reportDate']) > 0) {
-        $body['report_date'] = $post_data['args']['reportDate'];
+        $dateTime = new DateTime($post_data['args']['reportDate']);
+        $body['report_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
 
     if (isset($post_data['args']['shipvia']) && strlen($post_data['args']['shipvia']) > 0) {
@@ -62,11 +66,13 @@ $app->post('/api/QuickBooksAccounting/getCustomerBalanceDetailReport', function 
         $body['sort_order'] = $post_data['args']['sortOrder'];
     }
     if (isset($post_data['args']['startDuedate']) && strlen($post_data['args']['startDuedate']) > 0) {
-        $body['start_duedate'] = $post_data['args']['startDuedate'];
+        $dateTime = new DateTime($post_data['args']['startDuedate']);
+        $body['start_duedate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
 
     if (isset($post_data['args']['endDuedate']) && strlen($post_data['args']['endDuedate']) > 0) {
-        $body['end_duedate'] = $post_data['args']['endDuedate'];
+        $dateTime = new DateTime($post_data['args']['endDuedate']);
+        $body['end_duedate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
 
     if (isset($post_data['args']['term']) && strlen($post_data['args']['term']) > 0) {

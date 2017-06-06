@@ -43,7 +43,8 @@ $app->post('/api/QuickBooksAccounting/getCustomerBalanceReport', function ($requ
     }
 
     if (isset($post_data['args']['reportDate']) && strlen($post_data['args']['reportDate']) > 0) {
-        $body['report_date'] = $post_data['args']['reportDate'];
+        $dateTime = new DateTime($post_data['args']['reportDate']);
+        $body['report_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['summarizeColumnBy']) && strlen($post_data['args']['summarizeColumnBy']) > 0) {
         $body['summarize_column_by'] = $post_data['args']['summarizeColumnBy'];

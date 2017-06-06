@@ -58,7 +58,8 @@ $app->post('/api/QuickBooksAccounting/getARagingDetailReport', function ($reques
     }
 
     if (isset($post_data['args']['reportDate']) && strlen($post_data['args']['reportDate']) > 0) {
-        $body['report_date'] = $post_data['args']['reportDate'];
+        $dateTime = new DateTime($post_data['args']['reportDate']);
+        $body['report_date'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
 
     if (isset($post_data['args']['shipvia']) && strlen($post_data['args']['shipvia']) > 0) {
@@ -66,11 +67,13 @@ $app->post('/api/QuickBooksAccounting/getARagingDetailReport', function ($reques
     }
 
     if (isset($post_data['args']['startDuedate']) && strlen($post_data['args']['startDuedate']) > 0) {
-        $body['start_duedate'] = $post_data['args']['startDuedate'];
+        $dateTime = new DateTime($post_data['args']['startDuedate']);
+        $body['start_duedate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
 
     if (isset($post_data['args']['endDuedate']) && strlen($post_data['args']['endDuedate']) > 0) {
-        $body['end_duedate'] = $post_data['args']['endDuedate'];
+        $dateTime = new DateTime($post_data['args']['endDuedate']);
+        $body['end_duedate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
 
     if (isset($post_data['args']['term']) && strlen($post_data['args']['term']) > 0) {
