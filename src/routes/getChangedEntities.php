@@ -28,7 +28,8 @@ $app->post('/api/QuickBooksAccounting/getChangedEntities', function ($request, $
     $stack->push($middleware);
 
     $body['entities'] = is_array($post_data['args']['entityList']) ? implode(',', $post_data['args']['entityList']) : $post_data['args']['entityList'];
-    $body['changedSince'] = $post_data['args']['changedSince'];
+    $dateTime = new DateTime($post_data['args']['changedSince']);
+    $body['changedSince'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     //requesting remote API
     $client = new GuzzleHttp\Client([
         'headers' => [
