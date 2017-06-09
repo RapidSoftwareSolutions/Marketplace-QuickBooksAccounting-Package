@@ -21,7 +21,7 @@ Class checkRequest {
             $data = str_replace('\"', '"', $data);
             $data = str_replace('\\"', '"', $data);
             $post_data = json_decode($data, true);
-            echo ($post_data);
+            echo ($data);
             exit();
 
         }
