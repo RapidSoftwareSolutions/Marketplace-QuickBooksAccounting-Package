@@ -36,8 +36,6 @@ $app->post('/api/QuickBooksAccounting/createBill', function ($request, $response
         'base_uri' => $settings['api_url'],
         'handler' => $stack
     ]);
-var_dump($resp = $client->request('POST', 'company/' . $post_data['args']['companyId'] . '/bill', ['auth' => 'oauth', 'json' => $body]));
-exit();
 
     try {
         $resp = $client->request('POST', 'company/' . $post_data['args']['companyId'] . '/bill', ['auth' => 'oauth', 'json' => $body]);
