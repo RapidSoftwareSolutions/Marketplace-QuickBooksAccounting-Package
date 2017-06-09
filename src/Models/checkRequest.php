@@ -20,8 +20,7 @@ Class checkRequest {
             $data = $toJson->normalizeJson($data);
             $data = str_replace('\"', '"', $data);
             $post_data = json_decode($data, true);
-            echo($data);
-            exit();
+         
         }
 
         if(json_last_error() != 0) {
