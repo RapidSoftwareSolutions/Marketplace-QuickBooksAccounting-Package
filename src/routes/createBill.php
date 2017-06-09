@@ -17,7 +17,7 @@ $app->post('/api/QuickBooksAccounting/createBill', function ($request, $response
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $body['Line'] = $post_data['args']['billLines'];
+    $body['Line'] = json_encode($post_data['args']['billLines']);
     $body['VendorRef'][$post_data['args']['vendorRefType']] = $post_data['args']['vendorRefValue'];
     $stack = HandlerStack::create();
 
