@@ -150,6 +150,8 @@ $app->post('/api/QuickBooksAccounting/getTransactionListReport', function ($requ
         'base_uri' => $settings['api_url'],
         'handler' => $stack
     ]);
+
+
     try {
         $resp = $client->request('GET', 'company/' . $post_data['args']['companyId'] . '/reports/TransactionList', ['auth' => 'oauth', 'query' => $body]);
         $responseBody = $resp->getBody()->getContents();

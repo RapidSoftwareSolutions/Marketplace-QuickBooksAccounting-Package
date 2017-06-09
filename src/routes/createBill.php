@@ -12,7 +12,7 @@ $app->post('/api/QuickBooksAccounting/createBill', function ($request, $response
     $checkRequest = $this->validation;
     $validateRes = $checkRequest->validate($request, ['apiKey', 'apiSecret', 'accessToken', 'tokenSecret', 'billLines', 'companyId', 'vendorRefValue', 'vendorRefType']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
-        return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
+        return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($request);
     } else {
         $post_data = $validateRes;
     }
