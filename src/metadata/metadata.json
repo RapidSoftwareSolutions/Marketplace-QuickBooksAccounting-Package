@@ -11680,64 +11680,6 @@
       ]
     },
     {
-      "name": "queryTaxCode",
-      "description": "Returns the results of the query.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Api key obtained from Intuit",
-          "required": true
-        },
-        {
-          "name": "apiSecret",
-          "type": "credentials",
-          "info": "Api secret obtained from Intuit",
-          "required": true
-        },
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token provided by user",
-          "required": true
-        },
-        {
-          "name": "tokenSecret",
-          "type": "String",
-          "info": "Token secret provided by user",
-          "required": true
-        },
-        {
-          "name": "companyId",
-          "type": "Number",
-          "info": "Id of the company",
-          "required": true
-        },
-        {
-          "name": "sandbox",
-          "type": "String",
-          "info": "Whether to run in sandbox mode",
-          "required": false
-        },
-        {
-          "name": "query",
-          "type": "String",
-          "info": "Your query to process",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
       "name": "createTaxService",
       "description": "Create new tax service",
       "args": [
